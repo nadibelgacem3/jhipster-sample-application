@@ -1,0 +1,91 @@
+<div>
+    <h2 id="page-heading">
+        <span jhiTranslate="mooingatewayApp.mooincompaniesCompanyBillPaymentItem.home.title">Company Bill Payment Items</span>
+
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-company-bill-payment-item" [routerLink]="['/company-bill-payment-item/new']">
+            <fa-icon icon="plus"></fa-icon>
+            <span  jhiTranslate="mooingatewayApp.mooincompaniesCompanyBillPaymentItem.home.createLabel">
+            Create a new Company Bill Payment Item
+            </span>
+        </button>
+    </h2>
+
+    <jhi-alert-error></jhi-alert-error>
+
+    <jhi-alert></jhi-alert>
+
+    <div class="alert alert-warning" id="no-result" *ngIf="companyBillPaymentItems?.length === 0">
+        <span jhiTranslate="mooingatewayApp.mooincompaniesCompanyBillPaymentItem.home.notFound">No companyBillPaymentItems found</span>
+    </div>
+
+    <div class="table-responsive" id="entities" *ngIf="companyBillPaymentItems && companyBillPaymentItems.length > 0">
+        <table class="table table-striped" aria-describedby="page-heading">
+            <thead>
+                <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" [callback]="loadPage.bind(this)">
+                    <th scope="col"  jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="quantity"><span jhiTranslate="mooingatewayApp.mooincompaniesCompanyBillPaymentItem.quantity">Quantity</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="discountRate"><span jhiTranslate="mooingatewayApp.mooincompaniesCompanyBillPaymentItem.discountRate">Discount Rate</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="totalHT"><span jhiTranslate="mooingatewayApp.mooincompaniesCompanyBillPaymentItem.totalHT">Total HT</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="totalTVA"><span jhiTranslate="mooingatewayApp.mooincompaniesCompanyBillPaymentItem.totalTVA">Total TVA</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="totaTTC"><span jhiTranslate="mooingatewayApp.mooincompaniesCompanyBillPaymentItem.totaTTC">Tota TTC</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="companyBillPayment.id"><span jhiTranslate="mooingatewayApp.mooincompaniesCompanyBillPaymentItem.companyBillPayment">Company Bill Payment</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="companyModule.id"><span jhiTranslate="mooingatewayApp.mooincompaniesCompanyBillPaymentItem.companyModule">Company Module</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let companyBillPaymentItem of companyBillPaymentItems ;trackBy: trackId">
+                    <td><a [routerLink]="['/company-bill-payment-item', companyBillPaymentItem.id, 'view']">{{ companyBillPaymentItem.id }}</a></td>
+                    <td>{{ companyBillPaymentItem.quantity }}</td>
+                    <td>{{ companyBillPaymentItem.discountRate }}</td>
+                    <td>{{ companyBillPaymentItem.totalHT }}</td>
+                    <td>{{ companyBillPaymentItem.totalTVA }}</td>
+                    <td>{{ companyBillPaymentItem.totaTTC }}</td>
+                    <td>
+                        <div *ngIf="companyBillPaymentItem.companyBillPayment">
+                            <a [routerLink]="['/company-bill-payment', companyBillPaymentItem.companyBillPayment?.id, 'view']" >{{ companyBillPaymentItem.companyBillPayment?.id }}</a>
+                        </div>
+                    </td>
+                    <td>
+                        <div *ngIf="companyBillPaymentItem.companyModule">
+                            <a [routerLink]="['/company-module', companyBillPaymentItem.companyModule?.id, 'view']" >{{ companyBillPaymentItem.companyModule?.id }}</a>
+                        </div>
+                    </td>
+                    <td class="text-right">
+                        <div class="btn-group">
+                            <button type="submit"
+                                    [routerLink]="['/company-bill-payment-item', companyBillPaymentItem.id, 'view']"
+                                    class="btn btn-info btn-sm">
+                                <fa-icon icon="eye"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                            </button>
+
+                            <button type="submit"
+                                    [routerLink]="['/company-bill-payment-item', companyBillPaymentItem.id, 'edit']"
+                                    class="btn btn-primary btn-sm">
+                                <fa-icon icon="pencil-alt"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                            </button>
+
+                            <button type="submit" (click)="delete(companyBillPaymentItem)"
+                                    class="btn btn-danger btn-sm">
+                                <fa-icon icon="times"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div *ngIf="companyBillPaymentItems && companyBillPaymentItems.length > 0">
+        <div class="row justify-content-center">
+            <jhi-item-count [page]="page" [total]="totalItems" [itemsPerPage]="itemsPerPage"></jhi-item-count>
+        </div>
+
+        <div class="row justify-content-center">
+            <ngb-pagination [collectionSize]="totalItems" [(page)]="ngbPaginationPage" [pageSize]="itemsPerPage" [maxSize]="5" [rotate]="true" [boundaryLinks]="true" (pageChange)="loadPage($event)"></ngb-pagination>
+        </div>
+    </div>
+</div>

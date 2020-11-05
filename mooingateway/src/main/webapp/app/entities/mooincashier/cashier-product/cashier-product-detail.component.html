@@ -1,0 +1,54 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="cashierProduct">
+            <h2><span jhiTranslate="mooingatewayApp.mooincashierCashierProduct.detail.title">Cashier Product</span> {{ cashierProduct.id }}</h2>
+
+            <hr>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="mooingatewayApp.mooincashierCashierProduct.productID">Product ID</span></dt>
+                <dd>
+                    <span>{{ cashierProduct.productID }}</span>
+                </dd>
+                <dt><span jhiTranslate="mooingatewayApp.mooincashierCashierProduct.cashierProdName">Cashier Prod Name</span></dt>
+                <dd>
+                    <span>{{ cashierProduct.cashierProdName }}</span>
+                </dd>
+                <dt><span jhiTranslate="mooingatewayApp.mooincashierCashierProduct.cashierProdQty">Cashier Prod Qty</span></dt>
+                <dd>
+                    <span>{{ cashierProduct.cashierProdQty }}</span>
+                </dd>
+                <dt><span jhiTranslate="mooingatewayApp.mooincashierCashierProduct.cashierProdPurchaseUnitPrice">Cashier Prod Purchase Unit Price</span></dt>
+                <dd>
+                    <span>{{ cashierProduct.cashierProdPurchaseUnitPrice }}</span>
+                </dd>
+                <dt><span jhiTranslate="mooingatewayApp.mooincashierCashierProduct.cashierProdSaleUnitPrice">Cashier Prod Sale Unit Price</span></dt>
+                <dd>
+                    <span>{{ cashierProduct.cashierProdSaleUnitPrice }}</span>
+                </dd>
+                <dt><span jhiTranslate="mooingatewayApp.mooincashierCashierProduct.cashierProdStockLimit">Cashier Prod Stock Limit</span></dt>
+                <dd>
+                    <span>{{ cashierProduct.cashierProdStockLimit }}</span>
+                </dd>
+                <dt><span jhiTranslate="mooingatewayApp.mooincashierCashierProduct.cashierProdStockLimitAlert">Cashier Prod Stock Limit Alert</span></dt>
+                <dd>
+                    <span>{{ cashierProduct.cashierProdStockLimitAlert }}</span>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/cashier-product', cashierProduct.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

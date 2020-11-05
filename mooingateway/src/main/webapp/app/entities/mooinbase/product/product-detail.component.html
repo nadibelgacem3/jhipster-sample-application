@@ -1,0 +1,105 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="product">
+            <h2><span jhiTranslate="mooingatewayApp.mooinbaseProduct.detail.title">Product</span> {{ product.id }}</h2>
+
+            <hr>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="mooingatewayApp.mooinbaseProduct.companyID">Company ID</span></dt>
+                <dd>
+                    <span>{{ product.companyID }}</span>
+                </dd>
+                <dt><span jhiTranslate="mooingatewayApp.mooinbaseProduct.reference">Reference</span></dt>
+                <dd>
+                    <span>{{ product.reference }}</span>
+                </dd>
+                <dt><span jhiTranslate="mooingatewayApp.mooinbaseProduct.referenceProvider">Reference Provider</span></dt>
+                <dd>
+                    <span>{{ product.referenceProvider }}</span>
+                </dd>
+                <dt><span jhiTranslate="mooingatewayApp.mooinbaseProduct.name">Name</span></dt>
+                <dd>
+                    <span>{{ product.name }}</span>
+                </dd>
+                <dt><span jhiTranslate="mooingatewayApp.mooinbaseProduct.quantity">Quantity</span></dt>
+                <dd>
+                    <span>{{ product.quantity }}</span>
+                </dd>
+                <dt><span jhiTranslate="mooingatewayApp.mooinbaseProduct.purchaseUnitPrice">Purchase Unit Price</span></dt>
+                <dd>
+                    <span>{{ product.purchaseUnitPrice }}</span>
+                </dd>
+                <dt><span jhiTranslate="mooingatewayApp.mooinbaseProduct.saleUnitPrice">Sale Unit Price</span></dt>
+                <dd>
+                    <span>{{ product.saleUnitPrice }}</span>
+                </dd>
+                <dt><span jhiTranslate="mooingatewayApp.mooinbaseProduct.stocklimit">Stocklimit</span></dt>
+                <dd>
+                    <span>{{ product.stocklimit }}</span>
+                </dd>
+                <dt><span jhiTranslate="mooingatewayApp.mooinbaseProduct.stocklimitAlert">Stocklimit Alert</span></dt>
+                <dd>
+                    <span>{{ product.stocklimitAlert }}</span>
+                </dd>
+                <dt><span jhiTranslate="mooingatewayApp.mooinbaseProduct.unitType">Unit Type</span></dt>
+                <dd>
+                    <span jhiTranslate="{{ 'mooingatewayApp.ProductUnitEnum.' + product.unitType }}">{{ product.unitType }}</span>
+                </dd>
+                <dt><span jhiTranslate="mooingatewayApp.mooinbaseProduct.size">Size</span></dt>
+                <dd>
+                    <span jhiTranslate="{{ 'mooingatewayApp.Size.' + product.size }}">{{ product.size }}</span>
+                </dd>
+                <dt><span jhiTranslate="mooingatewayApp.mooinbaseProduct.color">Color</span></dt>
+                <dd>
+                    <span>{{ product.color }}</span>
+                </dd>
+                <dt><span jhiTranslate="mooingatewayApp.mooinbaseProduct.image">Image</span></dt>
+                <dd>
+                    <div *ngIf="product.image">
+                        <a (click)="openFile(product.imageContentType, product.image)">
+                            <img [src]="'data:' + product.imageContentType + ';base64,' + product.image" style="max-width: 100%;" alt="product image"/>
+                        </a>
+                        {{ product.imageContentType }}, {{ byteSize(product.image) }}
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="mooingatewayApp.mooinbaseProduct.isDisplayedInCashier">Is Displayed In Cashier</span></dt>
+                <dd>
+                    <span>{{ product.isDisplayedInCashier }}</span>
+                </dd>
+                <dt><span jhiTranslate="mooingatewayApp.mooinbaseProduct.productCategory">Product Category</span></dt>
+                <dd>
+                    <div *ngIf="product.productCategory">
+                        <a [routerLink]="['/product-category', product.productCategory?.id, 'view']">{{ product.productCategory?.id }}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="mooingatewayApp.mooinbaseProduct.productMark">Product Mark</span></dt>
+                <dd>
+                    <div *ngIf="product.productMark">
+                        <a [routerLink]="['/product-mark', product.productMark?.id, 'view']">{{ product.productMark?.id }}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="mooingatewayApp.mooinbaseProduct.depot">Depot</span></dt>
+                <dd>
+                    <div *ngIf="product.depot">
+                        <a [routerLink]="['/depot', product.depot?.id, 'view']">{{ product.depot?.id }}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/product', product.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,15 @@
+{
+  "generator-jhipster": {
+    "deploymentType": "docker-compose",
+    "gatewayType": "zuul",
+    "monitoring": "no",
+    "directoryPath": "../",
+    "appsFolders": ["mooingateway", "mooincompanies", "mooinbase", "mooincashier", "mooinecommerce"],
+    "clusteredDbApps": [],
+    "consoleOptions": [],
+    "serviceDiscoveryType": "eureka",
+    "dockerRepositoryName": "rocame46",
+    "dockerPushCommand": "docker push",
+    "jwtSecretKey": "ZDc0MTIyZTM5N2YzZjI5ZWQyOWFlNjlhMGYzZGNkMGExNDRlZDI1YmUyZjBmNTgyYTE0ZWRjNWY5MGJkNmFiOTI5MTIxMDQyYTUyZjA4MmIxYzVhY2MyOGQ2OTAxOWZhMzg1Yw=="
+  }
+}

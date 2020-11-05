@@ -1,0 +1,30 @@
+{
+  "mooingatewayApp": {
+    "mooincompaniesTax": {
+      "home": {
+        "title": "Taxes",
+        "createLabel": "Create a new Tax",
+        "createOrEditLabel": "Create or edit a Tax",
+        "notFound": "No Taxes found"
+      },
+      "delete": {
+        "question": "Are you sure you want to delete Tax {{ id }}?"
+      },
+      "detail": {
+        "title": "Tax"
+      },
+      "name": "Name",
+      "isValued": "Is Valued",
+      "isPercentage": "Is Percentage",
+      "value": "Value",
+      "company": "Company"
+    }
+  },
+  "mooincompaniesApp": {
+    "mooincompaniesTax": {
+      "created": "A new Tax is created with identifier {{ param }}",
+      "updated": "A Tax is updated with identifier {{ param }}",
+      "deleted": "A Tax is deleted with identifier {{ param }}"
+    }
+  }
+}

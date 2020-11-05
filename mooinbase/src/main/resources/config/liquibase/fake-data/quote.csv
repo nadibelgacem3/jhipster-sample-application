@@ -1,0 +1,11 @@
+id;number;reference;status;type;total_ht;total_tva;tota_ttc;date;due_date;is_converted;company_id
+1;Chips;Group;CANCELED;PURCHASE;20965;22861;40371;2020-11-04;2020-11-04;true;21613
+2;Fresh interactive redundant;invoice;CANCELED;SALE;905;73289;26149;2020-11-05;2020-11-04;true;39209
+3;program;compelling;CANCELED;PURCHASE;52378;6978;40816;2020-11-05;2020-11-04;true;87687
+4;Hat orange;Walk;DRAFT;PURCHASE;399;91802;49191;2020-11-05;2020-11-04;true;3529
+5;system engine;connect;DRAFT;SALE;52327;71354;5484;2020-11-05;2020-11-05;true;44699
+6;optimize;Designer;CANCELED;PURCHASE;87367;25051;25511;2020-11-04;2020-11-05;true;65361
+7;e-services CFA Franc BEAC;haptic;DRAFT;PURCHASE;31346;38888;63090;2020-11-04;2020-11-04;false;11742
+8;cross-platform Future;Tajikistan Unbranded Frozen Towels;CANCELED;PURCHASE;54245;92388;79914;2020-11-04;2020-11-04;false;43014
+9;virtual parse California;payment Branding;FINALIZED;SALE;97872;68796;484;2020-11-04;2020-11-04;true;39354
+10;enable;backing up parsing Saint Lucia;DRAFT;SALE;38445;85455;83113;2020-11-05;2020-11-05;false;52727

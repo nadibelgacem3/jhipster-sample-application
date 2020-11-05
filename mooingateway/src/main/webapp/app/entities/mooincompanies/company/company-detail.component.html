@@ -1,0 +1,115 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="company">
+            <h2><span jhiTranslate="mooingatewayApp.mooincompaniesCompany.detail.title">Company</span> {{ company.id }}</h2>
+
+            <hr>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="mooingatewayApp.mooincompaniesCompany.name">Name</span></dt>
+                <dd>
+                    <span>{{ company.name }}</span>
+                </dd>
+                <dt><span jhiTranslate="mooingatewayApp.mooincompaniesCompany.logo">Logo</span></dt>
+                <dd>
+                    <div *ngIf="company.logo">
+                        <a (click)="openFile(company.logoContentType, company.logo)">
+                            <img [src]="'data:' + company.logoContentType + ';base64,' + company.logo" style="max-width: 100%;" alt="company image"/>
+                        </a>
+                        {{ company.logoContentType }}, {{ byteSize(company.logo) }}
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="mooingatewayApp.mooincompaniesCompany.phone1">Phone 1</span></dt>
+                <dd>
+                    <span>{{ company.phone1 }}</span>
+                </dd>
+                <dt><span jhiTranslate="mooingatewayApp.mooincompaniesCompany.phone2">Phone 2</span></dt>
+                <dd>
+                    <span>{{ company.phone2 }}</span>
+                </dd>
+                <dt><span jhiTranslate="mooingatewayApp.mooincompaniesCompany.fax">Fax</span></dt>
+                <dd>
+                    <span>{{ company.fax }}</span>
+                </dd>
+                <dt><span jhiTranslate="mooingatewayApp.mooincompaniesCompany.email1">Email 1</span></dt>
+                <dd>
+                    <span>{{ company.email1 }}</span>
+                </dd>
+                <dt><span jhiTranslate="mooingatewayApp.mooincompaniesCompany.email2">Email 2</span></dt>
+                <dd>
+                    <span>{{ company.email2 }}</span>
+                </dd>
+                <dt><span jhiTranslate="mooingatewayApp.mooincompaniesCompany.description">Description</span></dt>
+                <dd>
+                    <span>{{ company.description }}</span>
+                </dd>
+                <dt><span jhiTranslate="mooingatewayApp.mooincompaniesCompany.businessType">Business Type</span></dt>
+                <dd>
+                    <span jhiTranslate="{{ 'mooingatewayApp.CompanyBusinessTypeEnum.' + company.businessType }}">{{ company.businessType }}</span>
+                </dd>
+                <dt><span jhiTranslate="mooingatewayApp.mooincompaniesCompany.currencyUnit">Currency Unit</span></dt>
+                <dd>
+                    <span>{{ company.currencyUnit }}</span>
+                </dd>
+                <dt><span jhiTranslate="mooingatewayApp.mooincompaniesCompany.currencyQuotient">Currency Quotient</span></dt>
+                <dd>
+                    <span>{{ company.currencyQuotient }}</span>
+                </dd>
+                <dt><span jhiTranslate="mooingatewayApp.mooincompaniesCompany.commercialRegister">Commercial Register</span></dt>
+                <dd>
+                    <span>{{ company.commercialRegister }}</span>
+                </dd>
+                <dt><span jhiTranslate="mooingatewayApp.mooincompaniesCompany.isActivated">Is Activated</span></dt>
+                <dd>
+                    <span>{{ company.isActivated }}</span>
+                </dd>
+                <dt><span jhiTranslate="mooingatewayApp.mooincompaniesCompany.themeColor">Theme Color</span></dt>
+                <dd>
+                    <span>{{ company.themeColor }}</span>
+                </dd>
+                <dt><span jhiTranslate="mooingatewayApp.mooincompaniesCompany.facebook">Facebook</span></dt>
+                <dd>
+                    <span>{{ company.facebook }}</span>
+                </dd>
+                <dt><span jhiTranslate="mooingatewayApp.mooincompaniesCompany.linkedin">Linkedin</span></dt>
+                <dd>
+                    <span>{{ company.linkedin }}</span>
+                </dd>
+                <dt><span jhiTranslate="mooingatewayApp.mooincompaniesCompany.twitter">Twitter</span></dt>
+                <dd>
+                    <span>{{ company.twitter }}</span>
+                </dd>
+                <dt><span jhiTranslate="mooingatewayApp.mooincompaniesCompany.instagram">Instagram</span></dt>
+                <dd>
+                    <span>{{ company.instagram }}</span>
+                </dd>
+                <dt><span jhiTranslate="mooingatewayApp.mooincompaniesCompany.companyBankAccount">Company Bank Account</span></dt>
+                <dd>
+                    <div *ngIf="company.companyBankAccount">
+                        <a [routerLink]="['/company-bank-account', company.companyBankAccount?.id, 'view']">{{ company.companyBankAccount?.id }}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="mooingatewayApp.mooincompaniesCompany.companyLocation">Company Location</span></dt>
+                <dd>
+                    <div *ngIf="company.companyLocation">
+                        <a [routerLink]="['/company-location', company.companyLocation?.id, 'view']">{{ company.companyLocation?.id }}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/company', company.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

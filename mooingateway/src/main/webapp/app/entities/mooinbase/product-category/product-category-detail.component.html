@@ -1,0 +1,38 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="productCategory">
+            <h2><span jhiTranslate="mooingatewayApp.mooinbaseProductCategory.detail.title">Product Category</span> {{ productCategory.id }}</h2>
+
+            <hr>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="mooingatewayApp.mooinbaseProductCategory.name">Name</span></dt>
+                <dd>
+                    <span>{{ productCategory.name }}</span>
+                </dd>
+                <dt><span jhiTranslate="mooingatewayApp.mooinbaseProductCategory.description">Description</span></dt>
+                <dd>
+                    <span>{{ productCategory.description }}</span>
+                </dd>
+                <dt><span jhiTranslate="mooingatewayApp.mooinbaseProductCategory.companyID">Company ID</span></dt>
+                <dd>
+                    <span>{{ productCategory.companyID }}</span>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/product-category', productCategory.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

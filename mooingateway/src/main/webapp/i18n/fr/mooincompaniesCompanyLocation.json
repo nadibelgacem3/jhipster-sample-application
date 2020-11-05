@@ -1,0 +1,33 @@
+{
+  "mooingatewayApp": {
+    "mooincompaniesCompanyLocation": {
+      "home": {
+        "title": "CompanyLocations",
+        "createLabel": "Créer un nouveau Company Location",
+        "createOrEditLabel": "Créer ou éditer un Company Location",
+        "notFound": "Aucun Company Location trouvé"
+      },
+      "delete": {
+        "question": "Etes-vous certain de vouloir supprimer le Company Location {{ id }} ?"
+      },
+      "detail": {
+        "title": "Company Location"
+      },
+      "localNumber": "Local Number",
+      "streetAddress": "Street Address",
+      "postalCode": "Postal Code",
+      "city": "City",
+      "stateProvince": "State Province",
+      "countryName": "Country Name",
+      "flag": "Flag",
+      "company": "Company"
+    }
+  },
+  "mooincompaniesApp": {
+    "mooincompaniesCompanyLocation": {
+      "created": "Un nouveau Company Location a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Company Location avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Company Location avec l'identifiant {{ param }} a été supprimé"
+    }
+  }
+}

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.9.xsd">
+    <!--
+        Added the constraints for entity InvoicePaymentHistory.
+    -->
+    <changeSet id="20201105131521-2" author="jhipster">
+        
+        <addForeignKeyConstraint baseColumnNames="invoice_id"
+                                 baseTableName="invoice_payment_history"
+                                 constraintName="fk_invoice_payment_history_invoice_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="invoice"/>
+
+    </changeSet>
+</databaseChangeLog>

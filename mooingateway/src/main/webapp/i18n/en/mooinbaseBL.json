@@ -1,0 +1,38 @@
+{
+  "mooingatewayApp": {
+    "mooinbaseBL": {
+      "home": {
+        "title": "BLS",
+        "createLabel": "Create a new BL",
+        "createOrEditLabel": "Create or edit a BL",
+        "notFound": "No BLS found"
+      },
+      "delete": {
+        "question": "Are you sure you want to delete BL {{ id }}?"
+      },
+      "detail": {
+        "title": "BL"
+      },
+      "number": "Number",
+      "reference": "Reference",
+      "status": "Status",
+      "type": "Type",
+      "totalHT": "Total HT",
+      "totalTVA": "Total TVA",
+      "totaTTC": "Tota TTC",
+      "date": "Date",
+      "dueDate": "Due Date",
+      "isConverted": "Is Converted",
+      "companyID": "Company ID",
+      "blItem": "Bl Item",
+      "tiers": "Tiers"
+    }
+  },
+  "mooinbaseApp": {
+    "mooinbaseBL": {
+      "created": "A new BL is created with identifier {{ param }}",
+      "updated": "A BL is updated with identifier {{ param }}",
+      "deleted": "A BL is deleted with identifier {{ param }}"
+    }
+  }
+}

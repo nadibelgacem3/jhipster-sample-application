@@ -1,0 +1,188 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+            <h2 id="jhi-company-heading" jhiTranslate="mooingatewayApp.mooincompaniesCompany.home.createOrEditLabel">Create or edit a Company</h2>
+
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+
+                <div class="form-group" [hidden]="!editForm.get('id')!.value">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id" formControlName="id" readonly />
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="mooingatewayApp.mooincompaniesCompany.name" for="field_name">Name</label>
+                    <input type="text" class="form-control" name="name" id="field_name"
+                           formControlName="name"/>
+                    <div *ngIf="editForm.get('name')!.invalid && (editForm.get('name')!.dirty || editForm.get('name')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('name')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('name')?.errors?.minlength" jhiTranslate="entity.validation.minlength" [translateValues]="{ min: 4 }">
+                        This field is required to be at least 4 characters.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="mooingatewayApp.mooincompaniesCompany.logo" for="field_logo">Logo</label>
+                    <div>
+                        <img [src]="'data:' + editForm.get('logoContentType')!.value + ';base64,' + editForm.get('logo')!.value" style="max-height: 100px;" *ngIf="editForm.get('logo')!.value" alt="company image"/>
+                        <div *ngIf="editForm.get('logo')!.value" class="form-text text-danger clearfix">
+                            <span class="pull-left">{{ editForm.get('logoContentType')!.value }}, {{ byteSize(editForm.get('logo')!.value) }}</span>
+                            <button type="button" (click)="clearInputImage('logo', 'logoContentType', 'file_logo')" class="btn btn-secondary btn-xs pull-right">
+                                <fa-icon icon="times"></fa-icon>
+                            </button>
+                        </div>
+                        <input type="file" id="file_logo" (change)="setFileData($event, 'logo', true)" accept="image/*" jhiTranslate="entity.action.addimage"/>
+                    </div>
+                    <input type="hidden" class="form-control" name="logo" id="field_logo"
+                           formControlName="logo"/>
+                    <input type="hidden" class="form-control" name="logoContentType" id="field_logoContentType"
+                           formControlName="logoContentType" />
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="mooingatewayApp.mooincompaniesCompany.phone1" for="field_phone1">Phone 1</label>
+                    <input type="text" class="form-control" name="phone1" id="field_phone1"
+                           formControlName="phone1"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="mooingatewayApp.mooincompaniesCompany.phone2" for="field_phone2">Phone 2</label>
+                    <input type="text" class="form-control" name="phone2" id="field_phone2"
+                           formControlName="phone2"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="mooingatewayApp.mooincompaniesCompany.fax" for="field_fax">Fax</label>
+                    <input type="text" class="form-control" name="fax" id="field_fax"
+                           formControlName="fax"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="mooingatewayApp.mooincompaniesCompany.email1" for="field_email1">Email 1</label>
+                    <input type="text" class="form-control" name="email1" id="field_email1"
+                           formControlName="email1"/>
+                    <div *ngIf="editForm.get('email1')!.invalid && (editForm.get('email1')!.dirty || editForm.get('email1')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('email1')?.errors?.pattern" jhiTranslate="entity.validation.pattern" [translateValues]="{ pattern: 'Email 1' }">
+                            This field should follow pattern for "Email 1".
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="mooingatewayApp.mooincompaniesCompany.email2" for="field_email2">Email 2</label>
+                    <input type="text" class="form-control" name="email2" id="field_email2"
+                           formControlName="email2"/>
+                    <div *ngIf="editForm.get('email2')!.invalid && (editForm.get('email2')!.dirty || editForm.get('email2')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('email2')?.errors?.pattern" jhiTranslate="entity.validation.pattern" [translateValues]="{ pattern: 'Email 2' }">
+                            This field should follow pattern for "Email 2".
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="mooingatewayApp.mooincompaniesCompany.description" for="field_description">Description</label>
+                    <input type="text" class="form-control" name="description" id="field_description"
+                           formControlName="description"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="mooingatewayApp.mooincompaniesCompany.businessType" for="field_businessType">Business Type</label>
+                    <select class="form-control" name="businessType" formControlName="businessType" id="field_businessType">
+                        <option value="SARL">{{ 'mooingatewayApp.CompanyBusinessTypeEnum.SARL' | translate }}</option>
+                        <option value="SUARL">{{ 'mooingatewayApp.CompanyBusinessTypeEnum.SUARL' | translate }}</option>
+                        <option value="PHYSIQUE">{{ 'mooingatewayApp.CompanyBusinessTypeEnum.PHYSIQUE' | translate }}</option>
+                        <option value="AUTRE">{{ 'mooingatewayApp.CompanyBusinessTypeEnum.AUTRE' | translate }}</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="mooingatewayApp.mooincompaniesCompany.currencyUnit" for="field_currencyUnit">Currency Unit</label>
+                    <input type="text" class="form-control" name="currencyUnit" id="field_currencyUnit"
+                           formControlName="currencyUnit"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="mooingatewayApp.mooincompaniesCompany.currencyQuotient" for="field_currencyQuotient">Currency Quotient</label>
+                    <input type="number" class="form-control" name="currencyQuotient" id="field_currencyQuotient"
+                           formControlName="currencyQuotient"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="mooingatewayApp.mooincompaniesCompany.commercialRegister" for="field_commercialRegister">Commercial Register</label>
+                    <input type="text" class="form-control" name="commercialRegister" id="field_commercialRegister"
+                           formControlName="commercialRegister"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="mooingatewayApp.mooincompaniesCompany.isActivated" for="field_isActivated">Is Activated</label>
+                    <input type="checkbox" class="form-control" name="isActivated" id="field_isActivated"
+                           formControlName="isActivated"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="mooingatewayApp.mooincompaniesCompany.themeColor" for="field_themeColor">Theme Color</label>
+                    <input type="text" class="form-control" name="themeColor" id="field_themeColor"
+                           formControlName="themeColor"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="mooingatewayApp.mooincompaniesCompany.facebook" for="field_facebook">Facebook</label>
+                    <input type="text" class="form-control" name="facebook" id="field_facebook"
+                           formControlName="facebook"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="mooingatewayApp.mooincompaniesCompany.linkedin" for="field_linkedin">Linkedin</label>
+                    <input type="text" class="form-control" name="linkedin" id="field_linkedin"
+                           formControlName="linkedin"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="mooingatewayApp.mooincompaniesCompany.twitter" for="field_twitter">Twitter</label>
+                    <input type="text" class="form-control" name="twitter" id="field_twitter"
+                           formControlName="twitter"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="mooingatewayApp.mooincompaniesCompany.instagram" for="field_instagram">Instagram</label>
+                    <input type="text" class="form-control" name="instagram" id="field_instagram"
+                           formControlName="instagram"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="mooingatewayApp.mooincompaniesCompany.companyBankAccount" for="field_companyBankAccount">Company Bank Account</label>
+                    <select class="form-control" id="field_companyBankAccount" name="companyBankAccount" formControlName="companyBankAccount">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="companyBankAccountOption.id === editForm.get('companyBankAccount')!.value?.id ? editForm.get('companyBankAccount')!.value : companyBankAccountOption" *ngFor="let companyBankAccountOption of companybankaccounts; trackBy: trackById">{{ companyBankAccountOption.id }}</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="mooingatewayApp.mooincompaniesCompany.companyLocation" for="field_companyLocation">Company Location</label>
+                    <select class="form-control" id="field_companyLocation" name="companyLocation" formControlName="companyLocation">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="companyLocationOption.id === editForm.get('companyLocation')!.value?.id ? editForm.get('companyLocation')!.value : companyLocationOption" *ngFor="let companyLocationOption of companylocations; trackBy: trackById">{{ companyLocationOption.id }}</option>
+                    </select>
+                </div>
+            </div>
+
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary" (click)="previousState()">
+                    <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+
+                <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

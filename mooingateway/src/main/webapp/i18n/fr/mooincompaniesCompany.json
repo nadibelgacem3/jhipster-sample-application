@@ -1,0 +1,45 @@
+{
+  "mooingatewayApp": {
+    "mooincompaniesCompany": {
+      "home": {
+        "title": "Companies",
+        "createLabel": "Créer un nouveau Company",
+        "createOrEditLabel": "Créer ou éditer un Company",
+        "notFound": "Aucun Company trouvé"
+      },
+      "delete": {
+        "question": "Etes-vous certain de vouloir supprimer le Company {{ id }} ?"
+      },
+      "detail": {
+        "title": "Company"
+      },
+      "name": "Name",
+      "logo": "Logo",
+      "phone1": "Phone 1",
+      "phone2": "Phone 2",
+      "fax": "Fax",
+      "email1": "Email 1",
+      "email2": "Email 2",
+      "description": "Description",
+      "businessType": "Business Type",
+      "currencyUnit": "Currency Unit",
+      "currencyQuotient": "Currency Quotient",
+      "commercialRegister": "Commercial Register",
+      "isActivated": "Is Activated",
+      "themeColor": "Theme Color",
+      "facebook": "Facebook",
+      "linkedin": "Linkedin",
+      "twitter": "Twitter",
+      "instagram": "Instagram",
+      "companyBankAccount": "Company Bank Account",
+      "companyLocation": "Company Location"
+    }
+  },
+  "mooincompaniesApp": {
+    "mooincompaniesCompany": {
+      "created": "Un nouveau Company a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Company avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Company avec l'identifiant {{ param }} a été supprimé"
+    }
+  }
+}

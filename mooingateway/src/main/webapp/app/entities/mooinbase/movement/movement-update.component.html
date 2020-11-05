@@ -1,0 +1,115 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+            <h2 id="jhi-movement-heading" jhiTranslate="mooingatewayApp.mooinbaseMovement.home.createOrEditLabel">Create or edit a Movement</h2>
+
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+
+                <div class="form-group" [hidden]="!editForm.get('id')!.value">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id" formControlName="id" readonly />
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="mooingatewayApp.mooinbaseMovement.type" for="field_type">Type</label>
+                    <select class="form-control" name="type" formControlName="type" id="field_type">
+                        <option value="INPUT">{{ 'mooingatewayApp.MovementTypeEnum.INPUT' | translate }}</option>
+                        <option value="OUTPUT">{{ 'mooingatewayApp.MovementTypeEnum.OUTPUT' | translate }}</option>
+                    </select>
+                    <div *ngIf="editForm.get('type')!.invalid && (editForm.get('type')!.dirty || editForm.get('type')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('type')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="mooingatewayApp.mooinbaseMovement.reason" for="field_reason">Reason</label>
+                    <select class="form-control" name="reason" formControlName="reason" id="field_reason">
+                        <option value="INVOICE">{{ 'mooingatewayApp.MovementReasonEnum.INVOICE' | translate }}</option>
+                        <option value="CAISSE">{{ 'mooingatewayApp.MovementReasonEnum.CAISSE' | translate }}</option>
+                        <option value="MANUAL">{{ 'mooingatewayApp.MovementReasonEnum.MANUAL' | translate }}</option>
+                        <option value="OTHER">{{ 'mooingatewayApp.MovementReasonEnum.OTHER' | translate }}</option>
+                    </select>
+                    <div *ngIf="editForm.get('reason')!.invalid && (editForm.get('reason')!.dirty || editForm.get('reason')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('reason')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="mooingatewayApp.mooinbaseMovement.date" for="field_date">Date</label>
+                    <div class="d-flex">
+                        <input id="field_date" type="datetime-local" class="form-control" name="date" formControlName="date" placeholder="YYYY-MM-DD HH:mm"/>
+                    </div>
+                    <div *ngIf="editForm.get('date')!.invalid && (editForm.get('date')!.dirty || editForm.get('date')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('date')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                            [hidden]="!editForm.get('date')?.errors?.ZonedDateTimelocal" jhiTranslate="entity.validation.ZonedDateTimelocal">
+                            This field should be a date and time.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="mooingatewayApp.mooinbaseMovement.billID" for="field_billID">Bill ID</label>
+                    <input type="number" class="form-control" name="billID" id="field_billID"
+                           formControlName="billID"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="mooingatewayApp.mooinbaseMovement.tiersID" for="field_tiersID">Tiers ID</label>
+                    <input type="number" class="form-control" name="tiersID" id="field_tiersID"
+                           formControlName="tiersID"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="mooingatewayApp.mooinbaseMovement.quantity" for="field_quantity">Quantity</label>
+                    <input type="number" class="form-control" name="quantity" id="field_quantity"
+                           formControlName="quantity"/>
+                    <div *ngIf="editForm.get('quantity')!.invalid && (editForm.get('quantity')!.dirty || editForm.get('quantity')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('quantity')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                            [hidden]="!editForm.get('quantity')?.errors?.number" jhiTranslate="entity.validation.number">
+                            This field should be a number.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="mooingatewayApp.mooinbaseMovement.companyUserID" for="field_companyUserID">Company User ID</label>
+                    <input type="number" class="form-control" name="companyUserID" id="field_companyUserID"
+                           formControlName="companyUserID"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="mooingatewayApp.mooinbaseMovement.product" for="field_product">Product</label>
+                    <select class="form-control" id="field_product" name="product" formControlName="product">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="productOption.id === editForm.get('product')!.value?.id ? editForm.get('product')!.value : productOption" *ngFor="let productOption of products; trackBy: trackById">{{ productOption.id }}</option>
+                    </select>
+                </div>
+            </div>
+
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary" (click)="previousState()">
+                    <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+
+                <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

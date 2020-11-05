@@ -1,0 +1,45 @@
+{
+  "mooingatewayApp": {
+    "mooinbaseProduct": {
+      "home": {
+        "title": "Products",
+        "createLabel": "Create a new Product",
+        "createOrEditLabel": "Create or edit a Product",
+        "notFound": "No Products found"
+      },
+      "delete": {
+        "question": "Are you sure you want to delete Product {{ id }}?"
+      },
+      "detail": {
+        "title": "Product"
+      },
+      "companyID": "Company ID",
+      "reference": "Reference",
+      "referenceProvider": "Reference Provider",
+      "name": "Name",
+      "quantity": "Quantity",
+      "purchaseUnitPrice": "Purchase Unit Price",
+      "saleUnitPrice": "Sale Unit Price",
+      "stocklimit": "Stocklimit",
+      "stocklimitAlert": "Stocklimit Alert",
+      "unitType": "Unit Type",
+      "size": "Size",
+      "color": "Color",
+      "image": "Image",
+      "isDisplayedInCashier": "Is Displayed In Cashier",
+      "movement": "Movement",
+      "taxItem": "Tax Item",
+      "tvaItem": "Tva Item",
+      "productCategory": "Product Category",
+      "productMark": "Product Mark",
+      "depot": "Depot"
+    }
+  },
+  "mooinbaseApp": {
+    "mooinbaseProduct": {
+      "created": "A new Product is created with identifier {{ param }}",
+      "updated": "A Product is updated with identifier {{ param }}",
+      "deleted": "A Product is deleted with identifier {{ param }}"
+    }
+  }
+}

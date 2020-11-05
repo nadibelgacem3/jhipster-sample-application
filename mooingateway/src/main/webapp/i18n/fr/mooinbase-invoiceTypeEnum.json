@@ -1,0 +1,9 @@
+{
+  "mooingatewayApp": {
+    "InvoiceTypeEnum": {
+      "null": "",
+      "SALE": "SALE",
+      "PURCHASE": "PURCHASE"
+    }
+  }
+}

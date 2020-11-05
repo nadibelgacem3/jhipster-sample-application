@@ -1,0 +1,32 @@
+{
+  "mooingatewayApp": {
+    "mooinbaseInvoicePaymentHistory": {
+      "home": {
+        "title": "Invoice Payment Histories",
+        "createLabel": "Create a new Invoice Payment History",
+        "createOrEditLabel": "Create or edit a Invoice Payment History",
+        "notFound": "No Invoice Payment Histories found"
+      },
+      "delete": {
+        "question": "Are you sure you want to delete Invoice Payment History {{ id }}?"
+      },
+      "detail": {
+        "title": "Invoice Payment History"
+      },
+      "details": "Details",
+      "amount": "Amount",
+      "paymentDate": "Payment Date",
+      "paymentMethod": "Payment Method",
+      "bankCheckorTraitNumber": "Bank Checkor Trait Number",
+      "imageJustif": "Image Justif",
+      "invoice": "Invoice"
+    }
+  },
+  "mooinbaseApp": {
+    "mooinbaseInvoicePaymentHistory": {
+      "created": "A new Invoice Payment History is created with identifier {{ param }}",
+      "updated": "A Invoice Payment History is updated with identifier {{ param }}",
+      "deleted": "A Invoice Payment History is deleted with identifier {{ param }}"
+    }
+  }
+}

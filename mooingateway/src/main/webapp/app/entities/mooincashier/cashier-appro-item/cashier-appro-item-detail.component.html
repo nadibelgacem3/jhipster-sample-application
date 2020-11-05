@@ -1,0 +1,58 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="cashierApproItem">
+            <h2><span jhiTranslate="mooingatewayApp.mooincashierCashierApproItem.detail.title">Cashier Appro Item</span> {{ cashierApproItem.id }}</h2>
+
+            <hr>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="mooingatewayApp.mooincashierCashierApproItem.quantity">Quantity</span></dt>
+                <dd>
+                    <span>{{ cashierApproItem.quantity }}</span>
+                </dd>
+                <dt><span jhiTranslate="mooingatewayApp.mooincashierCashierApproItem.discountRate">Discount Rate</span></dt>
+                <dd>
+                    <span>{{ cashierApproItem.discountRate }}</span>
+                </dd>
+                <dt><span jhiTranslate="mooingatewayApp.mooincashierCashierApproItem.totalHT">Total HT</span></dt>
+                <dd>
+                    <span>{{ cashierApproItem.totalHT }}</span>
+                </dd>
+                <dt><span jhiTranslate="mooingatewayApp.mooincashierCashierApproItem.totalTVA">Total TVA</span></dt>
+                <dd>
+                    <span>{{ cashierApproItem.totalTVA }}</span>
+                </dd>
+                <dt><span jhiTranslate="mooingatewayApp.mooincashierCashierApproItem.totaTTC">Tota TTC</span></dt>
+                <dd>
+                    <span>{{ cashierApproItem.totaTTC }}</span>
+                </dd>
+                <dt><span jhiTranslate="mooingatewayApp.mooincashierCashierApproItem.cashierProduct">Cashier Product</span></dt>
+                <dd>
+                    <div *ngIf="cashierApproItem.cashierProduct">
+                        <a [routerLink]="['/cashier-product', cashierApproItem.cashierProduct?.id, 'view']">{{ cashierApproItem.cashierProduct?.id }}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="mooingatewayApp.mooincashierCashierApproItem.cashierAppro">Cashier Appro</span></dt>
+                <dd>
+                    <div *ngIf="cashierApproItem.cashierAppro">
+                        <a [routerLink]="['/cashier-appro', cashierApproItem.cashierAppro?.id, 'view']">{{ cashierApproItem.cashierAppro?.id }}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/cashier-appro-item', cashierApproItem.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

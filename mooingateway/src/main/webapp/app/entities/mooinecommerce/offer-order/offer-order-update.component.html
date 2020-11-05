@@ -1,0 +1,140 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+            <h2 id="jhi-offer-order-heading" jhiTranslate="mooingatewayApp.mooinecommerceOfferOrder.home.createOrEditLabel">Create or edit a Offer Order</h2>
+
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+
+                <div class="form-group" [hidden]="!editForm.get('id')!.value">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id" formControlName="id" readonly />
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="mooingatewayApp.mooinecommerceOfferOrder.quantity" for="field_quantity">Quantity</label>
+                    <input type="number" class="form-control" name="quantity" id="field_quantity"
+                           formControlName="quantity"/>
+                    <div *ngIf="editForm.get('quantity')!.invalid && (editForm.get('quantity')!.dirty || editForm.get('quantity')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('quantity')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('quantity')?.errors?.min" jhiTranslate="entity.validation.min" [translateValues]="{ min: 1 }">
+                            This field should be at least 1.
+                        </small>
+                        <small class="form-text text-danger"
+                            [hidden]="!editForm.get('quantity')?.errors?.number" jhiTranslate="entity.validation.number">
+                            This field should be a number.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="mooingatewayApp.mooinecommerceOfferOrder.totalHT" for="field_totalHT">Total HT</label>
+                    <input type="number" class="form-control" name="totalHT" id="field_totalHT"
+                           formControlName="totalHT"/>
+                    <div *ngIf="editForm.get('totalHT')!.invalid && (editForm.get('totalHT')!.dirty || editForm.get('totalHT')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('totalHT')?.errors?.min" jhiTranslate="entity.validation.min" [translateValues]="{ min: 0 }">
+                            This field should be at least 0.
+                        </small>
+                        <small class="form-text text-danger"
+                            [hidden]="!editForm.get('totalHT')?.errors?.number" jhiTranslate="entity.validation.number">
+                            This field should be a number.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="mooingatewayApp.mooinecommerceOfferOrder.totalTVA" for="field_totalTVA">Total TVA</label>
+                    <input type="number" class="form-control" name="totalTVA" id="field_totalTVA"
+                           formControlName="totalTVA"/>
+                    <div *ngIf="editForm.get('totalTVA')!.invalid && (editForm.get('totalTVA')!.dirty || editForm.get('totalTVA')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('totalTVA')?.errors?.min" jhiTranslate="entity.validation.min" [translateValues]="{ min: 0 }">
+                            This field should be at least 0.
+                        </small>
+                        <small class="form-text text-danger"
+                            [hidden]="!editForm.get('totalTVA')?.errors?.number" jhiTranslate="entity.validation.number">
+                            This field should be a number.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="mooingatewayApp.mooinecommerceOfferOrder.totaTTC" for="field_totaTTC">Tota TTC</label>
+                    <input type="number" class="form-control" name="totaTTC" id="field_totaTTC"
+                           formControlName="totaTTC"/>
+                    <div *ngIf="editForm.get('totaTTC')!.invalid && (editForm.get('totaTTC')!.dirty || editForm.get('totaTTC')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('totaTTC')?.errors?.min" jhiTranslate="entity.validation.min" [translateValues]="{ min: 0 }">
+                            This field should be at least 0.
+                        </small>
+                        <small class="form-text text-danger"
+                            [hidden]="!editForm.get('totaTTC')?.errors?.number" jhiTranslate="entity.validation.number">
+                            This field should be a number.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="mooingatewayApp.mooinecommerceOfferOrder.date" for="field_date">Date</label>
+                    <div class="input-group">
+                        <input id="field_date" type="text" class="form-control" name="date" ngbDatepicker #dateDp="ngbDatepicker" formControlName="date"/>
+                        <span class="input-group-append">
+                            <button type="button" class="btn btn-secondary" (click)="dateDp.toggle()"><fa-icon icon="calendar-alt"></fa-icon></button>
+                        </span>
+                    </div>
+                    <div *ngIf="editForm.get('date')!.invalid && (editForm.get('date')!.dirty || editForm.get('date')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('date')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="mooingatewayApp.mooinecommerceOfferOrder.status" for="field_status">Status</label>
+                    <select class="form-control" name="status" formControlName="status" id="field_status">
+                        <option value="DRAFT">{{ 'mooingatewayApp.OrderStatus.DRAFT' | translate }}</option>
+                        <option value="COMPLETED">{{ 'mooingatewayApp.OrderStatus.COMPLETED' | translate }}</option>
+                        <option value="PENDING">{{ 'mooingatewayApp.OrderStatus.PENDING' | translate }}</option>
+                        <option value="CANCELLED">{{ 'mooingatewayApp.OrderStatus.CANCELLED' | translate }}</option>
+                    </select>
+                    <div *ngIf="editForm.get('status')!.invalid && (editForm.get('status')!.dirty || editForm.get('status')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('status')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="mooingatewayApp.mooinecommerceOfferOrder.requesterOfferID" for="field_requesterOfferID">Requester Offer ID</label>
+                    <input type="number" class="form-control" name="requesterOfferID" id="field_requesterOfferID"
+                           formControlName="requesterOfferID"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="mooingatewayApp.mooinecommerceOfferOrder.offer" for="field_offer">Offer</label>
+                    <select class="form-control" id="field_offer" name="offer" formControlName="offer">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="offerOption.id === editForm.get('offer')!.value?.id ? editForm.get('offer')!.value : offerOption" *ngFor="let offerOption of offers; trackBy: trackById">{{ offerOption.id }}</option>
+                    </select>
+                </div>
+            </div>
+
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary" (click)="previousState()">
+                    <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+
+                <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

@@ -1,0 +1,32 @@
+{
+  "mooingatewayApp": {
+    "mooincompaniesCompanyBillPaymentItem": {
+      "home": {
+        "title": "CompanyBillPaymentItems",
+        "createLabel": "Créer un nouveau Company Bill Payment Item",
+        "createOrEditLabel": "Créer ou éditer un Company Bill Payment Item",
+        "notFound": "Aucun Company Bill Payment Item trouvé"
+      },
+      "delete": {
+        "question": "Etes-vous certain de vouloir supprimer le Company Bill Payment Item {{ id }} ?"
+      },
+      "detail": {
+        "title": "Company Bill Payment Item"
+      },
+      "quantity": "Quantity",
+      "discountRate": "Discount Rate",
+      "totalHT": "Total HT",
+      "totalTVA": "Total TVA",
+      "totaTTC": "Tota TTC",
+      "companyBillPayment": "Company Bill Payment",
+      "companyModule": "Company Module"
+    }
+  },
+  "mooincompaniesApp": {
+    "mooincompaniesCompanyBillPaymentItem": {
+      "created": "Un nouveau Company Bill Payment Item a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Company Bill Payment Item avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Company Bill Payment Item avec l'identifiant {{ param }} a été supprimé"
+    }
+  }
+}

@@ -1,0 +1,41 @@
+{
+  "mooingatewayApp": {
+    "mooinecommerceOffer": {
+      "home": {
+        "title": "Offers",
+        "createLabel": "Create a new Offer",
+        "createOrEditLabel": "Create or edit a Offer",
+        "notFound": "No Offers found"
+      },
+      "delete": {
+        "question": "Are you sure you want to delete Offer {{ id }}?"
+      },
+      "detail": {
+        "title": "Offer"
+      },
+      "name": "Name",
+      "description": "Description",
+      "image": "Image",
+      "dateBegin": "Date Begin",
+      "dateEnd": "Date End",
+      "duration": "Duration",
+      "status": "Status",
+      "productId": "Product Id",
+      "saleUnitPriceBeforeDiscount": "Sale Unit Price Before Discount",
+      "discountRate": "Discount Rate",
+      "saleUnitPriceAfterDiscount": "Sale Unit Price After Discount",
+      "withTVA": "With TVA",
+      "withTax": "With Tax",
+      "isActivated": "Is Activated",
+      "companyID": "Company ID",
+      "offerOrder": "Offer Order"
+    }
+  },
+  "mooinecommerceApp": {
+    "mooinecommerceOffer": {
+      "created": "A new Offer is created with identifier {{ param }}",
+      "updated": "A Offer is updated with identifier {{ param }}",
+      "deleted": "A Offer is deleted with identifier {{ param }}"
+    }
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "mooingatewayApp": {
+    "QuoteTypeEnum": {
+      "null": "",
+      "SALE": "SALE",
+      "PURCHASE": "PURCHASE"
+    }
+  }
+}

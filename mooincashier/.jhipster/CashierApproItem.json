@@ -1,0 +1,64 @@
+{
+  "name": "CashierApproItem",
+  "fields": [
+    {
+      "fieldName": "quantity",
+      "fieldType": "BigDecimal",
+      "fieldValidateRules": ["min"],
+      "fieldValidateRulesMin": "0"
+    },
+    {
+      "fieldName": "discountRate",
+      "fieldType": "Integer",
+      "fieldValidateRules": ["min"],
+      "fieldValidateRulesMin": "0"
+    },
+    {
+      "fieldName": "totalHT",
+      "fieldType": "BigDecimal",
+      "fieldValidateRules": ["min"],
+      "fieldValidateRulesMin": "0"
+    },
+    {
+      "fieldName": "totalTVA",
+      "fieldType": "BigDecimal",
+      "fieldValidateRules": ["min"],
+      "fieldValidateRulesMin": "0"
+    },
+    {
+      "fieldName": "totaTTC",
+      "fieldType": "BigDecimal",
+      "fieldValidateRules": ["min"],
+      "fieldValidateRulesMin": "0"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "cashierProduct",
+      "otherEntityRelationshipName": "cashierApproItem",
+      "relationshipName": "cashierProduct",
+      "otherEntityField": "id"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "cashierAppro",
+      "otherEntityRelationshipName": "cashierApproItem",
+      "relationshipName": "cashierAppro",
+      "otherEntityField": "id"
+    }
+  ],
+  "changelogDate": "20201105133321",
+  "javadoc": "CashierapproItem entity.\\n@author The Moo3in team.",
+  "entityTableName": "cashier_appro_item",
+  "dto": "no",
+  "pagination": "pagination",
+  "service": "serviceClass",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": ["mooingateway", "mooincashier"],
+  "microserviceName": "mooincashier"
+}

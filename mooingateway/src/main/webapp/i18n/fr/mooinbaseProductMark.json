@@ -1,0 +1,29 @@
+{
+  "mooingatewayApp": {
+    "mooinbaseProductMark": {
+      "home": {
+        "title": "ProductMarks",
+        "createLabel": "Créer un nouveau Product Mark",
+        "createOrEditLabel": "Créer ou éditer un Product Mark",
+        "notFound": "Aucun Product Mark trouvé"
+      },
+      "delete": {
+        "question": "Etes-vous certain de vouloir supprimer le Product Mark {{ id }} ?"
+      },
+      "detail": {
+        "title": "Product Mark"
+      },
+      "name": "Name",
+      "description": "Description",
+      "companyID": "Company ID",
+      "product": "Product"
+    }
+  },
+  "mooinbaseApp": {
+    "mooinbaseProductMark": {
+      "created": "Un nouveau Product Mark a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Product Mark avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Product Mark avec l'identifiant {{ param }} a été supprimé"
+    }
+  }
+}

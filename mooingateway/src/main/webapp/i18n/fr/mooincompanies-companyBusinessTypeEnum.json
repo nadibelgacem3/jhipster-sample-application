@@ -1,0 +1,11 @@
+{
+  "mooingatewayApp": {
+    "CompanyBusinessTypeEnum": {
+      "null": "",
+      "SARL": "SARL",
+      "SUARL": "SUARL",
+      "PHYSIQUE": "PHYSIQUE",
+      "AUTRE": "AUTRE"
+    }
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "mooingatewayApp": {
+    "TransactionCompTypeEnum": {
+      "null": "",
+      "DEPENSE": "DEPENSE",
+      "RECETTE": "RECETTE"
+    }
+  }
+}

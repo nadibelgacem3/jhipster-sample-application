@@ -1,0 +1,32 @@
+{
+  "mooingatewayApp": {
+    "mooinbaseQuoteItem": {
+      "home": {
+        "title": "Quote Items",
+        "createLabel": "Create a new Quote Item",
+        "createOrEditLabel": "Create or edit a Quote Item",
+        "notFound": "No Quote Items found"
+      },
+      "delete": {
+        "question": "Are you sure you want to delete Quote Item {{ id }}?"
+      },
+      "detail": {
+        "title": "Quote Item"
+      },
+      "quantity": "Quantity",
+      "discountRate": "Discount Rate",
+      "totalHT": "Total HT",
+      "totalTVA": "Total TVA",
+      "totaTTC": "Tota TTC",
+      "product": "Product",
+      "quote": "Quote"
+    }
+  },
+  "mooinbaseApp": {
+    "mooinbaseQuoteItem": {
+      "created": "A new Quote Item is created with identifier {{ param }}",
+      "updated": "A Quote Item is updated with identifier {{ param }}",
+      "deleted": "A Quote Item is deleted with identifier {{ param }}"
+    }
+  }
+}

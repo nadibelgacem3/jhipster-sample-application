@@ -1,0 +1,61 @@
+{
+  "name": "Movement",
+  "fields": [
+    {
+      "fieldName": "type",
+      "fieldType": "MovementTypeEnum",
+      "fieldValues": "INPUT,OUTPUT",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "reason",
+      "fieldType": "MovementReasonEnum",
+      "fieldValues": "INVOICE,CAISSE,MANUAL,OTHER",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "date",
+      "fieldType": "Instant",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "billID",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "tiersID",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "quantity",
+      "fieldType": "BigDecimal",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "companyUserID",
+      "fieldType": "Long"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "product",
+      "otherEntityRelationshipName": "movement",
+      "relationshipName": "product",
+      "otherEntityField": "id"
+    }
+  ],
+  "changelogDate": "20201105131221",
+  "javadoc": "Movement entity.\\n@author The Moo3in team.",
+  "entityTableName": "movement",
+  "dto": "no",
+  "pagination": "infinite-scroll",
+  "service": "serviceClass",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": ["mooingateway", "mooinbase"],
+  "microserviceName": "mooinbase"
+}

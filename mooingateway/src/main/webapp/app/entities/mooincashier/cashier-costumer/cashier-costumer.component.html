@@ -1,0 +1,100 @@
+<div>
+    <h2 id="page-heading">
+        <span jhiTranslate="mooingatewayApp.mooincashierCashierCostumer.home.title">Cashier Costumers</span>
+
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-cashier-costumer" [routerLink]="['/cashier-costumer/new']">
+            <fa-icon icon="plus"></fa-icon>
+            <span  jhiTranslate="mooingatewayApp.mooincashierCashierCostumer.home.createLabel">
+            Create a new Cashier Costumer
+            </span>
+        </button>
+    </h2>
+
+    <jhi-alert-error></jhi-alert-error>
+
+    <jhi-alert></jhi-alert>
+
+    <div class="alert alert-warning" id="no-result" *ngIf="cashierCostumers?.length === 0">
+        <span jhiTranslate="mooingatewayApp.mooincashierCashierCostumer.home.notFound">No cashierCostumers found</span>
+    </div>
+
+    <div class="table-responsive" id="entities" *ngIf="cashierCostumers && cashierCostumers.length > 0">
+        <table class="table table-striped" aria-describedby="page-heading">
+            <thead>
+                <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" [callback]="loadPage.bind(this)">
+                    <th scope="col"  jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="reference"><span jhiTranslate="mooingatewayApp.mooincashierCashierCostumer.reference">Reference</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="firstName"><span jhiTranslate="mooingatewayApp.mooincashierCashierCostumer.firstName">First Name</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="lastName"><span jhiTranslate="mooingatewayApp.mooincashierCashierCostumer.lastName">Last Name</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="phone1"><span jhiTranslate="mooingatewayApp.mooincashierCashierCostumer.phone1">Phone 1</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="phone2"><span jhiTranslate="mooingatewayApp.mooincashierCashierCostumer.phone2">Phone 2</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="image"><span jhiTranslate="mooingatewayApp.mooincashierCashierCostumer.image">Image</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="email"><span jhiTranslate="mooingatewayApp.mooincashierCashierCostumer.email">Email</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="cashierLocation.id"><span jhiTranslate="mooingatewayApp.mooincashierCashierCostumer.cashierLocation">Cashier Location</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="cashier.id"><span jhiTranslate="mooingatewayApp.mooincashierCashierCostumer.cashier">Cashier</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let cashierCostumer of cashierCostumers ;trackBy: trackId">
+                    <td><a [routerLink]="['/cashier-costumer', cashierCostumer.id, 'view']">{{ cashierCostumer.id }}</a></td>
+                    <td>{{ cashierCostumer.reference }}</td>
+                    <td>{{ cashierCostumer.firstName }}</td>
+                    <td>{{ cashierCostumer.lastName }}</td>
+                    <td>{{ cashierCostumer.phone1 }}</td>
+                    <td>{{ cashierCostumer.phone2 }}</td>
+                    <td>
+                        <a *ngIf="cashierCostumer.image" (click)="openFile(cashierCostumer.imageContentType, cashierCostumer.image)">
+                            <img [src]="'data:' + cashierCostumer.imageContentType + ';base64,' + cashierCostumer.image" style="max-height: 30px;" alt="cashierCostumer image"/>
+                        </a>
+                        <span *ngIf="cashierCostumer.image">{{ cashierCostumer.imageContentType }}, {{ byteSize(cashierCostumer.image) }}</span>
+                    </td>
+                    <td>{{ cashierCostumer.email }}</td>
+                    <td>
+                        <div *ngIf="cashierCostumer.cashierLocation">
+                            <a [routerLink]="['/cashier-location', cashierCostumer.cashierLocation?.id, 'view']" >{{ cashierCostumer.cashierLocation?.id }}</a>
+                        </div>
+                    </td>
+                    <td>
+                        <div *ngIf="cashierCostumer.cashier">
+                            <a [routerLink]="['/cashier', cashierCostumer.cashier?.id, 'view']" >{{ cashierCostumer.cashier?.id }}</a>
+                        </div>
+                    </td>
+                    <td class="text-right">
+                        <div class="btn-group">
+                            <button type="submit"
+                                    [routerLink]="['/cashier-costumer', cashierCostumer.id, 'view']"
+                                    class="btn btn-info btn-sm">
+                                <fa-icon icon="eye"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                            </button>
+
+                            <button type="submit"
+                                    [routerLink]="['/cashier-costumer', cashierCostumer.id, 'edit']"
+                                    class="btn btn-primary btn-sm">
+                                <fa-icon icon="pencil-alt"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                            </button>
+
+                            <button type="submit" (click)="delete(cashierCostumer)"
+                                    class="btn btn-danger btn-sm">
+                                <fa-icon icon="times"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div *ngIf="cashierCostumers && cashierCostumers.length > 0">
+        <div class="row justify-content-center">
+            <jhi-item-count [page]="page" [total]="totalItems" [itemsPerPage]="itemsPerPage"></jhi-item-count>
+        </div>
+
+        <div class="row justify-content-center">
+            <ngb-pagination [collectionSize]="totalItems" [(page)]="ngbPaginationPage" [pageSize]="itemsPerPage" [maxSize]="5" [rotate]="true" [boundaryLinks]="true" (pageChange)="loadPage($event)"></ngb-pagination>
+        </div>
+    </div>
+</div>

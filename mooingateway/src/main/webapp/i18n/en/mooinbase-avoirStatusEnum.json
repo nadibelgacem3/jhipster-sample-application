@@ -1,0 +1,10 @@
+{
+  "mooingatewayApp": {
+    "AvoirStatusEnum": {
+      "null": "",
+      "DRAFT": "DRAFT",
+      "FINALIZED": "FINALIZED",
+      "CANCELED": "CANCELED"
+    }
+  }
+}

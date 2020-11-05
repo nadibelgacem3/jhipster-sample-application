@@ -1,0 +1,36 @@
+{
+  "mooingatewayApp": {
+    "mooincashierCashierAppro": {
+      "home": {
+        "title": "CashierAppros",
+        "createLabel": "Créer un nouveau Cashier Appro",
+        "createOrEditLabel": "Créer ou éditer un Cashier Appro",
+        "notFound": "Aucun Cashier Appro trouvé"
+      },
+      "delete": {
+        "question": "Etes-vous certain de vouloir supprimer le Cashier Appro {{ id }} ?"
+      },
+      "detail": {
+        "title": "Cashier Appro"
+      },
+      "number": "Number",
+      "status": "Status",
+      "totalHT": "Total HT",
+      "totalTVA": "Total TVA",
+      "totaTTC": "Tota TTC",
+      "date": "Date",
+      "isConverted": "Is Converted",
+      "withTVA": "With TVA",
+      "withTax": "With Tax",
+      "cashierApproItem": "Cashier Appro Item",
+      "cashier": "Cashier"
+    }
+  },
+  "mooincashierApp": {
+    "mooincashierCashierAppro": {
+      "created": "Un nouveau Cashier Appro a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Cashier Appro avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Cashier Appro avec l'identifiant {{ param }} a été supprimé"
+    }
+  }
+}

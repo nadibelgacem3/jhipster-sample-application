@@ -1,0 +1,59 @@
+{
+  "name": "CompanyModule",
+  "fields": [
+    {
+      "fieldName": "name",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "activatedAt",
+      "fieldType": "LocalDate",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "activatedUntil",
+      "fieldType": "LocalDate",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "isActivated",
+      "fieldType": "Boolean",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "price",
+      "fieldType": "BigDecimal",
+      "fieldValidateRules": ["required", "min"],
+      "fieldValidateRulesMin": "0"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "companyBillPaymentItem",
+      "otherEntityRelationshipName": "companyModule",
+      "relationshipName": "companyBillPaymentItem"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "company",
+      "otherEntityRelationshipName": "companyModule",
+      "relationshipName": "company",
+      "otherEntityField": "id"
+    }
+  ],
+  "changelogDate": "20201105125621",
+  "javadoc": "CompanyModule entity.\\n@author The Moo3in team.",
+  "entityTableName": "company_module",
+  "dto": "no",
+  "pagination": "pagination",
+  "service": "serviceClass",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": ["mooingateway", "mooincompanies"],
+  "microserviceName": "mooincompanies"
+}

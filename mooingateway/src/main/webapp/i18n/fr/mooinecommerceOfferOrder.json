@@ -1,0 +1,33 @@
+{
+  "mooingatewayApp": {
+    "mooinecommerceOfferOrder": {
+      "home": {
+        "title": "OfferOrders",
+        "createLabel": "Créer un nouveau Offer Order",
+        "createOrEditLabel": "Créer ou éditer un Offer Order",
+        "notFound": "Aucun Offer Order trouvé"
+      },
+      "delete": {
+        "question": "Etes-vous certain de vouloir supprimer le Offer Order {{ id }} ?"
+      },
+      "detail": {
+        "title": "Offer Order"
+      },
+      "quantity": "Quantity",
+      "totalHT": "Total HT",
+      "totalTVA": "Total TVA",
+      "totaTTC": "Tota TTC",
+      "date": "Date",
+      "status": "Status",
+      "requesterOfferID": "Requester Offer ID",
+      "offer": "Offer"
+    }
+  },
+  "mooinecommerceApp": {
+    "mooinecommerceOfferOrder": {
+      "created": "Un nouveau Offer Order a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Offer Order avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Offer Order avec l'identifiant {{ param }} a été supprimé"
+    }
+  }
+}

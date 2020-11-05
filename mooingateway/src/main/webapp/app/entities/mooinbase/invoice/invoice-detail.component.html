@@ -1,0 +1,72 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="invoice">
+            <h2><span jhiTranslate="mooingatewayApp.mooinbaseInvoice.detail.title">Invoice</span> {{ invoice.id }}</h2>
+
+            <hr>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="mooingatewayApp.mooinbaseInvoice.number">Number</span></dt>
+                <dd>
+                    <span>{{ invoice.number }}</span>
+                </dd>
+                <dt><span jhiTranslate="mooingatewayApp.mooinbaseInvoice.reference">Reference</span></dt>
+                <dd>
+                    <span>{{ invoice.reference }}</span>
+                </dd>
+                <dt><span jhiTranslate="mooingatewayApp.mooinbaseInvoice.status">Status</span></dt>
+                <dd>
+                    <span jhiTranslate="{{ 'mooingatewayApp.InvoiceStatusEnum.' + invoice.status }}">{{ invoice.status }}</span>
+                </dd>
+                <dt><span jhiTranslate="mooingatewayApp.mooinbaseInvoice.type">Type</span></dt>
+                <dd>
+                    <span jhiTranslate="{{ 'mooingatewayApp.InvoiceTypeEnum.' + invoice.type }}">{{ invoice.type }}</span>
+                </dd>
+                <dt><span jhiTranslate="mooingatewayApp.mooinbaseInvoice.totalHT">Total HT</span></dt>
+                <dd>
+                    <span>{{ invoice.totalHT }}</span>
+                </dd>
+                <dt><span jhiTranslate="mooingatewayApp.mooinbaseInvoice.totalTVA">Total TVA</span></dt>
+                <dd>
+                    <span>{{ invoice.totalTVA }}</span>
+                </dd>
+                <dt><span jhiTranslate="mooingatewayApp.mooinbaseInvoice.totaTTC">Tota TTC</span></dt>
+                <dd>
+                    <span>{{ invoice.totaTTC }}</span>
+                </dd>
+                <dt><span jhiTranslate="mooingatewayApp.mooinbaseInvoice.date">Date</span></dt>
+                <dd>
+                    <span>{{ invoice.date }}</span>
+                </dd>
+                <dt><span jhiTranslate="mooingatewayApp.mooinbaseInvoice.dueDate">Due Date</span></dt>
+                <dd>
+                    <span>{{ invoice.dueDate }}</span>
+                </dd>
+                <dt><span jhiTranslate="mooingatewayApp.mooinbaseInvoice.companyID">Company ID</span></dt>
+                <dd>
+                    <span>{{ invoice.companyID }}</span>
+                </dd>
+                <dt><span jhiTranslate="mooingatewayApp.mooinbaseInvoice.tiers">Tiers</span></dt>
+                <dd>
+                    <div *ngIf="invoice.tiers">
+                        <a [routerLink]="['/tiers', invoice.tiers?.id, 'view']">{{ invoice.tiers?.id }}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/invoice', invoice.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

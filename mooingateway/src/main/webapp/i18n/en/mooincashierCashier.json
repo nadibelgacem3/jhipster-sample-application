@@ -1,0 +1,34 @@
+{
+  "mooingatewayApp": {
+    "mooincashierCashier": {
+      "home": {
+        "title": "Cashiers",
+        "createLabel": "Create a new Cashier",
+        "createOrEditLabel": "Create or edit a Cashier",
+        "notFound": "No Cashiers found"
+      },
+      "delete": {
+        "question": "Are you sure you want to delete Cashier {{ id }}?"
+      },
+      "detail": {
+        "title": "Cashier"
+      },
+      "name": "Name",
+      "withTicket": "With Ticket",
+      "withTVA": "With TVA",
+      "withTax": "With Tax",
+      "withAppro": "With Appro",
+      "themeColor": "Theme Color",
+      "isActivated": "Is Activated",
+      "companyID": "Company ID",
+      "cashierLocation": "Cashier Location"
+    }
+  },
+  "mooincashierApp": {
+    "mooincashierCashier": {
+      "created": "A new Cashier is created with identifier {{ param }}",
+      "updated": "A Cashier is updated with identifier {{ param }}",
+      "deleted": "A Cashier is deleted with identifier {{ param }}"
+    }
+  }
+}

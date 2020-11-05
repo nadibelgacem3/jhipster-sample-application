@@ -1,0 +1,33 @@
+{
+  "mooingatewayApp": {
+    "mooinbaseTiersLocation": {
+      "home": {
+        "title": "TiersLocations",
+        "createLabel": "Créer un nouveau Tiers Location",
+        "createOrEditLabel": "Créer ou éditer un Tiers Location",
+        "notFound": "Aucun Tiers Location trouvé"
+      },
+      "delete": {
+        "question": "Etes-vous certain de vouloir supprimer le Tiers Location {{ id }} ?"
+      },
+      "detail": {
+        "title": "Tiers Location"
+      },
+      "localNumber": "Local Number",
+      "streetAddress": "Street Address",
+      "postalCode": "Postal Code",
+      "city": "City",
+      "stateProvince": "State Province",
+      "countryName": "Country Name",
+      "flag": "Flag",
+      "tiers": "Tiers"
+    }
+  },
+  "mooinbaseApp": {
+    "mooinbaseTiersLocation": {
+      "created": "Un nouveau Tiers Location a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Tiers Location avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Tiers Location avec l'identifiant {{ param }} a été supprimé"
+    }
+  }
+}

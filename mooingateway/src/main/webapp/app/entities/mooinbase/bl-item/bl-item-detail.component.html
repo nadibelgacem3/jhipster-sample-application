@@ -1,0 +1,58 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="bLItem">
+            <h2><span jhiTranslate="mooingatewayApp.mooinbaseBLItem.detail.title">BL Item</span> {{ bLItem.id }}</h2>
+
+            <hr>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="mooingatewayApp.mooinbaseBLItem.quantity">Quantity</span></dt>
+                <dd>
+                    <span>{{ bLItem.quantity }}</span>
+                </dd>
+                <dt><span jhiTranslate="mooingatewayApp.mooinbaseBLItem.discountRate">Discount Rate</span></dt>
+                <dd>
+                    <span>{{ bLItem.discountRate }}</span>
+                </dd>
+                <dt><span jhiTranslate="mooingatewayApp.mooinbaseBLItem.totalHT">Total HT</span></dt>
+                <dd>
+                    <span>{{ bLItem.totalHT }}</span>
+                </dd>
+                <dt><span jhiTranslate="mooingatewayApp.mooinbaseBLItem.totalTVA">Total TVA</span></dt>
+                <dd>
+                    <span>{{ bLItem.totalTVA }}</span>
+                </dd>
+                <dt><span jhiTranslate="mooingatewayApp.mooinbaseBLItem.totaTTC">Tota TTC</span></dt>
+                <dd>
+                    <span>{{ bLItem.totaTTC }}</span>
+                </dd>
+                <dt><span jhiTranslate="mooingatewayApp.mooinbaseBLItem.product">Product</span></dt>
+                <dd>
+                    <div *ngIf="bLItem.product">
+                        <a [routerLink]="['/product', bLItem.product?.id, 'view']">{{ bLItem.product?.id }}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="mooingatewayApp.mooinbaseBLItem.bl">Bl</span></dt>
+                <dd>
+                    <div *ngIf="bLItem.bl">
+                        <a [routerLink]="['/bl', bLItem.bl?.id, 'view']">{{ bLItem.bl?.id }}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/bl-item', bLItem.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

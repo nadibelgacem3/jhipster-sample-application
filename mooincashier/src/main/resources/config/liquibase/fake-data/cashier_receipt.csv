@@ -1,0 +1,11 @@
+id;number;reference;status;total_ht;total_tva;tota_ttc;date;due_date;is_converted;with_tva;with_tax
+1;grey;Rustic foreground open-source;PAYEMENT_IN_PROGRESS;23705;96378;99706;2020-11-04;2020-11-04;true;true;true
+2;bandwidth;Unbranded;CANCELED;14261;99004;10591;2020-11-04;2020-11-04;true;true;false
+3;French Southern Territories Small;Credit Card Account customized Armenia;CANCELED;4705;27067;42699;2020-11-04;2020-11-05;true;false;true
+4;Zloty quantifying index;redundant;PAYEMENT_IN_PROGRESS;20660;94126;99222;2020-11-05;2020-11-05;false;false;true
+5;virtual;New Jersey Investor Iraq;CANCELED;22894;71723;89850;2020-11-05;2020-11-05;false;false;true
+6;Representative calculate Azerbaijan;orange framework;PAID;98431;58145;44527;2020-11-04;2020-11-04;false;true;false
+7;Ball navigating policy;Rustic Louisiana Fresh;PAID;54401;1357;72996;2020-11-04;2020-11-05;true;false;false
+8;Soap;COM Licensed Steel Tuna;CANCELED;43917;80491;29310;2020-11-05;2020-11-04;false;true;true
+9;Salad Concrete;SDR Streamlined Money Market Account;CANCELED;57083;80899;21225;2020-11-05;2020-11-05;false;false;true
+10;Chicken redundant Generic;process improvement South Carolina;PAYEMENT_IN_PROGRESS;28057;62904;72478;2020-11-05;2020-11-04;false;false;true

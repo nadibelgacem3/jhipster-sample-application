@@ -1,0 +1,91 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="employee">
+            <h2><span jhiTranslate="mooingatewayApp.mooincompaniesEmployee.detail.title">Employee</span> {{ employee.id }}</h2>
+
+            <hr>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="mooingatewayApp.mooincompaniesEmployee.firstName">First Name</span></dt>
+                <dd>
+                    <span>{{ employee.firstName }}</span>
+                </dd>
+                <dt><span jhiTranslate="mooingatewayApp.mooincompaniesEmployee.lastName">Last Name</span></dt>
+                <dd>
+                    <span>{{ employee.lastName }}</span>
+                </dd>
+                <dt><span jhiTranslate="mooingatewayApp.mooincompaniesEmployee.jobTitle">Job Title</span></dt>
+                <dd>
+                    <span>{{ employee.jobTitle }}</span>
+                </dd>
+                <dt><span jhiTranslate="mooingatewayApp.mooincompaniesEmployee.gender">Gender</span></dt>
+                <dd>
+                    <span jhiTranslate="{{ 'mooingatewayApp.Gender.' + employee.gender }}">{{ employee.gender }}</span>
+                </dd>
+                <dt><span jhiTranslate="mooingatewayApp.mooincompaniesEmployee.dateOfborth">Date Ofborth</span></dt>
+                <dd>
+                    <span>{{ employee.dateOfborth }}</span>
+                </dd>
+                <dt><span jhiTranslate="mooingatewayApp.mooincompaniesEmployee.dateOfRecruitment">Date Of Recruitment</span></dt>
+                <dd>
+                    <span>{{ employee.dateOfRecruitment }}</span>
+                </dd>
+                <dt><span jhiTranslate="mooingatewayApp.mooincompaniesEmployee.image">Image</span></dt>
+                <dd>
+                    <div *ngIf="employee.image">
+                        <a (click)="openFile(employee.imageContentType, employee.image)">
+                            <img [src]="'data:' + employee.imageContentType + ';base64,' + employee.image" style="max-width: 100%;" alt="employee image"/>
+                        </a>
+                        {{ employee.imageContentType }}, {{ byteSize(employee.image) }}
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="mooingatewayApp.mooincompaniesEmployee.email">Email</span></dt>
+                <dd>
+                    <span>{{ employee.email }}</span>
+                </dd>
+                <dt><span jhiTranslate="mooingatewayApp.mooincompaniesEmployee.phoneNumber">Phone Number</span></dt>
+                <dd>
+                    <span>{{ employee.phoneNumber }}</span>
+                </dd>
+                <dt><span jhiTranslate="mooingatewayApp.mooincompaniesEmployee.salary">Salary</span></dt>
+                <dd>
+                    <span>{{ employee.salary }}</span>
+                </dd>
+                <dt><span jhiTranslate="mooingatewayApp.mooincompaniesEmployee.commissionPct">Commission Pct</span></dt>
+                <dd>
+                    <span>{{ employee.commissionPct }}</span>
+                </dd>
+                <dt><span jhiTranslate="mooingatewayApp.mooincompaniesEmployee.rates">Rates</span></dt>
+                <dd>
+                    <span>{{ employee.rates }}</span>
+                </dd>
+                <dt><span jhiTranslate="mooingatewayApp.mooincompaniesEmployee.employeeLocation">Employee Location</span></dt>
+                <dd>
+                    <div *ngIf="employee.employeeLocation">
+                        <a [routerLink]="['/employee-location', employee.employeeLocation?.id, 'view']">{{ employee.employeeLocation?.id }}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="mooingatewayApp.mooincompaniesEmployee.company">Company</span></dt>
+                <dd>
+                    <div *ngIf="employee.company">
+                        <a [routerLink]="['/company', employee.company?.id, 'view']">{{ employee.company?.id }}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/employee', employee.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

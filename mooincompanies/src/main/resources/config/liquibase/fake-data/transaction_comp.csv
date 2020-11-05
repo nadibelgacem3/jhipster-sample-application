@@ -1,0 +1,11 @@
+id;number;details;type;payment_method;with_tva;total_ht;total_tva;tota_ttc;date
+1;Stand-alone Russian Ruble;Architect Usability;RECETTE;CASH;false;46379;83882;20827;2020-11-04
+2;Azerbaijanian Manat zero tolerance deposit;Cayman Islands navigating Applications;DEPENSE;CASH;true;32297;31291;58272;2020-11-04
+3;Identity;aggregate;DEPENSE;BANK_CHECK;false;56398;40906;57742;2020-11-04
+4;navigate;wireless Danish Krone;RECETTE;CREDIT_CARD;false;5949;57731;372;2020-11-05
+5;Specialist Agent;violet seamless e-markets;RECETTE;BANK_TRAIT;true;46870;57505;23614;2020-11-04
+6;Investment Account withdrawal;Applications;RECETTE;BANK_TRAIT;true;2233;41365;12934;2020-11-04
+7;actuating;National Ball;RECETTE;BANK_CHECK;true;60395;70136;8947;2020-11-05
+8;Throughway Awesome Illinois;Money Market Account Auto Loan Account;RECETTE;CASH;true;93283;89981;18638;2020-11-05
+9;River;systems;RECETTE;CASH;true;71531;13278;7917;2020-11-05
+10;Hawaii;hacking;RECETTE;CASH;true;14613;51033;9195;2020-11-04

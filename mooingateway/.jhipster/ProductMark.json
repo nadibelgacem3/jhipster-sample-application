@@ -1,0 +1,39 @@
+{
+  "name": "ProductMark",
+  "fields": [
+    {
+      "fieldName": "name",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "description",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "companyID",
+      "fieldType": "Long"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "product",
+      "otherEntityRelationshipName": "productMark",
+      "relationshipName": "product"
+    }
+  ],
+  "changelogDate": "20201105130921",
+  "javadoc": "ProductMark entity.\\n@author The Moo3in team.",
+  "entityTableName": "product_mark",
+  "dto": "no",
+  "pagination": "pagination",
+  "service": "serviceClass",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": ["mooingateway", "mooinbase"],
+  "microserviceName": "mooinbase"
+}

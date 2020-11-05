@@ -1,0 +1,92 @@
+<div>
+    <h2 id="page-heading">
+        <span jhiTranslate="mooingatewayApp.mooinbaseInvoicePaymentHistory.home.title">Invoice Payment Histories</span>
+
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-invoice-payment-history" [routerLink]="['/invoice-payment-history/new']">
+            <fa-icon icon="plus"></fa-icon>
+            <span  jhiTranslate="mooingatewayApp.mooinbaseInvoicePaymentHistory.home.createLabel">
+            Create a new Invoice Payment History
+            </span>
+        </button>
+    </h2>
+
+    <jhi-alert-error></jhi-alert-error>
+
+    <jhi-alert></jhi-alert>
+
+    <div class="alert alert-warning" id="no-result" *ngIf="invoicePaymentHistories?.length === 0">
+        <span jhiTranslate="mooingatewayApp.mooinbaseInvoicePaymentHistory.home.notFound">No invoicePaymentHistories found</span>
+    </div>
+
+    <div class="table-responsive" id="entities" *ngIf="invoicePaymentHistories && invoicePaymentHistories.length > 0">
+        <table class="table table-striped" aria-describedby="page-heading">
+            <thead>
+                <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" [callback]="loadPage.bind(this)">
+                    <th scope="col"  jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="details"><span jhiTranslate="mooingatewayApp.mooinbaseInvoicePaymentHistory.details">Details</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="amount"><span jhiTranslate="mooingatewayApp.mooinbaseInvoicePaymentHistory.amount">Amount</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="paymentDate"><span jhiTranslate="mooingatewayApp.mooinbaseInvoicePaymentHistory.paymentDate">Payment Date</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="paymentMethod"><span jhiTranslate="mooingatewayApp.mooinbaseInvoicePaymentHistory.paymentMethod">Payment Method</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="bankCheckorTraitNumber"><span jhiTranslate="mooingatewayApp.mooinbaseInvoicePaymentHistory.bankCheckorTraitNumber">Bank Checkor Trait Number</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="imageJustif"><span jhiTranslate="mooingatewayApp.mooinbaseInvoicePaymentHistory.imageJustif">Image Justif</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="invoice.id"><span jhiTranslate="mooingatewayApp.mooinbaseInvoicePaymentHistory.invoice">Invoice</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let invoicePaymentHistory of invoicePaymentHistories ;trackBy: trackId">
+                    <td><a [routerLink]="['/invoice-payment-history', invoicePaymentHistory.id, 'view']">{{ invoicePaymentHistory.id }}</a></td>
+                    <td>{{ invoicePaymentHistory.details }}</td>
+                    <td>{{ invoicePaymentHistory.amount }}</td>
+                    <td>{{ invoicePaymentHistory.paymentDate | date:'medium' }}</td>
+                    <td jhiTranslate="{{ 'mooingatewayApp.InvoicePaymentMethod.' + invoicePaymentHistory.paymentMethod }}">{{ invoicePaymentHistory.paymentMethod }}</td>
+                    <td>{{ invoicePaymentHistory.bankCheckorTraitNumber }}</td>
+                    <td>
+                        <a *ngIf="invoicePaymentHistory.imageJustif" (click)="openFile(invoicePaymentHistory.imageJustifContentType, invoicePaymentHistory.imageJustif)">
+                            <img [src]="'data:' + invoicePaymentHistory.imageJustifContentType + ';base64,' + invoicePaymentHistory.imageJustif" style="max-height: 30px;" alt="invoicePaymentHistory image"/>
+                        </a>
+                        <span *ngIf="invoicePaymentHistory.imageJustif">{{ invoicePaymentHistory.imageJustifContentType }}, {{ byteSize(invoicePaymentHistory.imageJustif) }}</span>
+                    </td>
+                    <td>
+                        <div *ngIf="invoicePaymentHistory.invoice">
+                            <a [routerLink]="['/invoice', invoicePaymentHistory.invoice?.id, 'view']" >{{ invoicePaymentHistory.invoice?.id }}</a>
+                        </div>
+                    </td>
+                    <td class="text-right">
+                        <div class="btn-group">
+                            <button type="submit"
+                                    [routerLink]="['/invoice-payment-history', invoicePaymentHistory.id, 'view']"
+                                    class="btn btn-info btn-sm">
+                                <fa-icon icon="eye"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                            </button>
+
+                            <button type="submit"
+                                    [routerLink]="['/invoice-payment-history', invoicePaymentHistory.id, 'edit']"
+                                    class="btn btn-primary btn-sm">
+                                <fa-icon icon="pencil-alt"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                            </button>
+
+                            <button type="submit" (click)="delete(invoicePaymentHistory)"
+                                    class="btn btn-danger btn-sm">
+                                <fa-icon icon="times"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div *ngIf="invoicePaymentHistories && invoicePaymentHistories.length > 0">
+        <div class="row justify-content-center">
+            <jhi-item-count [page]="page" [total]="totalItems" [itemsPerPage]="itemsPerPage"></jhi-item-count>
+        </div>
+
+        <div class="row justify-content-center">
+            <ngb-pagination [collectionSize]="totalItems" [(page)]="ngbPaginationPage" [pageSize]="itemsPerPage" [maxSize]="5" [rotate]="true" [boundaryLinks]="true" (pageChange)="loadPage($event)"></ngb-pagination>
+        </div>
+    </div>
+</div>

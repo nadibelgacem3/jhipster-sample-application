@@ -1,0 +1,33 @@
+{
+  "mooingatewayApp": {
+    "mooinbaseMovement": {
+      "home": {
+        "title": "Movements",
+        "createLabel": "Create a new Movement",
+        "createOrEditLabel": "Create or edit a Movement",
+        "notFound": "No Movements found"
+      },
+      "delete": {
+        "question": "Are you sure you want to delete Movement {{ id }}?"
+      },
+      "detail": {
+        "title": "Movement"
+      },
+      "type": "Type",
+      "reason": "Reason",
+      "date": "Date",
+      "billID": "Bill ID",
+      "tiersID": "Tiers ID",
+      "quantity": "Quantity",
+      "companyUserID": "Company User ID",
+      "product": "Product"
+    }
+  },
+  "mooinbaseApp": {
+    "mooinbaseMovement": {
+      "created": "A new Movement is created with identifier {{ param }}",
+      "updated": "A Movement is updated with identifier {{ param }}",
+      "deleted": "A Movement is deleted with identifier {{ param }}"
+    }
+  }
+}

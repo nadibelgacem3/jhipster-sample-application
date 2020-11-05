@@ -1,0 +1,61 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="invoicePaymentHistory">
+            <h2><span jhiTranslate="mooingatewayApp.mooinbaseInvoicePaymentHistory.detail.title">Invoice Payment History</span> {{ invoicePaymentHistory.id }}</h2>
+
+            <hr>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="mooingatewayApp.mooinbaseInvoicePaymentHistory.details">Details</span></dt>
+                <dd>
+                    <span>{{ invoicePaymentHistory.details }}</span>
+                </dd>
+                <dt><span jhiTranslate="mooingatewayApp.mooinbaseInvoicePaymentHistory.amount">Amount</span></dt>
+                <dd>
+                    <span>{{ invoicePaymentHistory.amount }}</span>
+                </dd>
+                <dt><span jhiTranslate="mooingatewayApp.mooinbaseInvoicePaymentHistory.paymentDate">Payment Date</span></dt>
+                <dd>
+                    <span>{{ invoicePaymentHistory.paymentDate }}</span>
+                </dd>
+                <dt><span jhiTranslate="mooingatewayApp.mooinbaseInvoicePaymentHistory.paymentMethod">Payment Method</span></dt>
+                <dd>
+                    <span jhiTranslate="{{ 'mooingatewayApp.InvoicePaymentMethod.' + invoicePaymentHistory.paymentMethod }}">{{ invoicePaymentHistory.paymentMethod }}</span>
+                </dd>
+                <dt><span jhiTranslate="mooingatewayApp.mooinbaseInvoicePaymentHistory.bankCheckorTraitNumber">Bank Checkor Trait Number</span></dt>
+                <dd>
+                    <span>{{ invoicePaymentHistory.bankCheckorTraitNumber }}</span>
+                </dd>
+                <dt><span jhiTranslate="mooingatewayApp.mooinbaseInvoicePaymentHistory.imageJustif">Image Justif</span></dt>
+                <dd>
+                    <div *ngIf="invoicePaymentHistory.imageJustif">
+                        <a (click)="openFile(invoicePaymentHistory.imageJustifContentType, invoicePaymentHistory.imageJustif)">
+                            <img [src]="'data:' + invoicePaymentHistory.imageJustifContentType + ';base64,' + invoicePaymentHistory.imageJustif" style="max-width: 100%;" alt="invoicePaymentHistory image"/>
+                        </a>
+                        {{ invoicePaymentHistory.imageJustifContentType }}, {{ byteSize(invoicePaymentHistory.imageJustif) }}
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="mooingatewayApp.mooinbaseInvoicePaymentHistory.invoice">Invoice</span></dt>
+                <dd>
+                    <div *ngIf="invoicePaymentHistory.invoice">
+                        <a [routerLink]="['/invoice', invoicePaymentHistory.invoice?.id, 'view']">{{ invoicePaymentHistory.invoice?.id }}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/invoice-payment-history', invoicePaymentHistory.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

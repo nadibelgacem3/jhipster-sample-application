@@ -1,0 +1,55 @@
+{
+  "name": "TiersLocation",
+  "fields": [
+    {
+      "fieldName": "localNumber",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "streetAddress",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "postalCode",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "city",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "stateProvince",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "countryName",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "flag",
+      "fieldType": "byte[]",
+      "fieldTypeBlobContent": "image"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "one-to-one",
+      "otherEntityName": "tiers",
+      "otherEntityRelationshipName": "tiersLocation",
+      "relationshipName": "tiers",
+      "ownerSide": false
+    }
+  ],
+  "changelogDate": "20201105132321",
+  "entityTableName": "tiers_location",
+  "dto": "no",
+  "pagination": "pagination",
+  "service": "serviceClass",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": ["mooingateway", "mooinbase"],
+  "microserviceName": "mooinbase"
+}

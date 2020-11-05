@@ -1,0 +1,60 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="movement">
+            <h2><span jhiTranslate="mooingatewayApp.mooinbaseMovement.detail.title">Movement</span> {{ movement.id }}</h2>
+
+            <hr>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="mooingatewayApp.mooinbaseMovement.type">Type</span></dt>
+                <dd>
+                    <span jhiTranslate="{{ 'mooingatewayApp.MovementTypeEnum.' + movement.type }}">{{ movement.type }}</span>
+                </dd>
+                <dt><span jhiTranslate="mooingatewayApp.mooinbaseMovement.reason">Reason</span></dt>
+                <dd>
+                    <span jhiTranslate="{{ 'mooingatewayApp.MovementReasonEnum.' + movement.reason }}">{{ movement.reason }}</span>
+                </dd>
+                <dt><span jhiTranslate="mooingatewayApp.mooinbaseMovement.date">Date</span></dt>
+                <dd>
+                    <span>{{ movement.date }}</span>
+                </dd>
+                <dt><span jhiTranslate="mooingatewayApp.mooinbaseMovement.billID">Bill ID</span></dt>
+                <dd>
+                    <span>{{ movement.billID }}</span>
+                </dd>
+                <dt><span jhiTranslate="mooingatewayApp.mooinbaseMovement.tiersID">Tiers ID</span></dt>
+                <dd>
+                    <span>{{ movement.tiersID }}</span>
+                </dd>
+                <dt><span jhiTranslate="mooingatewayApp.mooinbaseMovement.quantity">Quantity</span></dt>
+                <dd>
+                    <span>{{ movement.quantity }}</span>
+                </dd>
+                <dt><span jhiTranslate="mooingatewayApp.mooinbaseMovement.companyUserID">Company User ID</span></dt>
+                <dd>
+                    <span>{{ movement.companyUserID }}</span>
+                </dd>
+                <dt><span jhiTranslate="mooingatewayApp.mooinbaseMovement.product">Product</span></dt>
+                <dd>
+                    <div *ngIf="movement.product">
+                        <a [routerLink]="['/product', movement.product?.id, 'view']">{{ movement.product?.id }}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/movement', movement.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

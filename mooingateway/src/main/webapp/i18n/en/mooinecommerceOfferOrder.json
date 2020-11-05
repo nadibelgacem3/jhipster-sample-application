@@ -1,0 +1,33 @@
+{
+  "mooingatewayApp": {
+    "mooinecommerceOfferOrder": {
+      "home": {
+        "title": "Offer Orders",
+        "createLabel": "Create a new Offer Order",
+        "createOrEditLabel": "Create or edit a Offer Order",
+        "notFound": "No Offer Orders found"
+      },
+      "delete": {
+        "question": "Are you sure you want to delete Offer Order {{ id }}?"
+      },
+      "detail": {
+        "title": "Offer Order"
+      },
+      "quantity": "Quantity",
+      "totalHT": "Total HT",
+      "totalTVA": "Total TVA",
+      "totaTTC": "Tota TTC",
+      "date": "Date",
+      "status": "Status",
+      "requesterOfferID": "Requester Offer ID",
+      "offer": "Offer"
+    }
+  },
+  "mooinecommerceApp": {
+    "mooinecommerceOfferOrder": {
+      "created": "A new Offer Order is created with identifier {{ param }}",
+      "updated": "A Offer Order is updated with identifier {{ param }}",
+      "deleted": "A Offer Order is deleted with identifier {{ param }}"
+    }
+  }
+}

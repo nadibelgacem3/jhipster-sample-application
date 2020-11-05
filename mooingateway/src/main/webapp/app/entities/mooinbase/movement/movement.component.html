@@ -1,0 +1,79 @@
+<div>
+    <h2 id="page-heading">
+        <span jhiTranslate="mooingatewayApp.mooinbaseMovement.home.title">Movements</span>
+
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-movement" [routerLink]="['/movement/new']">
+            <fa-icon icon="plus"></fa-icon>
+            <span  jhiTranslate="mooingatewayApp.mooinbaseMovement.home.createLabel">
+            Create a new Movement
+            </span>
+        </button>
+    </h2>
+
+    <jhi-alert-error></jhi-alert-error>
+
+    <jhi-alert></jhi-alert>
+
+    <div class="alert alert-warning" id="no-result" *ngIf="movements?.length === 0">
+        <span jhiTranslate="mooingatewayApp.mooinbaseMovement.home.notFound">No movements found</span>
+    </div>
+
+    <div class="table-responsive" id="entities" *ngIf="movements && movements.length > 0">
+        <table class="table table-striped" aria-describedby="page-heading">
+            <thead>
+                <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" [callback]="reset.bind(this)">
+                    <th scope="col"  jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="type"><span jhiTranslate="mooingatewayApp.mooinbaseMovement.type">Type</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="reason"><span jhiTranslate="mooingatewayApp.mooinbaseMovement.reason">Reason</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="date"><span jhiTranslate="mooingatewayApp.mooinbaseMovement.date">Date</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="billID"><span jhiTranslate="mooingatewayApp.mooinbaseMovement.billID">Bill ID</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="tiersID"><span jhiTranslate="mooingatewayApp.mooinbaseMovement.tiersID">Tiers ID</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="quantity"><span jhiTranslate="mooingatewayApp.mooinbaseMovement.quantity">Quantity</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="companyUserID"><span jhiTranslate="mooingatewayApp.mooinbaseMovement.companyUserID">Company User ID</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="product.id"><span jhiTranslate="mooingatewayApp.mooinbaseMovement.product">Product</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody infinite-scroll (scrolled)="loadPage(page + 1)" [infiniteScrollDisabled]="page >= links['last']" [infiniteScrollDistance]="0">
+                <tr *ngFor="let movement of movements ;trackBy: trackId">
+                    <td><a [routerLink]="['/movement', movement.id, 'view']">{{ movement.id }}</a></td>
+                    <td jhiTranslate="{{ 'mooingatewayApp.MovementTypeEnum.' + movement.type }}">{{ movement.type }}</td>
+                    <td jhiTranslate="{{ 'mooingatewayApp.MovementReasonEnum.' + movement.reason }}">{{ movement.reason }}</td>
+                    <td>{{ movement.date | date:'medium' }}</td>
+                    <td>{{ movement.billID }}</td>
+                    <td>{{ movement.tiersID }}</td>
+                    <td>{{ movement.quantity }}</td>
+                    <td>{{ movement.companyUserID }}</td>
+                    <td>
+                        <div *ngIf="movement.product">
+                            <a [routerLink]="['/product', movement.product?.id, 'view']" >{{ movement.product?.id }}</a>
+                        </div>
+                    </td>
+                    <td class="text-right">
+                        <div class="btn-group">
+                            <button type="submit"
+                                    [routerLink]="['/movement', movement.id, 'view']"
+                                    class="btn btn-info btn-sm">
+                                <fa-icon icon="eye"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                            </button>
+
+                            <button type="submit"
+                                    [routerLink]="['/movement', movement.id, 'edit']"
+                                    class="btn btn-primary btn-sm">
+                                <fa-icon icon="pencil-alt"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                            </button>
+
+                            <button type="submit" (click)="delete(movement)"
+                                    class="btn btn-danger btn-sm">
+                                <fa-icon icon="times"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

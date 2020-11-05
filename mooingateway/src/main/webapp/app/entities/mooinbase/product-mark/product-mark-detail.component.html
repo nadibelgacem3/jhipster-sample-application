@@ -1,0 +1,38 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="productMark">
+            <h2><span jhiTranslate="mooingatewayApp.mooinbaseProductMark.detail.title">Product Mark</span> {{ productMark.id }}</h2>
+
+            <hr>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="mooingatewayApp.mooinbaseProductMark.name">Name</span></dt>
+                <dd>
+                    <span>{{ productMark.name }}</span>
+                </dd>
+                <dt><span jhiTranslate="mooingatewayApp.mooinbaseProductMark.description">Description</span></dt>
+                <dd>
+                    <span>{{ productMark.description }}</span>
+                </dd>
+                <dt><span jhiTranslate="mooingatewayApp.mooinbaseProductMark.companyID">Company ID</span></dt>
+                <dd>
+                    <span>{{ productMark.companyID }}</span>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/product-mark', productMark.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

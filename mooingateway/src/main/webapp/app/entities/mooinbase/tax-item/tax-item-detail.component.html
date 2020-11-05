@@ -1,0 +1,56 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="taxItem">
+            <h2><span jhiTranslate="mooingatewayApp.mooinbaseTaxItem.detail.title">Tax Item</span> {{ taxItem.id }}</h2>
+
+            <hr>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="mooingatewayApp.mooinbaseTaxItem.name">Name</span></dt>
+                <dd>
+                    <span>{{ taxItem.name }}</span>
+                </dd>
+                <dt><span jhiTranslate="mooingatewayApp.mooinbaseTaxItem.isValued">Is Valued</span></dt>
+                <dd>
+                    <span>{{ taxItem.isValued }}</span>
+                </dd>
+                <dt><span jhiTranslate="mooingatewayApp.mooinbaseTaxItem.isPercentage">Is Percentage</span></dt>
+                <dd>
+                    <span>{{ taxItem.isPercentage }}</span>
+                </dd>
+                <dt><span jhiTranslate="mooingatewayApp.mooinbaseTaxItem.value">Value</span></dt>
+                <dd>
+                    <span>{{ taxItem.value }}</span>
+                </dd>
+                <dt><span jhiTranslate="mooingatewayApp.mooinbaseTaxItem.companyID">Company ID</span></dt>
+                <dd>
+                    <span>{{ taxItem.companyID }}</span>
+                </dd>
+                <dt><span jhiTranslate="mooingatewayApp.mooinbaseTaxItem.taxID">Tax ID</span></dt>
+                <dd>
+                    <span>{{ taxItem.taxID }}</span>
+                </dd>
+                <dt><span jhiTranslate="mooingatewayApp.mooinbaseTaxItem.product">Product</span></dt>
+                <dd>
+                    <div *ngIf="taxItem.product">
+                        <a [routerLink]="['/product', taxItem.product?.id, 'view']">{{ taxItem.product?.id }}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/tax-item', taxItem.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

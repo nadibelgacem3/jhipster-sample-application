@@ -1,0 +1,32 @@
+{
+  "mooingatewayApp": {
+    "mooinbaseAvoirItem": {
+      "home": {
+        "title": "AvoirItems",
+        "createLabel": "Créer un nouveau Avoir Item",
+        "createOrEditLabel": "Créer ou éditer un Avoir Item",
+        "notFound": "Aucun Avoir Item trouvé"
+      },
+      "delete": {
+        "question": "Etes-vous certain de vouloir supprimer le Avoir Item {{ id }} ?"
+      },
+      "detail": {
+        "title": "Avoir Item"
+      },
+      "quantity": "Quantity",
+      "discountRate": "Discount Rate",
+      "totalHT": "Total HT",
+      "totalTVA": "Total TVA",
+      "totaTTC": "Tota TTC",
+      "product": "Product",
+      "avoir": "Avoir"
+    }
+  },
+  "mooinbaseApp": {
+    "mooinbaseAvoirItem": {
+      "created": "Un nouveau Avoir Item a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Avoir Item avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Avoir Item avec l'identifiant {{ param }} a été supprimé"
+    }
+  }
+}

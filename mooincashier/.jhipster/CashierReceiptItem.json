@@ -1,0 +1,64 @@
+{
+  "name": "CashierReceiptItem",
+  "fields": [
+    {
+      "fieldName": "quantity",
+      "fieldType": "BigDecimal",
+      "fieldValidateRules": ["min"],
+      "fieldValidateRulesMin": "0"
+    },
+    {
+      "fieldName": "discountRate",
+      "fieldType": "Integer",
+      "fieldValidateRules": ["min"],
+      "fieldValidateRulesMin": "0"
+    },
+    {
+      "fieldName": "totalHT",
+      "fieldType": "BigDecimal",
+      "fieldValidateRules": ["min"],
+      "fieldValidateRulesMin": "0"
+    },
+    {
+      "fieldName": "totalTVA",
+      "fieldType": "BigDecimal",
+      "fieldValidateRules": ["min"],
+      "fieldValidateRulesMin": "0"
+    },
+    {
+      "fieldName": "totaTTC",
+      "fieldType": "BigDecimal",
+      "fieldValidateRules": ["min"],
+      "fieldValidateRulesMin": "0"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "cashierProduct",
+      "otherEntityRelationshipName": "cashierReceiptItem",
+      "relationshipName": "cashierProduct",
+      "otherEntityField": "id"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "cashierReceipt",
+      "otherEntityRelationshipName": "cashierReceiptItem",
+      "relationshipName": "cashierReceipt",
+      "otherEntityField": "id"
+    }
+  ],
+  "changelogDate": "20201105133021",
+  "javadoc": "CashierReceiptItem entity.\\n@author The Moo3in team.",
+  "entityTableName": "cashier_receipt_item",
+  "dto": "no",
+  "pagination": "pagination",
+  "service": "serviceClass",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": ["mooingateway", "mooincashier"],
+  "microserviceName": "mooincashier"
+}

@@ -1,0 +1,30 @@
+{
+  "mooingatewayApp": {
+    "mooinbaseTVaItem": {
+      "home": {
+        "title": "TVA Items",
+        "createLabel": "Create a new TVA Item",
+        "createOrEditLabel": "Create or edit a TVA Item",
+        "notFound": "No TVA Items found"
+      },
+      "delete": {
+        "question": "Are you sure you want to delete TVA Item {{ id }}?"
+      },
+      "detail": {
+        "title": "TVA Item"
+      },
+      "name": "Name",
+      "percentageValue": "Percentage Value",
+      "companyID": "Company ID",
+      "tvaID": "Tva ID",
+      "product": "Product"
+    }
+  },
+  "mooinbaseApp": {
+    "mooinbaseTVaItem": {
+      "created": "A new TVA Item is created with identifier {{ param }}",
+      "updated": "A TVA Item is updated with identifier {{ param }}",
+      "deleted": "A TVA Item is deleted with identifier {{ param }}"
+    }
+  }
+}

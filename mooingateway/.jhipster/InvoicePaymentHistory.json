@@ -1,0 +1,55 @@
+{
+  "name": "InvoicePaymentHistory",
+  "fields": [
+    {
+      "fieldName": "details",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "amount",
+      "fieldType": "BigDecimal",
+      "fieldValidateRules": ["required", "min"],
+      "fieldValidateRulesMin": "0"
+    },
+    {
+      "fieldName": "paymentDate",
+      "fieldType": "Instant"
+    },
+    {
+      "fieldName": "paymentMethod",
+      "fieldType": "InvoicePaymentMethod",
+      "fieldValues": "CREDIT_CARD,CASH,BANK_CHECK,BANK_TRAIT"
+    },
+    {
+      "fieldName": "bankCheckorTraitNumber",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "imageJustif",
+      "fieldType": "byte[]",
+      "fieldTypeBlobContent": "image"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "invoice",
+      "otherEntityRelationshipName": "invoicePaymentHistory",
+      "relationshipName": "invoice",
+      "otherEntityField": "id"
+    }
+  ],
+  "changelogDate": "20201105131521",
+  "javadoc": "InvoicePaymentHistory entity.\\n@author The Moo3in team.",
+  "entityTableName": "invoice_payment_history",
+  "dto": "no",
+  "pagination": "pagination",
+  "service": "serviceClass",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": ["mooingateway", "mooinbase"],
+  "microserviceName": "mooinbase"
+}

@@ -1,0 +1,29 @@
+{
+  "mooingatewayApp": {
+    "mooinbaseProductMark": {
+      "home": {
+        "title": "Product Marks",
+        "createLabel": "Create a new Product Mark",
+        "createOrEditLabel": "Create or edit a Product Mark",
+        "notFound": "No Product Marks found"
+      },
+      "delete": {
+        "question": "Are you sure you want to delete Product Mark {{ id }}?"
+      },
+      "detail": {
+        "title": "Product Mark"
+      },
+      "name": "Name",
+      "description": "Description",
+      "companyID": "Company ID",
+      "product": "Product"
+    }
+  },
+  "mooinbaseApp": {
+    "mooinbaseProductMark": {
+      "created": "A new Product Mark is created with identifier {{ param }}",
+      "updated": "A Product Mark is updated with identifier {{ param }}",
+      "deleted": "A Product Mark is deleted with identifier {{ param }}"
+    }
+  }
+}

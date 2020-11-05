@@ -1,0 +1,32 @@
+{
+  "mooingatewayApp": {
+    "mooincompaniesEmployeePayment": {
+      "home": {
+        "title": "Employee Payments",
+        "createLabel": "Create a new Employee Payment",
+        "createOrEditLabel": "Create or edit a Employee Payment",
+        "notFound": "No Employee Payments found"
+      },
+      "delete": {
+        "question": "Are you sure you want to delete Employee Payment {{ id }}?"
+      },
+      "detail": {
+        "title": "Employee Payment"
+      },
+      "details": "Details",
+      "amount": "Amount",
+      "paymentDate": "Payment Date",
+      "fromDate": "From Date",
+      "toDate": "To Date",
+      "imageJustif": "Image Justif",
+      "employee": "Employee"
+    }
+  },
+  "mooincompaniesApp": {
+    "mooincompaniesEmployeePayment": {
+      "created": "A new Employee Payment is created with identifier {{ param }}",
+      "updated": "A Employee Payment is updated with identifier {{ param }}",
+      "deleted": "A Employee Payment is deleted with identifier {{ param }}"
+    }
+  }
+}

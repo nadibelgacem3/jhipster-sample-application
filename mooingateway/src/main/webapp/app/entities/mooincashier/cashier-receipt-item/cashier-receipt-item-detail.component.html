@@ -1,0 +1,58 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="cashierReceiptItem">
+            <h2><span jhiTranslate="mooingatewayApp.mooincashierCashierReceiptItem.detail.title">Cashier Receipt Item</span> {{ cashierReceiptItem.id }}</h2>
+
+            <hr>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="mooingatewayApp.mooincashierCashierReceiptItem.quantity">Quantity</span></dt>
+                <dd>
+                    <span>{{ cashierReceiptItem.quantity }}</span>
+                </dd>
+                <dt><span jhiTranslate="mooingatewayApp.mooincashierCashierReceiptItem.discountRate">Discount Rate</span></dt>
+                <dd>
+                    <span>{{ cashierReceiptItem.discountRate }}</span>
+                </dd>
+                <dt><span jhiTranslate="mooingatewayApp.mooincashierCashierReceiptItem.totalHT">Total HT</span></dt>
+                <dd>
+                    <span>{{ cashierReceiptItem.totalHT }}</span>
+                </dd>
+                <dt><span jhiTranslate="mooingatewayApp.mooincashierCashierReceiptItem.totalTVA">Total TVA</span></dt>
+                <dd>
+                    <span>{{ cashierReceiptItem.totalTVA }}</span>
+                </dd>
+                <dt><span jhiTranslate="mooingatewayApp.mooincashierCashierReceiptItem.totaTTC">Tota TTC</span></dt>
+                <dd>
+                    <span>{{ cashierReceiptItem.totaTTC }}</span>
+                </dd>
+                <dt><span jhiTranslate="mooingatewayApp.mooincashierCashierReceiptItem.cashierProduct">Cashier Product</span></dt>
+                <dd>
+                    <div *ngIf="cashierReceiptItem.cashierProduct">
+                        <a [routerLink]="['/cashier-product', cashierReceiptItem.cashierProduct?.id, 'view']">{{ cashierReceiptItem.cashierProduct?.id }}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="mooingatewayApp.mooincashierCashierReceiptItem.cashierReceipt">Cashier Receipt</span></dt>
+                <dd>
+                    <div *ngIf="cashierReceiptItem.cashierReceipt">
+                        <a [routerLink]="['/cashier-receipt', cashierReceiptItem.cashierReceipt?.id, 'view']">{{ cashierReceiptItem.cashierReceipt?.id }}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/cashier-receipt-item', cashierReceiptItem.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

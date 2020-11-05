@@ -1,0 +1,52 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="companyModule">
+            <h2><span jhiTranslate="mooingatewayApp.mooincompaniesCompanyModule.detail.title">Company Module</span> {{ companyModule.id }}</h2>
+
+            <hr>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="mooingatewayApp.mooincompaniesCompanyModule.name">Name</span></dt>
+                <dd>
+                    <span>{{ companyModule.name }}</span>
+                </dd>
+                <dt><span jhiTranslate="mooingatewayApp.mooincompaniesCompanyModule.activatedAt">Activated At</span></dt>
+                <dd>
+                    <span>{{ companyModule.activatedAt }}</span>
+                </dd>
+                <dt><span jhiTranslate="mooingatewayApp.mooincompaniesCompanyModule.activatedUntil">Activated Until</span></dt>
+                <dd>
+                    <span>{{ companyModule.activatedUntil }}</span>
+                </dd>
+                <dt><span jhiTranslate="mooingatewayApp.mooincompaniesCompanyModule.isActivated">Is Activated</span></dt>
+                <dd>
+                    <span>{{ companyModule.isActivated }}</span>
+                </dd>
+                <dt><span jhiTranslate="mooingatewayApp.mooincompaniesCompanyModule.price">Price</span></dt>
+                <dd>
+                    <span>{{ companyModule.price }}</span>
+                </dd>
+                <dt><span jhiTranslate="mooingatewayApp.mooincompaniesCompanyModule.company">Company</span></dt>
+                <dd>
+                    <div *ngIf="companyModule.company">
+                        <a [routerLink]="['/company', companyModule.company?.id, 'view']">{{ companyModule.company?.id }}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/company-module', companyModule.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

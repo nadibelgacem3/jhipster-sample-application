@@ -1,0 +1,64 @@
+{
+  "name": "CompanyBillPaymentItem",
+  "fields": [
+    {
+      "fieldName": "quantity",
+      "fieldType": "BigDecimal",
+      "fieldValidateRules": ["min"],
+      "fieldValidateRulesMin": "0"
+    },
+    {
+      "fieldName": "discountRate",
+      "fieldType": "Integer",
+      "fieldValidateRules": ["min"],
+      "fieldValidateRulesMin": "0"
+    },
+    {
+      "fieldName": "totalHT",
+      "fieldType": "BigDecimal",
+      "fieldValidateRules": ["min"],
+      "fieldValidateRulesMin": "0"
+    },
+    {
+      "fieldName": "totalTVA",
+      "fieldType": "BigDecimal",
+      "fieldValidateRules": ["min"],
+      "fieldValidateRulesMin": "0"
+    },
+    {
+      "fieldName": "totaTTC",
+      "fieldType": "BigDecimal",
+      "fieldValidateRules": ["min"],
+      "fieldValidateRulesMin": "0"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "companyBillPayment",
+      "otherEntityRelationshipName": "companyBillPaymentItem",
+      "relationshipName": "companyBillPayment",
+      "otherEntityField": "id"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "companyModule",
+      "otherEntityRelationshipName": "companyBillPaymentItem",
+      "relationshipName": "companyModule",
+      "otherEntityField": "id"
+    }
+  ],
+  "changelogDate": "20201105125821",
+  "javadoc": "CompanyBillPaymentItem entity.\\n@author The Moo3in team.",
+  "entityTableName": "company_bill_payment_item",
+  "dto": "no",
+  "pagination": "pagination",
+  "service": "serviceClass",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": ["mooingateway", "mooincompanies"],
+  "microserviceName": "mooincompanies"
+}

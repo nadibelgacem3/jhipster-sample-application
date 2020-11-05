@@ -1,0 +1,38 @@
+{
+  "mooingatewayApp": {
+    "mooinbaseQuote": {
+      "home": {
+        "title": "Quotes",
+        "createLabel": "Create a new Quote",
+        "createOrEditLabel": "Create or edit a Quote",
+        "notFound": "No Quotes found"
+      },
+      "delete": {
+        "question": "Are you sure you want to delete Quote {{ id }}?"
+      },
+      "detail": {
+        "title": "Quote"
+      },
+      "number": "Number",
+      "reference": "Reference",
+      "status": "Status",
+      "type": "Type",
+      "totalHT": "Total HT",
+      "totalTVA": "Total TVA",
+      "totaTTC": "Tota TTC",
+      "date": "Date",
+      "dueDate": "Due Date",
+      "isConverted": "Is Converted",
+      "companyID": "Company ID",
+      "quoteitem": "Quoteitem",
+      "tiers": "Tiers"
+    }
+  },
+  "mooinbaseApp": {
+    "mooinbaseQuote": {
+      "created": "A new Quote is created with identifier {{ param }}",
+      "updated": "A Quote is updated with identifier {{ param }}",
+      "deleted": "A Quote is deleted with identifier {{ param }}"
+    }
+  }
+}

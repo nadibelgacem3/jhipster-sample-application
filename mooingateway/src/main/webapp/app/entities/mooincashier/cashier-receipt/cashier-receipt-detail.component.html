@@ -1,0 +1,82 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="cashierReceipt">
+            <h2><span jhiTranslate="mooingatewayApp.mooincashierCashierReceipt.detail.title">Cashier Receipt</span> {{ cashierReceipt.id }}</h2>
+
+            <hr>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="mooingatewayApp.mooincashierCashierReceipt.number">Number</span></dt>
+                <dd>
+                    <span>{{ cashierReceipt.number }}</span>
+                </dd>
+                <dt><span jhiTranslate="mooingatewayApp.mooincashierCashierReceipt.reference">Reference</span></dt>
+                <dd>
+                    <span>{{ cashierReceipt.reference }}</span>
+                </dd>
+                <dt><span jhiTranslate="mooingatewayApp.mooincashierCashierReceipt.status">Status</span></dt>
+                <dd>
+                    <span jhiTranslate="{{ 'mooingatewayApp.CashierReceiptStatusEnum.' + cashierReceipt.status }}">{{ cashierReceipt.status }}</span>
+                </dd>
+                <dt><span jhiTranslate="mooingatewayApp.mooincashierCashierReceipt.totalHT">Total HT</span></dt>
+                <dd>
+                    <span>{{ cashierReceipt.totalHT }}</span>
+                </dd>
+                <dt><span jhiTranslate="mooingatewayApp.mooincashierCashierReceipt.totalTVA">Total TVA</span></dt>
+                <dd>
+                    <span>{{ cashierReceipt.totalTVA }}</span>
+                </dd>
+                <dt><span jhiTranslate="mooingatewayApp.mooincashierCashierReceipt.totaTTC">Tota TTC</span></dt>
+                <dd>
+                    <span>{{ cashierReceipt.totaTTC }}</span>
+                </dd>
+                <dt><span jhiTranslate="mooingatewayApp.mooincashierCashierReceipt.date">Date</span></dt>
+                <dd>
+                    <span>{{ cashierReceipt.date }}</span>
+                </dd>
+                <dt><span jhiTranslate="mooingatewayApp.mooincashierCashierReceipt.dueDate">Due Date</span></dt>
+                <dd>
+                    <span>{{ cashierReceipt.dueDate }}</span>
+                </dd>
+                <dt><span jhiTranslate="mooingatewayApp.mooincashierCashierReceipt.isConverted">Is Converted</span></dt>
+                <dd>
+                    <span>{{ cashierReceipt.isConverted }}</span>
+                </dd>
+                <dt><span jhiTranslate="mooingatewayApp.mooincashierCashierReceipt.withTVA">With TVA</span></dt>
+                <dd>
+                    <span>{{ cashierReceipt.withTVA }}</span>
+                </dd>
+                <dt><span jhiTranslate="mooingatewayApp.mooincashierCashierReceipt.withTax">With Tax</span></dt>
+                <dd>
+                    <span>{{ cashierReceipt.withTax }}</span>
+                </dd>
+                <dt><span jhiTranslate="mooingatewayApp.mooincashierCashierReceipt.cashier">Cashier</span></dt>
+                <dd>
+                    <div *ngIf="cashierReceipt.cashier">
+                        <a [routerLink]="['/cashier', cashierReceipt.cashier?.id, 'view']">{{ cashierReceipt.cashier?.id }}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="mooingatewayApp.mooincashierCashierReceipt.cashierCostumer">Cashier Costumer</span></dt>
+                <dd>
+                    <div *ngIf="cashierReceipt.cashierCostumer">
+                        <a [routerLink]="['/cashier-costumer', cashierReceipt.cashierCostumer?.id, 'view']">{{ cashierReceipt.cashierCostumer?.id }}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/cashier-receipt', cashierReceipt.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

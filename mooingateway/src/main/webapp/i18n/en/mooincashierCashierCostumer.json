@@ -1,0 +1,35 @@
+{
+  "mooingatewayApp": {
+    "mooincashierCashierCostumer": {
+      "home": {
+        "title": "Cashier Costumers",
+        "createLabel": "Create a new Cashier Costumer",
+        "createOrEditLabel": "Create or edit a Cashier Costumer",
+        "notFound": "No Cashier Costumers found"
+      },
+      "delete": {
+        "question": "Are you sure you want to delete Cashier Costumer {{ id }}?"
+      },
+      "detail": {
+        "title": "Cashier Costumer"
+      },
+      "reference": "Reference",
+      "firstName": "First Name",
+      "lastName": "Last Name",
+      "phone1": "Phone 1",
+      "phone2": "Phone 2",
+      "image": "Image",
+      "email": "Email",
+      "cashierLocation": "Cashier Location",
+      "cashierReceipt": "Cashier Receipt",
+      "cashier": "Cashier"
+    }
+  },
+  "mooincashierApp": {
+    "mooincashierCashierCostumer": {
+      "created": "A new Cashier Costumer is created with identifier {{ param }}",
+      "updated": "A Cashier Costumer is updated with identifier {{ param }}",
+      "deleted": "A Cashier Costumer is deleted with identifier {{ param }}"
+    }
+  }
+}

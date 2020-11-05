@@ -1,0 +1,68 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="cashierAppro">
+            <h2><span jhiTranslate="mooingatewayApp.mooincashierCashierAppro.detail.title">Cashier Appro</span> {{ cashierAppro.id }}</h2>
+
+            <hr>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="mooingatewayApp.mooincashierCashierAppro.number">Number</span></dt>
+                <dd>
+                    <span>{{ cashierAppro.number }}</span>
+                </dd>
+                <dt><span jhiTranslate="mooingatewayApp.mooincashierCashierAppro.status">Status</span></dt>
+                <dd>
+                    <span jhiTranslate="{{ 'mooingatewayApp.CashierApproStatusEnum.' + cashierAppro.status }}">{{ cashierAppro.status }}</span>
+                </dd>
+                <dt><span jhiTranslate="mooingatewayApp.mooincashierCashierAppro.totalHT">Total HT</span></dt>
+                <dd>
+                    <span>{{ cashierAppro.totalHT }}</span>
+                </dd>
+                <dt><span jhiTranslate="mooingatewayApp.mooincashierCashierAppro.totalTVA">Total TVA</span></dt>
+                <dd>
+                    <span>{{ cashierAppro.totalTVA }}</span>
+                </dd>
+                <dt><span jhiTranslate="mooingatewayApp.mooincashierCashierAppro.totaTTC">Tota TTC</span></dt>
+                <dd>
+                    <span>{{ cashierAppro.totaTTC }}</span>
+                </dd>
+                <dt><span jhiTranslate="mooingatewayApp.mooincashierCashierAppro.date">Date</span></dt>
+                <dd>
+                    <span>{{ cashierAppro.date }}</span>
+                </dd>
+                <dt><span jhiTranslate="mooingatewayApp.mooincashierCashierAppro.isConverted">Is Converted</span></dt>
+                <dd>
+                    <span>{{ cashierAppro.isConverted }}</span>
+                </dd>
+                <dt><span jhiTranslate="mooingatewayApp.mooincashierCashierAppro.withTVA">With TVA</span></dt>
+                <dd>
+                    <span>{{ cashierAppro.withTVA }}</span>
+                </dd>
+                <dt><span jhiTranslate="mooingatewayApp.mooincashierCashierAppro.withTax">With Tax</span></dt>
+                <dd>
+                    <span>{{ cashierAppro.withTax }}</span>
+                </dd>
+                <dt><span jhiTranslate="mooingatewayApp.mooincashierCashierAppro.cashier">Cashier</span></dt>
+                <dd>
+                    <div *ngIf="cashierAppro.cashier">
+                        <a [routerLink]="['/cashier', cashierAppro.cashier?.id, 'view']">{{ cashierAppro.cashier?.id }}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/cashier-appro', cashierAppro.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

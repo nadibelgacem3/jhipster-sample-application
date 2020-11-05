@@ -1,0 +1,138 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+            <h2 id="jhi-transaction-comp-heading" jhiTranslate="mooingatewayApp.mooincompaniesTransactionComp.home.createOrEditLabel">Create or edit a Transaction Comp</h2>
+
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+
+                <div class="form-group" [hidden]="!editForm.get('id')!.value">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id" formControlName="id" readonly />
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="mooingatewayApp.mooincompaniesTransactionComp.number" for="field_number">Number</label>
+                    <input type="text" class="form-control" name="number" id="field_number"
+                           formControlName="number"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="mooingatewayApp.mooincompaniesTransactionComp.details" for="field_details">Details</label>
+                    <input type="text" class="form-control" name="details" id="field_details"
+                           formControlName="details"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="mooingatewayApp.mooincompaniesTransactionComp.type" for="field_type">Type</label>
+                    <select class="form-control" name="type" formControlName="type" id="field_type">
+                        <option value="DEPENSE">{{ 'mooingatewayApp.TransactionCompTypeEnum.DEPENSE' | translate }}</option>
+                        <option value="RECETTE">{{ 'mooingatewayApp.TransactionCompTypeEnum.RECETTE' | translate }}</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="mooingatewayApp.mooincompaniesTransactionComp.paymentMethod" for="field_paymentMethod">Payment Method</label>
+                    <select class="form-control" name="paymentMethod" formControlName="paymentMethod" id="field_paymentMethod">
+                        <option value="CREDIT_CARD">{{ 'mooingatewayApp.TransactionCompPaymentMethod.CREDIT_CARD' | translate }}</option>
+                        <option value="CASH">{{ 'mooingatewayApp.TransactionCompPaymentMethod.CASH' | translate }}</option>
+                        <option value="BANK_CHECK">{{ 'mooingatewayApp.TransactionCompPaymentMethod.BANK_CHECK' | translate }}</option>
+                        <option value="BANK_TRAIT">{{ 'mooingatewayApp.TransactionCompPaymentMethod.BANK_TRAIT' | translate }}</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="mooingatewayApp.mooincompaniesTransactionComp.withTVA" for="field_withTVA">With TVA</label>
+                    <input type="checkbox" class="form-control" name="withTVA" id="field_withTVA"
+                           formControlName="withTVA"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="mooingatewayApp.mooincompaniesTransactionComp.totalHT" for="field_totalHT">Total HT</label>
+                    <input type="number" class="form-control" name="totalHT" id="field_totalHT"
+                           formControlName="totalHT"/>
+                    <div *ngIf="editForm.get('totalHT')!.invalid && (editForm.get('totalHT')!.dirty || editForm.get('totalHT')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('totalHT')?.errors?.min" jhiTranslate="entity.validation.min" [translateValues]="{ min: 0 }">
+                            This field should be at least 0.
+                        </small>
+                        <small class="form-text text-danger"
+                            [hidden]="!editForm.get('totalHT')?.errors?.number" jhiTranslate="entity.validation.number">
+                            This field should be a number.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="mooingatewayApp.mooincompaniesTransactionComp.totalTVA" for="field_totalTVA">Total TVA</label>
+                    <input type="number" class="form-control" name="totalTVA" id="field_totalTVA"
+                           formControlName="totalTVA"/>
+                    <div *ngIf="editForm.get('totalTVA')!.invalid && (editForm.get('totalTVA')!.dirty || editForm.get('totalTVA')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('totalTVA')?.errors?.min" jhiTranslate="entity.validation.min" [translateValues]="{ min: 0 }">
+                            This field should be at least 0.
+                        </small>
+                        <small class="form-text text-danger"
+                            [hidden]="!editForm.get('totalTVA')?.errors?.number" jhiTranslate="entity.validation.number">
+                            This field should be a number.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="mooingatewayApp.mooincompaniesTransactionComp.totaTTC" for="field_totaTTC">Tota TTC</label>
+                    <input type="number" class="form-control" name="totaTTC" id="field_totaTTC"
+                           formControlName="totaTTC"/>
+                    <div *ngIf="editForm.get('totaTTC')!.invalid && (editForm.get('totaTTC')!.dirty || editForm.get('totaTTC')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('totaTTC')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('totaTTC')?.errors?.min" jhiTranslate="entity.validation.min" [translateValues]="{ min: 0 }">
+                            This field should be at least 0.
+                        </small>
+                        <small class="form-text text-danger"
+                            [hidden]="!editForm.get('totaTTC')?.errors?.number" jhiTranslate="entity.validation.number">
+                            This field should be a number.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="mooingatewayApp.mooincompaniesTransactionComp.date" for="field_date">Date</label>
+                    <div class="input-group">
+                        <input id="field_date" type="text" class="form-control" name="date" ngbDatepicker #dateDp="ngbDatepicker" formControlName="date"/>
+                        <span class="input-group-append">
+                            <button type="button" class="btn btn-secondary" (click)="dateDp.toggle()"><fa-icon icon="calendar-alt"></fa-icon></button>
+                        </span>
+                    </div>
+                    <div *ngIf="editForm.get('date')!.invalid && (editForm.get('date')!.dirty || editForm.get('date')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('date')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="mooingatewayApp.mooincompaniesTransactionComp.company" for="field_company">Company</label>
+                    <select class="form-control" id="field_company" name="company" formControlName="company">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="companyOption.id === editForm.get('company')!.value?.id ? editForm.get('company')!.value : companyOption" *ngFor="let companyOption of companies; trackBy: trackById">{{ companyOption.id }}</option>
+                    </select>
+                </div>
+            </div>
+
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary" (click)="previousState()">
+                    <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+
+                <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

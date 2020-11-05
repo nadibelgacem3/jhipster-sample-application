@@ -1,0 +1,40 @@
+{
+  "mooingatewayApp": {
+    "mooincompaniesEmployee": {
+      "home": {
+        "title": "Employees",
+        "createLabel": "Create a new Employee",
+        "createOrEditLabel": "Create or edit a Employee",
+        "notFound": "No Employees found"
+      },
+      "delete": {
+        "question": "Are you sure you want to delete Employee {{ id }}?"
+      },
+      "detail": {
+        "title": "Employee"
+      },
+      "firstName": "First Name",
+      "lastName": "Last Name",
+      "jobTitle": "Job Title",
+      "gender": "Gender",
+      "dateOfborth": "Date Ofborth",
+      "dateOfRecruitment": "Date Of Recruitment",
+      "image": "Image",
+      "email": "Email",
+      "phoneNumber": "Phone Number",
+      "salary": "Salary",
+      "commissionPct": "Commission Pct",
+      "rates": "Rates",
+      "employeeLocation": "Employee Location",
+      "employeePayment": "Employee Payment",
+      "company": "Company"
+    }
+  },
+  "mooincompaniesApp": {
+    "mooincompaniesEmployee": {
+      "created": "A new Employee is created with identifier {{ param }}",
+      "updated": "A Employee is updated with identifier {{ param }}",
+      "deleted": "A Employee is deleted with identifier {{ param }}"
+    }
+  }
+}

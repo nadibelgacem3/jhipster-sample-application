@@ -1,0 +1,54 @@
+{
+  "name": "EmployeePayment",
+  "fields": [
+    {
+      "fieldName": "details",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "amount",
+      "fieldType": "BigDecimal",
+      "fieldValidateRules": ["required", "min"],
+      "fieldValidateRulesMin": "0"
+    },
+    {
+      "fieldName": "paymentDate",
+      "fieldType": "Instant"
+    },
+    {
+      "fieldName": "fromDate",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "toDate",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "imageJustif",
+      "fieldType": "byte[]",
+      "fieldTypeBlobContent": "image"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "employee",
+      "otherEntityRelationshipName": "employeePayment",
+      "relationshipName": "employee",
+      "otherEntityField": "id"
+    }
+  ],
+  "changelogDate": "20201105130021",
+  "javadoc": "EmployeePayment entity.\\n@author The Moo3in team.",
+  "entityTableName": "employee_payment",
+  "dto": "no",
+  "pagination": "pagination",
+  "service": "serviceClass",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": ["mooingateway", "mooincompanies"],
+  "microserviceName": "mooincompanies"
+}

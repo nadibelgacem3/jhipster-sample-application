@@ -1,0 +1,11 @@
+id;details;amount;payment_date;from_date;to_date;image_justif;image_justif_content_type
+1;Estonia parsing;88261;2020-11-04T17:11:48;2020-11-05;2020-11-05;../fake-data/blob/hipster.png;image/png
+2;array;58733;2020-11-04T19:05:21;2020-11-05;2020-11-05;../fake-data/blob/hipster.png;image/png
+3;Advanced;19565;2020-11-05T06:24:32;2020-11-05;2020-11-05;../fake-data/blob/hipster.png;image/png
+4;Auto Loan Account;9310;2020-11-04T21:05:05;2020-11-04;2020-11-04;../fake-data/blob/hipster.png;image/png
+5;Kwacha Corner;36231;2020-11-04T19:35:03;2020-11-04;2020-11-04;../fake-data/blob/hipster.png;image/png
+6;paradigms invoice;99592;2020-11-05T07:58:00;2020-11-04;2020-11-05;../fake-data/blob/hipster.png;image/png
+7;SCSI;99567;2020-11-05T07:15:46;2020-11-04;2020-11-04;../fake-data/blob/hipster.png;image/png
+8;Strategist East Caribbean Dollar;67981;2020-11-04T17:12:28;2020-11-04;2020-11-04;../fake-data/blob/hipster.png;image/png
+9;Granite;96731;2020-11-04T13:41:30;2020-11-05;2020-11-05;../fake-data/blob/hipster.png;image/png
+10;access Operative digital;10152;2020-11-05T06:43:07;2020-11-04;2020-11-04;../fake-data/blob/hipster.png;image/png

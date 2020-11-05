@@ -1,0 +1,68 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="tiersBankCheck">
+            <h2><span jhiTranslate="mooingatewayApp.mooinbaseTiersBankCheck.detail.title">Tiers Bank Check</span> {{ tiersBankCheck.id }}</h2>
+
+            <hr>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="mooingatewayApp.mooinbaseTiersBankCheck.name">Name</span></dt>
+                <dd>
+                    <span>{{ tiersBankCheck.name }}</span>
+                </dd>
+                <dt><span jhiTranslate="mooingatewayApp.mooinbaseTiersBankCheck.bankName">Bank Name</span></dt>
+                <dd>
+                    <span>{{ tiersBankCheck.bankName }}</span>
+                </dd>
+                <dt><span jhiTranslate="mooingatewayApp.mooinbaseTiersBankCheck.number">Number</span></dt>
+                <dd>
+                    <span>{{ tiersBankCheck.number }}</span>
+                </dd>
+                <dt><span jhiTranslate="mooingatewayApp.mooinbaseTiersBankCheck.amount">Amount</span></dt>
+                <dd>
+                    <span>{{ tiersBankCheck.amount }}</span>
+                </dd>
+                <dt><span jhiTranslate="mooingatewayApp.mooinbaseTiersBankCheck.dueDate">Due Date</span></dt>
+                <dd>
+                    <span>{{ tiersBankCheck.dueDate }}</span>
+                </dd>
+                <dt><span jhiTranslate="mooingatewayApp.mooinbaseTiersBankCheck.bankCheckType">Bank Check Type</span></dt>
+                <dd>
+                    <span jhiTranslate="{{ 'mooingatewayApp.BankCheckType.' + tiersBankCheck.bankCheckType }}">{{ tiersBankCheck.bankCheckType }}</span>
+                </dd>
+                <dt><span jhiTranslate="mooingatewayApp.mooinbaseTiersBankCheck.bankCheckKind">Bank Check Kind</span></dt>
+                <dd>
+                    <span jhiTranslate="{{ 'mooingatewayApp.BankCheckKind.' + tiersBankCheck.bankCheckKind }}">{{ tiersBankCheck.bankCheckKind }}</span>
+                </dd>
+                <dt><span jhiTranslate="mooingatewayApp.mooinbaseTiersBankCheck.swift">Swift</span></dt>
+                <dd>
+                    <span>{{ tiersBankCheck.swift }}</span>
+                </dd>
+                <dt><span jhiTranslate="mooingatewayApp.mooinbaseTiersBankCheck.type">Type</span></dt>
+                <dd>
+                    <span>{{ tiersBankCheck.type }}</span>
+                </dd>
+                <dt><span jhiTranslate="mooingatewayApp.mooinbaseTiersBankCheck.tiers">Tiers</span></dt>
+                <dd>
+                    <div *ngIf="tiersBankCheck.tiers">
+                        <a [routerLink]="['/tiers', tiersBankCheck.tiers?.id, 'view']">{{ tiersBankCheck.tiers?.id }}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/tiers-bank-check', tiersBankCheck.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

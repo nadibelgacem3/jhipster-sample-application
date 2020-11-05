@@ -1,0 +1,59 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="tiersLocation">
+            <h2><span jhiTranslate="mooingatewayApp.mooinbaseTiersLocation.detail.title">Tiers Location</span> {{ tiersLocation.id }}</h2>
+
+            <hr>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="mooingatewayApp.mooinbaseTiersLocation.localNumber">Local Number</span></dt>
+                <dd>
+                    <span>{{ tiersLocation.localNumber }}</span>
+                </dd>
+                <dt><span jhiTranslate="mooingatewayApp.mooinbaseTiersLocation.streetAddress">Street Address</span></dt>
+                <dd>
+                    <span>{{ tiersLocation.streetAddress }}</span>
+                </dd>
+                <dt><span jhiTranslate="mooingatewayApp.mooinbaseTiersLocation.postalCode">Postal Code</span></dt>
+                <dd>
+                    <span>{{ tiersLocation.postalCode }}</span>
+                </dd>
+                <dt><span jhiTranslate="mooingatewayApp.mooinbaseTiersLocation.city">City</span></dt>
+                <dd>
+                    <span>{{ tiersLocation.city }}</span>
+                </dd>
+                <dt><span jhiTranslate="mooingatewayApp.mooinbaseTiersLocation.stateProvince">State Province</span></dt>
+                <dd>
+                    <span>{{ tiersLocation.stateProvince }}</span>
+                </dd>
+                <dt><span jhiTranslate="mooingatewayApp.mooinbaseTiersLocation.countryName">Country Name</span></dt>
+                <dd>
+                    <span>{{ tiersLocation.countryName }}</span>
+                </dd>
+                <dt><span jhiTranslate="mooingatewayApp.mooinbaseTiersLocation.flag">Flag</span></dt>
+                <dd>
+                    <div *ngIf="tiersLocation.flag">
+                        <a (click)="openFile(tiersLocation.flagContentType, tiersLocation.flag)">
+                            <img [src]="'data:' + tiersLocation.flagContentType + ';base64,' + tiersLocation.flag" style="max-width: 100%;" alt="tiersLocation image"/>
+                        </a>
+                        {{ tiersLocation.flagContentType }}, {{ byteSize(tiersLocation.flag) }}
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/tiers-location', tiersLocation.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

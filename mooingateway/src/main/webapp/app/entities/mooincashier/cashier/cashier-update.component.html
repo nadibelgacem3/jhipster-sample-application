@@ -1,0 +1,88 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+            <h2 id="jhi-cashier-heading" jhiTranslate="mooingatewayApp.mooincashierCashier.home.createOrEditLabel">Create or edit a Cashier</h2>
+
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+
+                <div class="form-group" [hidden]="!editForm.get('id')!.value">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id" formControlName="id" readonly />
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="mooingatewayApp.mooincashierCashier.name" for="field_name">Name</label>
+                    <input type="text" class="form-control" name="name" id="field_name"
+                           formControlName="name"/>
+                    <div *ngIf="editForm.get('name')!.invalid && (editForm.get('name')!.dirty || editForm.get('name')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('name')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="mooingatewayApp.mooincashierCashier.withTicket" for="field_withTicket">With Ticket</label>
+                    <input type="checkbox" class="form-control" name="withTicket" id="field_withTicket"
+                           formControlName="withTicket"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="mooingatewayApp.mooincashierCashier.withTVA" for="field_withTVA">With TVA</label>
+                    <input type="checkbox" class="form-control" name="withTVA" id="field_withTVA"
+                           formControlName="withTVA"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="mooingatewayApp.mooincashierCashier.withTax" for="field_withTax">With Tax</label>
+                    <input type="checkbox" class="form-control" name="withTax" id="field_withTax"
+                           formControlName="withTax"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="mooingatewayApp.mooincashierCashier.withAppro" for="field_withAppro">With Appro</label>
+                    <input type="checkbox" class="form-control" name="withAppro" id="field_withAppro"
+                           formControlName="withAppro"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="mooingatewayApp.mooincashierCashier.themeColor" for="field_themeColor">Theme Color</label>
+                    <input type="text" class="form-control" name="themeColor" id="field_themeColor"
+                           formControlName="themeColor"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="mooingatewayApp.mooincashierCashier.isActivated" for="field_isActivated">Is Activated</label>
+                    <input type="checkbox" class="form-control" name="isActivated" id="field_isActivated"
+                           formControlName="isActivated"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="mooingatewayApp.mooincashierCashier.companyID" for="field_companyID">Company ID</label>
+                    <input type="number" class="form-control" name="companyID" id="field_companyID"
+                           formControlName="companyID"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="mooingatewayApp.mooincashierCashier.cashierLocation" for="field_cashierLocation">Cashier Location</label>
+                    <select class="form-control" id="field_cashierLocation" name="cashierLocation" formControlName="cashierLocation">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="cashierLocationOption.id === editForm.get('cashierLocation')!.value?.id ? editForm.get('cashierLocation')!.value : cashierLocationOption" *ngFor="let cashierLocationOption of cashierlocations; trackBy: trackById">{{ cashierLocationOption.id }}</option>
+                    </select>
+                </div>
+            </div>
+
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary" (click)="previousState()">
+                    <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+
+                <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

@@ -1,0 +1,9 @@
+{
+  "mooingatewayApp": {
+    "BankCheckKind": {
+      "null": "",
+      "RECEIVED": "RECEIVED",
+      "SUBMITTED": "SUBMITTED"
+    }
+  }
+}

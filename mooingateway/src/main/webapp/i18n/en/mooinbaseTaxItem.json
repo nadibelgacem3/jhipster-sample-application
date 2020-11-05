@@ -1,0 +1,32 @@
+{
+  "mooingatewayApp": {
+    "mooinbaseTaxItem": {
+      "home": {
+        "title": "Tax Items",
+        "createLabel": "Create a new Tax Item",
+        "createOrEditLabel": "Create or edit a Tax Item",
+        "notFound": "No Tax Items found"
+      },
+      "delete": {
+        "question": "Are you sure you want to delete Tax Item {{ id }}?"
+      },
+      "detail": {
+        "title": "Tax Item"
+      },
+      "name": "Name",
+      "isValued": "Is Valued",
+      "isPercentage": "Is Percentage",
+      "value": "Value",
+      "companyID": "Company ID",
+      "taxID": "Tax ID",
+      "product": "Product"
+    }
+  },
+  "mooinbaseApp": {
+    "mooinbaseTaxItem": {
+      "created": "A new Tax Item is created with identifier {{ param }}",
+      "updated": "A Tax Item is updated with identifier {{ param }}",
+      "deleted": "A Tax Item is deleted with identifier {{ param }}"
+    }
+  }
+}

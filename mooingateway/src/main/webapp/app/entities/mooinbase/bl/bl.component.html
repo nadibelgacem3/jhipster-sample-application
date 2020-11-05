@@ -1,0 +1,97 @@
+<div>
+    <h2 id="page-heading">
+        <span jhiTranslate="mooingatewayApp.mooinbaseBL.home.title">BLS</span>
+
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-bl" [routerLink]="['/bl/new']">
+            <fa-icon icon="plus"></fa-icon>
+            <span  jhiTranslate="mooingatewayApp.mooinbaseBL.home.createLabel">
+            Create a new BL
+            </span>
+        </button>
+    </h2>
+
+    <jhi-alert-error></jhi-alert-error>
+
+    <jhi-alert></jhi-alert>
+
+    <div class="alert alert-warning" id="no-result" *ngIf="bLS?.length === 0">
+        <span jhiTranslate="mooingatewayApp.mooinbaseBL.home.notFound">No bLS found</span>
+    </div>
+
+    <div class="table-responsive" id="entities" *ngIf="bLS && bLS.length > 0">
+        <table class="table table-striped" aria-describedby="page-heading">
+            <thead>
+                <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" [callback]="loadPage.bind(this)">
+                    <th scope="col"  jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="number"><span jhiTranslate="mooingatewayApp.mooinbaseBL.number">Number</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="reference"><span jhiTranslate="mooingatewayApp.mooinbaseBL.reference">Reference</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="status"><span jhiTranslate="mooingatewayApp.mooinbaseBL.status">Status</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="type"><span jhiTranslate="mooingatewayApp.mooinbaseBL.type">Type</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="totalHT"><span jhiTranslate="mooingatewayApp.mooinbaseBL.totalHT">Total HT</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="totalTVA"><span jhiTranslate="mooingatewayApp.mooinbaseBL.totalTVA">Total TVA</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="totaTTC"><span jhiTranslate="mooingatewayApp.mooinbaseBL.totaTTC">Tota TTC</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="date"><span jhiTranslate="mooingatewayApp.mooinbaseBL.date">Date</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="dueDate"><span jhiTranslate="mooingatewayApp.mooinbaseBL.dueDate">Due Date</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="isConverted"><span jhiTranslate="mooingatewayApp.mooinbaseBL.isConverted">Is Converted</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="companyID"><span jhiTranslate="mooingatewayApp.mooinbaseBL.companyID">Company ID</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="tiers.id"><span jhiTranslate="mooingatewayApp.mooinbaseBL.tiers">Tiers</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let bL of bLS ;trackBy: trackId">
+                    <td><a [routerLink]="['/bl', bL.id, 'view']">{{ bL.id }}</a></td>
+                    <td>{{ bL.number }}</td>
+                    <td>{{ bL.reference }}</td>
+                    <td jhiTranslate="{{ 'mooingatewayApp.BLStatusEnum.' + bL.status }}">{{ bL.status }}</td>
+                    <td jhiTranslate="{{ 'mooingatewayApp.BLTypeEnum.' + bL.type }}">{{ bL.type }}</td>
+                    <td>{{ bL.totalHT }}</td>
+                    <td>{{ bL.totalTVA }}</td>
+                    <td>{{ bL.totaTTC }}</td>
+                    <td>{{ bL.date | date:'mediumDate' }}</td>
+                    <td>{{ bL.dueDate | date:'mediumDate' }}</td>
+                    <td>{{ bL.isConverted }}</td>
+                    <td>{{ bL.companyID }}</td>
+                    <td>
+                        <div *ngIf="bL.tiers">
+                            <a [routerLink]="['/tiers', bL.tiers?.id, 'view']" >{{ bL.tiers?.id }}</a>
+                        </div>
+                    </td>
+                    <td class="text-right">
+                        <div class="btn-group">
+                            <button type="submit"
+                                    [routerLink]="['/bl', bL.id, 'view']"
+                                    class="btn btn-info btn-sm">
+                                <fa-icon icon="eye"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                            </button>
+
+                            <button type="submit"
+                                    [routerLink]="['/bl', bL.id, 'edit']"
+                                    class="btn btn-primary btn-sm">
+                                <fa-icon icon="pencil-alt"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                            </button>
+
+                            <button type="submit" (click)="delete(bL)"
+                                    class="btn btn-danger btn-sm">
+                                <fa-icon icon="times"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div *ngIf="bLS && bLS.length > 0">
+        <div class="row justify-content-center">
+            <jhi-item-count [page]="page" [total]="totalItems" [itemsPerPage]="itemsPerPage"></jhi-item-count>
+        </div>
+
+        <div class="row justify-content-center">
+            <ngb-pagination [collectionSize]="totalItems" [(page)]="ngbPaginationPage" [pageSize]="itemsPerPage" [maxSize]="5" [rotate]="true" [boundaryLinks]="true" (pageChange)="loadPage($event)"></ngb-pagination>
+        </div>
+    </div>
+</div>

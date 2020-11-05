@@ -1,0 +1,35 @@
+{
+  "mooingatewayApp": {
+    "mooinbaseTiersBankCheck": {
+      "home": {
+        "title": "TiersBankChecks",
+        "createLabel": "Créer un nouveau Tiers Bank Check",
+        "createOrEditLabel": "Créer ou éditer un Tiers Bank Check",
+        "notFound": "Aucun Tiers Bank Check trouvé"
+      },
+      "delete": {
+        "question": "Etes-vous certain de vouloir supprimer le Tiers Bank Check {{ id }} ?"
+      },
+      "detail": {
+        "title": "Tiers Bank Check"
+      },
+      "name": "Name",
+      "bankName": "Bank Name",
+      "number": "Number",
+      "amount": "Amount",
+      "dueDate": "Due Date",
+      "bankCheckType": "Bank Check Type",
+      "bankCheckKind": "Bank Check Kind",
+      "swift": "Swift",
+      "type": "Type",
+      "tiers": "Tiers"
+    }
+  },
+  "mooinbaseApp": {
+    "mooinbaseTiersBankCheck": {
+      "created": "Un nouveau Tiers Bank Check a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Tiers Bank Check avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Tiers Bank Check avec l'identifiant {{ param }} a été supprimé"
+    }
+  }
+}

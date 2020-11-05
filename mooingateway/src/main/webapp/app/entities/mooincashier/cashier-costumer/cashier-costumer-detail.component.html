@@ -1,0 +1,71 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="cashierCostumer">
+            <h2><span jhiTranslate="mooingatewayApp.mooincashierCashierCostumer.detail.title">Cashier Costumer</span> {{ cashierCostumer.id }}</h2>
+
+            <hr>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="mooingatewayApp.mooincashierCashierCostumer.reference">Reference</span></dt>
+                <dd>
+                    <span>{{ cashierCostumer.reference }}</span>
+                </dd>
+                <dt><span jhiTranslate="mooingatewayApp.mooincashierCashierCostumer.firstName">First Name</span></dt>
+                <dd>
+                    <span>{{ cashierCostumer.firstName }}</span>
+                </dd>
+                <dt><span jhiTranslate="mooingatewayApp.mooincashierCashierCostumer.lastName">Last Name</span></dt>
+                <dd>
+                    <span>{{ cashierCostumer.lastName }}</span>
+                </dd>
+                <dt><span jhiTranslate="mooingatewayApp.mooincashierCashierCostumer.phone1">Phone 1</span></dt>
+                <dd>
+                    <span>{{ cashierCostumer.phone1 }}</span>
+                </dd>
+                <dt><span jhiTranslate="mooingatewayApp.mooincashierCashierCostumer.phone2">Phone 2</span></dt>
+                <dd>
+                    <span>{{ cashierCostumer.phone2 }}</span>
+                </dd>
+                <dt><span jhiTranslate="mooingatewayApp.mooincashierCashierCostumer.image">Image</span></dt>
+                <dd>
+                    <div *ngIf="cashierCostumer.image">
+                        <a (click)="openFile(cashierCostumer.imageContentType, cashierCostumer.image)">
+                            <img [src]="'data:' + cashierCostumer.imageContentType + ';base64,' + cashierCostumer.image" style="max-width: 100%;" alt="cashierCostumer image"/>
+                        </a>
+                        {{ cashierCostumer.imageContentType }}, {{ byteSize(cashierCostumer.image) }}
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="mooingatewayApp.mooincashierCashierCostumer.email">Email</span></dt>
+                <dd>
+                    <span>{{ cashierCostumer.email }}</span>
+                </dd>
+                <dt><span jhiTranslate="mooingatewayApp.mooincashierCashierCostumer.cashierLocation">Cashier Location</span></dt>
+                <dd>
+                    <div *ngIf="cashierCostumer.cashierLocation">
+                        <a [routerLink]="['/cashier-location', cashierCostumer.cashierLocation?.id, 'view']">{{ cashierCostumer.cashierLocation?.id }}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="mooingatewayApp.mooincashierCashierCostumer.cashier">Cashier</span></dt>
+                <dd>
+                    <div *ngIf="cashierCostumer.cashier">
+                        <a [routerLink]="['/cashier', cashierCostumer.cashier?.id, 'view']">{{ cashierCostumer.cashier?.id }}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/cashier-costumer', cashierCostumer.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

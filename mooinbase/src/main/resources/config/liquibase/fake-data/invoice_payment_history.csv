@@ -1,0 +1,11 @@
+id;details;amount;payment_date;payment_method;bank_checkor_trait_number;image_justif;image_justif_content_type
+1;Health;52279;2020-11-05T00:07:40;BANK_CHECK;USB;../fake-data/blob/hipster.png;image/png
+2;B2B;41801;2020-11-04T22:13:56;BANK_CHECK;Legacy utilize;../fake-data/blob/hipster.png;image/png
+3;Assistant;7961;2020-11-04T15:33:29;CASH;e-services;../fake-data/blob/hipster.png;image/png
+4;Direct integrate;13615;2020-11-05T04:42:59;CASH;Divide Toys;../fake-data/blob/hipster.png;image/png
+5;customized Movies IB;87787;2020-11-05T04:45:57;BANK_CHECK;Bhutan;../fake-data/blob/hipster.png;image/png
+6;Norway Convertible Marks;98306;2020-11-04T16:44:02;BANK_CHECK;Director;../fake-data/blob/hipster.png;image/png
+7;partnerships;81307;2020-11-05T01:56:27;BANK_TRAIT;Corporate Incredible Plastic Chicken override;../fake-data/blob/hipster.png;image/png
+8;Kina Customer;82823;2020-11-04T17:14:27;BANK_CHECK;paradigms Armenian Dram;../fake-data/blob/hipster.png;image/png
+9;lime paradigm;62572;2020-11-05T06:41:17;BANK_TRAIT;B2B Assimilated Tanzanian Shilling;../fake-data/blob/hipster.png;image/png
+10;Money Market Account Regional Future-proofed;35944;2020-11-04T23:10:13;BANK_CHECK;Auto Loan Account Intelligent;../fake-data/blob/hipster.png;image/png

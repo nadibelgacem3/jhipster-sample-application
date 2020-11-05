@@ -1,0 +1,169 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+            <h2 id="jhi-offer-heading" jhiTranslate="mooingatewayApp.mooinecommerceOffer.home.createOrEditLabel">Create or edit a Offer</h2>
+
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+
+                <div class="form-group" [hidden]="!editForm.get('id')!.value">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id" formControlName="id" readonly />
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="mooingatewayApp.mooinecommerceOffer.name" for="field_name">Name</label>
+                    <input type="text" class="form-control" name="name" id="field_name"
+                           formControlName="name"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="mooingatewayApp.mooinecommerceOffer.description" for="field_description">Description</label>
+                    <input type="text" class="form-control" name="description" id="field_description"
+                           formControlName="description"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="mooingatewayApp.mooinecommerceOffer.image" for="field_image">Image</label>
+                    <div>
+                        <img [src]="'data:' + editForm.get('imageContentType')!.value + ';base64,' + editForm.get('image')!.value" style="max-height: 100px;" *ngIf="editForm.get('image')!.value" alt="offer image"/>
+                        <div *ngIf="editForm.get('image')!.value" class="form-text text-danger clearfix">
+                            <span class="pull-left">{{ editForm.get('imageContentType')!.value }}, {{ byteSize(editForm.get('image')!.value) }}</span>
+                            <button type="button" (click)="clearInputImage('image', 'imageContentType', 'file_image')" class="btn btn-secondary btn-xs pull-right">
+                                <fa-icon icon="times"></fa-icon>
+                            </button>
+                        </div>
+                        <input type="file" id="file_image" (change)="setFileData($event, 'image', true)" accept="image/*" jhiTranslate="entity.action.addimage"/>
+                    </div>
+                    <input type="hidden" class="form-control" name="image" id="field_image"
+                           formControlName="image"/>
+                    <input type="hidden" class="form-control" name="imageContentType" id="field_imageContentType"
+                           formControlName="imageContentType" />
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="mooingatewayApp.mooinecommerceOffer.dateBegin" for="field_dateBegin">Date Begin</label>
+                    <div class="input-group">
+                        <input id="field_dateBegin" type="text" class="form-control" name="dateBegin" ngbDatepicker #dateBeginDp="ngbDatepicker" formControlName="dateBegin"/>
+                        <span class="input-group-append">
+                            <button type="button" class="btn btn-secondary" (click)="dateBeginDp.toggle()"><fa-icon icon="calendar-alt"></fa-icon></button>
+                        </span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="mooingatewayApp.mooinecommerceOffer.dateEnd" for="field_dateEnd">Date End</label>
+                    <div class="input-group">
+                        <input id="field_dateEnd" type="text" class="form-control" name="dateEnd" ngbDatepicker #dateEndDp="ngbDatepicker" formControlName="dateEnd"/>
+                        <span class="input-group-append">
+                            <button type="button" class="btn btn-secondary" (click)="dateEndDp.toggle()"><fa-icon icon="calendar-alt"></fa-icon></button>
+                        </span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="mooingatewayApp.mooinecommerceOffer.duration" for="field_duration">Duration</label>
+                    <input type="number" class="form-control" name="duration" id="field_duration"
+                           formControlName="duration"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="mooingatewayApp.mooinecommerceOffer.status" for="field_status">Status</label>
+                    <select class="form-control" name="status" formControlName="status" id="field_status">
+                        <option value="AVAILABLE">{{ 'mooingatewayApp.OfferStatus.AVAILABLE' | translate }}</option>
+                        <option value="OUT_OF_STOCK">{{ 'mooingatewayApp.OfferStatus.OUT_OF_STOCK' | translate }}</option>
+                        <option value="CLOSED">{{ 'mooingatewayApp.OfferStatus.CLOSED' | translate }}</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="mooingatewayApp.mooinecommerceOffer.productId" for="field_productId">Product Id</label>
+                    <input type="number" class="form-control" name="productId" id="field_productId"
+                           formControlName="productId"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="mooingatewayApp.mooinecommerceOffer.saleUnitPriceBeforeDiscount" for="field_saleUnitPriceBeforeDiscount">Sale Unit Price Before Discount</label>
+                    <input type="number" class="form-control" name="saleUnitPriceBeforeDiscount" id="field_saleUnitPriceBeforeDiscount"
+                           formControlName="saleUnitPriceBeforeDiscount"/>
+                    <div *ngIf="editForm.get('saleUnitPriceBeforeDiscount')!.invalid && (editForm.get('saleUnitPriceBeforeDiscount')!.dirty || editForm.get('saleUnitPriceBeforeDiscount')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('saleUnitPriceBeforeDiscount')?.errors?.min" jhiTranslate="entity.validation.min" [translateValues]="{ min: 0 }">
+                            This field should be at least 0.
+                        </small>
+                        <small class="form-text text-danger"
+                            [hidden]="!editForm.get('saleUnitPriceBeforeDiscount')?.errors?.number" jhiTranslate="entity.validation.number">
+                            This field should be a number.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="mooingatewayApp.mooinecommerceOffer.discountRate" for="field_discountRate">Discount Rate</label>
+                    <input type="number" class="form-control" name="discountRate" id="field_discountRate"
+                           formControlName="discountRate"/>
+                    <div *ngIf="editForm.get('discountRate')!.invalid && (editForm.get('discountRate')!.dirty || editForm.get('discountRate')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('discountRate')?.errors?.min" jhiTranslate="entity.validation.min" [translateValues]="{ min: 0 }">
+                            This field should be at least 0.
+                        </small>
+                        <small class="form-text text-danger"
+                            [hidden]="!editForm.get('discountRate')?.errors?.number" jhiTranslate="entity.validation.number">
+                            This field should be a number.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="mooingatewayApp.mooinecommerceOffer.saleUnitPriceAfterDiscount" for="field_saleUnitPriceAfterDiscount">Sale Unit Price After Discount</label>
+                    <input type="number" class="form-control" name="saleUnitPriceAfterDiscount" id="field_saleUnitPriceAfterDiscount"
+                           formControlName="saleUnitPriceAfterDiscount"/>
+                    <div *ngIf="editForm.get('saleUnitPriceAfterDiscount')!.invalid && (editForm.get('saleUnitPriceAfterDiscount')!.dirty || editForm.get('saleUnitPriceAfterDiscount')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('saleUnitPriceAfterDiscount')?.errors?.min" jhiTranslate="entity.validation.min" [translateValues]="{ min: 0 }">
+                            This field should be at least 0.
+                        </small>
+                        <small class="form-text text-danger"
+                            [hidden]="!editForm.get('saleUnitPriceAfterDiscount')?.errors?.number" jhiTranslate="entity.validation.number">
+                            This field should be a number.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="mooingatewayApp.mooinecommerceOffer.withTVA" for="field_withTVA">With TVA</label>
+                    <input type="checkbox" class="form-control" name="withTVA" id="field_withTVA"
+                           formControlName="withTVA"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="mooingatewayApp.mooinecommerceOffer.withTax" for="field_withTax">With Tax</label>
+                    <input type="checkbox" class="form-control" name="withTax" id="field_withTax"
+                           formControlName="withTax"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="mooingatewayApp.mooinecommerceOffer.isActivated" for="field_isActivated">Is Activated</label>
+                    <input type="checkbox" class="form-control" name="isActivated" id="field_isActivated"
+                           formControlName="isActivated"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="mooingatewayApp.mooinecommerceOffer.companyID" for="field_companyID">Company ID</label>
+                    <input type="number" class="form-control" name="companyID" id="field_companyID"
+                           formControlName="companyID"/>
+                </div>
+            </div>
+
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary" (click)="previousState()">
+                    <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+
+                <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

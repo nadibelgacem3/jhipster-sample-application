@@ -1,0 +1,116 @@
+{
+  "name": "Company",
+  "fields": [
+    {
+      "fieldName": "name",
+      "fieldType": "String",
+      "fieldValidateRules": ["required", "minlength"],
+      "fieldValidateRulesMinlength": "4"
+    },
+    {
+      "fieldName": "logo",
+      "fieldType": "byte[]",
+      "fieldTypeBlobContent": "image"
+    },
+    {
+      "fieldName": "phone1",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "phone2",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "fax",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "email1",
+      "fieldType": "String",
+      "fieldValidateRules": ["pattern"],
+      "fieldValidateRulesPattern": "^[^@\\s]+@[^@\\s]+\\.[^@\\s]+$"
+    },
+    {
+      "fieldName": "email2",
+      "fieldType": "String",
+      "fieldValidateRules": ["pattern"],
+      "fieldValidateRulesPattern": "^[^@\\s]+@[^@\\s]+\\.[^@\\s]+$"
+    },
+    {
+      "fieldName": "description",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "businessType",
+      "fieldType": "CompanyBusinessTypeEnum",
+      "fieldValues": "SARL,SUARL,PHYSIQUE,AUTRE"
+    },
+    {
+      "fieldName": "currencyUnit",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "currencyQuotient",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "commercialRegister",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "isActivated",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldName": "themeColor",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "facebook",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "linkedin",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "twitter",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "instagram",
+      "fieldType": "String"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "one-to-one",
+      "otherEntityName": "companyBankAccount",
+      "otherEntityRelationshipName": "company",
+      "relationshipName": "companyBankAccount",
+      "otherEntityField": "id",
+      "ownerSide": true
+    },
+    {
+      "relationshipType": "one-to-one",
+      "otherEntityName": "companyLocation",
+      "otherEntityRelationshipName": "company",
+      "relationshipName": "companyLocation",
+      "otherEntityField": "id",
+      "ownerSide": true
+    }
+  ],
+  "changelogDate": "20201105125421",
+  "javadoc": "Company entity.\\n@author The Moo3in team.",
+  "entityTableName": "company",
+  "dto": "no",
+  "pagination": "pagination",
+  "service": "serviceClass",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": ["mooingateway", "mooincompanies"],
+  "microserviceName": "mooincompanies"
+}

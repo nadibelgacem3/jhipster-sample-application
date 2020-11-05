@@ -1,0 +1,11 @@
+{
+  "mooingatewayApp": {
+    "CashierApproStatusEnum": {
+      "null": "",
+      "DRAFT": "DRAFT",
+      "VALIDATED": "VALIDATED",
+      "UNDER_TRAIT": "UNDER_TRAIT",
+      "CANCELED": "CANCELED"
+    }
+  }
+}

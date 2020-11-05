@@ -1,0 +1,35 @@
+{
+  "mooingatewayApp": {
+    "mooincompaniesTransactionComp": {
+      "home": {
+        "title": "Transaction Comps",
+        "createLabel": "Create a new Transaction Comp",
+        "createOrEditLabel": "Create or edit a Transaction Comp",
+        "notFound": "No Transaction Comps found"
+      },
+      "delete": {
+        "question": "Are you sure you want to delete Transaction Comp {{ id }}?"
+      },
+      "detail": {
+        "title": "Transaction Comp"
+      },
+      "number": "Number",
+      "details": "Details",
+      "type": "Type",
+      "paymentMethod": "Payment Method",
+      "withTVA": "With TVA",
+      "totalHT": "Total HT",
+      "totalTVA": "Total TVA",
+      "totaTTC": "Tota TTC",
+      "date": "Date",
+      "company": "Company"
+    }
+  },
+  "mooincompaniesApp": {
+    "mooincompaniesTransactionComp": {
+      "created": "A new Transaction Comp is created with identifier {{ param }}",
+      "updated": "A Transaction Comp is updated with identifier {{ param }}",
+      "deleted": "A Transaction Comp is deleted with identifier {{ param }}"
+    }
+  }
+}

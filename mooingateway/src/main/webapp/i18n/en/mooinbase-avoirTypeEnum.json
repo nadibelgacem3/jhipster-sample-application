@@ -1,0 +1,9 @@
+{
+  "mooingatewayApp": {
+    "AvoirTypeEnum": {
+      "null": "",
+      "SALE": "SALE",
+      "PURCHASE": "PURCHASE"
+    }
+  }
+}
