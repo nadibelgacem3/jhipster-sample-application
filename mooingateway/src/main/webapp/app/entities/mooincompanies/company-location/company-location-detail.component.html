@@ -1,0 +1,59 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="companyLocation">
+            <h2><span jhiTranslate="mooingatewayApp.mooincompaniesCompanyLocation.detail.title">Company Location</span> {{ companyLocation.id }}</h2>
+
+            <hr>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="mooingatewayApp.mooincompaniesCompanyLocation.localNumber">Local Number</span></dt>
+                <dd>
+                    <span>{{ companyLocation.localNumber }}</span>
+                </dd>
+                <dt><span jhiTranslate="mooingatewayApp.mooincompaniesCompanyLocation.streetAddress">Street Address</span></dt>
+                <dd>
+                    <span>{{ companyLocation.streetAddress }}</span>
+                </dd>
+                <dt><span jhiTranslate="mooingatewayApp.mooincompaniesCompanyLocation.postalCode">Postal Code</span></dt>
+                <dd>
+                    <span>{{ companyLocation.postalCode }}</span>
+                </dd>
+                <dt><span jhiTranslate="mooingatewayApp.mooincompaniesCompanyLocation.city">City</span></dt>
+                <dd>
+                    <span>{{ companyLocation.city }}</span>
+                </dd>
+                <dt><span jhiTranslate="mooingatewayApp.mooincompaniesCompanyLocation.stateProvince">State Province</span></dt>
+                <dd>
+                    <span>{{ companyLocation.stateProvince }}</span>
+                </dd>
+                <dt><span jhiTranslate="mooingatewayApp.mooincompaniesCompanyLocation.countryName">Country Name</span></dt>
+                <dd>
+                    <span>{{ companyLocation.countryName }}</span>
+                </dd>
+                <dt><span jhiTranslate="mooingatewayApp.mooincompaniesCompanyLocation.flag">Flag</span></dt>
+                <dd>
+                    <div *ngIf="companyLocation.flag">
+                        <a (click)="openFile(companyLocation.flagContentType, companyLocation.flag)">
+                            <img [src]="'data:' + companyLocation.flagContentType + ';base64,' + companyLocation.flag" style="max-width: 100%;" alt="companyLocation image"/>
+                        </a>
+                        {{ companyLocation.flagContentType }}, {{ byteSize(companyLocation.flag) }}
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/company-location', companyLocation.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,9 @@
+{
+  "mooingatewayApp": {
+    "MovementTypeEnum": {
+      "null": "",
+      "INPUT": "INPUT",
+      "OUTPUT": "OUTPUT"
+    }
+  }
+}

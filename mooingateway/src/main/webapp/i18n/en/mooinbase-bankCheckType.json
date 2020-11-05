@@ -1,0 +1,9 @@
+{
+  "mooingatewayApp": {
+    "BankCheckType": {
+      "null": "",
+      "CHECK": "CHECK",
+      "TRAIT": "TRAIT"
+    }
+  }
+}

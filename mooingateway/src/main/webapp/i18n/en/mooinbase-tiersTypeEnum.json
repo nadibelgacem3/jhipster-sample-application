@@ -1,0 +1,9 @@
+{
+  "mooingatewayApp": {
+    "TiersTypeEnum": {
+      "null": "",
+      "PERSON": "PERSON",
+      "STE": "STE"
+    }
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "mooingatewayApp": {
+    "mooincompaniesCompanyBankAccount": {
+      "home": {
+        "title": "CompanyBankAccounts",
+        "createLabel": "Créer un nouveau Company Bank Account",
+        "createOrEditLabel": "Créer ou éditer un Company Bank Account",
+        "notFound": "Aucun Company Bank Account trouvé"
+      },
+      "delete": {
+        "question": "Etes-vous certain de vouloir supprimer le Company Bank Account {{ id }} ?"
+      },
+      "detail": {
+        "title": "Company Bank Account"
+      },
+      "reference": "Reference",
+      "bankName": "Bank Name",
+      "bankAccountNumber": "Bank Account Number",
+      "iban": "Iban",
+      "swift": "Swift",
+      "type": "Type",
+      "company": "Company"
+    }
+  },
+  "mooincompaniesApp": {
+    "mooincompaniesCompanyBankAccount": {
+      "created": "Un nouveau Company Bank Account a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Company Bank Account avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Company Bank Account avec l'identifiant {{ param }} a été supprimé"
+    }
+  }
+}

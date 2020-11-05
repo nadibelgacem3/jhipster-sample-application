@@ -1,0 +1,58 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="companyBillPaymentItem">
+            <h2><span jhiTranslate="mooingatewayApp.mooincompaniesCompanyBillPaymentItem.detail.title">Company Bill Payment Item</span> {{ companyBillPaymentItem.id }}</h2>
+
+            <hr>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="mooingatewayApp.mooincompaniesCompanyBillPaymentItem.quantity">Quantity</span></dt>
+                <dd>
+                    <span>{{ companyBillPaymentItem.quantity }}</span>
+                </dd>
+                <dt><span jhiTranslate="mooingatewayApp.mooincompaniesCompanyBillPaymentItem.discountRate">Discount Rate</span></dt>
+                <dd>
+                    <span>{{ companyBillPaymentItem.discountRate }}</span>
+                </dd>
+                <dt><span jhiTranslate="mooingatewayApp.mooincompaniesCompanyBillPaymentItem.totalHT">Total HT</span></dt>
+                <dd>
+                    <span>{{ companyBillPaymentItem.totalHT }}</span>
+                </dd>
+                <dt><span jhiTranslate="mooingatewayApp.mooincompaniesCompanyBillPaymentItem.totalTVA">Total TVA</span></dt>
+                <dd>
+                    <span>{{ companyBillPaymentItem.totalTVA }}</span>
+                </dd>
+                <dt><span jhiTranslate="mooingatewayApp.mooincompaniesCompanyBillPaymentItem.totaTTC">Tota TTC</span></dt>
+                <dd>
+                    <span>{{ companyBillPaymentItem.totaTTC }}</span>
+                </dd>
+                <dt><span jhiTranslate="mooingatewayApp.mooincompaniesCompanyBillPaymentItem.companyBillPayment">Company Bill Payment</span></dt>
+                <dd>
+                    <div *ngIf="companyBillPaymentItem.companyBillPayment">
+                        <a [routerLink]="['/company-bill-payment', companyBillPaymentItem.companyBillPayment?.id, 'view']">{{ companyBillPaymentItem.companyBillPayment?.id }}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="mooingatewayApp.mooincompaniesCompanyBillPaymentItem.companyModule">Company Module</span></dt>
+                <dd>
+                    <div *ngIf="companyBillPaymentItem.companyModule">
+                        <a [routerLink]="['/company-module', companyBillPaymentItem.companyModule?.id, 'view']">{{ companyBillPaymentItem.companyModule?.id }}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/company-bill-payment-item', companyBillPaymentItem.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

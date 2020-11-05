@@ -1,0 +1,1191 @@
+
+/////////////////////////////////////////////////////////////////////
+/************* Entities for COMPANIES microservice ****************/
+////////////////////////////////////////////////////////////////////
+/*
+ * This is microservice moo3in-app called COMPANIES with Gateway
+ * This uses JHipster registry for service discovery and JWT authentication
+ */
+ 
+application {
+  config {
+    baseName mooingateway,
+    applicationType gateway,
+    packageName org.pikasoft.mooin.mooingateway,
+    serviceDiscoveryType eureka,
+    authenticationType jwt,
+    prodDatabaseType postgresql,
+    //cacheProvider hazelcast,
+    buildTool maven,    
+    //searchEngine elasticsearch,
+    useSass true,
+    testFrameworks [protractor],
+    serverPort 3401,
+  }
+  entities *
+}
+
+/////////////////////////////////////////////////////////////////////
+/************* Entities for COMPANIES microservice ****************/
+////////////////////////////////////////////////////////////////////
+
+application {
+  config {
+    baseName mooincompanies,
+    packageName org.pikasoft.mooin.mooincompanies,
+    applicationType microservice,
+    authenticationType jwt,
+    prodDatabaseType postgresql,
+    //searchEngine elasticsearch,
+    serverPort 3402,
+    serviceDiscoveryType eureka
+  }
+  entities Tax, TVA, TransactionComp, Company, CompanyLocation, CompanyBankAccount, CompanyModule, CompanyBillPayment, CompanyBillPaymentItem, Employee, EmployeeLocation, EmployeePayment
+  }
+ 
+
+/////////////////////////////////////////////////////////////////////
+/************* Entities for COMPANIES microservice ****************/
+////////////////////////////////////////////////////////////////////
+
+/**
+* Company entity.
+* @author The Moo3in team.
+*/
+entity Company{
+	name String required minlength(4)
+    logo ImageBlob
+    phone1 String
+    phone2 String 
+    fax String 
+    email1 String pattern(/^[^@\s]+@[^@\s]+\.[^@\s]+$/) 
+    email2 String pattern(/^[^@\s]+@[^@\s]+\.[^@\s]+$/) 
+    description String
+    businessType CompanyBusinessTypeEnum 
+    currencyUnit String 
+    currencyQuotient Integer 
+	commercialRegister String 
+    isActivated Boolean 
+    themeColor String
+    facebook String 
+    linkedin String 
+    twitter String 
+    instagram String
+}
+
+/**
+* CompanyUser entity.
+* @author The Moo3in team.
+**/
+
+/*
+*entity CompanyUser{
+*    firstName String required minlength(3)
+*    lastName String required minlength(3)
+*    email String required pattern(/^[^@\s]+@[^@\s]+\.[^@\s]+$/)
+*    image ImageBlob
+*    login String required
+*    pwd String required
+*    isActivated Boolean
+*    
+*    userID Long    
+*    isOwner Boolean
+*    gender String
+*    phone1 String
+*    phone2 String
+*    preferredLanguage String
+*}
+*/
+
+/**
+* CompanyBankAccount entity.
+* @author The Moo3in team.
+*/
+entity CompanyBankAccount{
+    reference String
+    bankName String
+    bankAccountNumber String 
+    iban String 
+    swift String 
+    type String
+}
+
+/**
+* CompanyModule entity.
+* @author The Moo3in team.
+*/
+entity CompanyModule{
+    name String required
+	activatedAt LocalDate required
+    activatedUntil LocalDate required
+    isActivated Boolean required
+    price BigDecimal required min(0)
+    isActivated Boolean required
+}
+
+
+/**
+* CompanyBillPayment entity.
+* @author The Moo3in team.
+*/
+entity CompanyBillPayment{
+    number String
+    details String
+    paymentDate LocalDate  
+    paymentMethod CompanyPaymentMethod 
+    bankCheckorTraitNumber String
+    imageJustif ImageBlob
+    status CompanyModulePaymentStatus
+    totalHT BigDecimal required min(0)
+    totalTVA BigDecimal required min(0)  
+    totaTTC BigDecimal required min(0)
+    date LocalDate required
+    dueDate LocalDate
+    withTVA Boolean
+    withTax Boolean
+}
+
+enum CompanyModulePaymentStatus{
+  DRAFT_PANIER, CONFIRMED, CANCELED, UNDER_TREATMENT
+}
+
+ 
+/**
+* CompanyBillPaymentItem entity.
+* @author The Moo3in team.
+*/
+entity CompanyBillPaymentItem{
+    quantity BigDecimal min(0)
+    discountRate Integer min(0)
+    totalHT BigDecimal min(0)
+    totalTVA BigDecimal min(0)  
+    totaTTC BigDecimal min(0)
+}
+
+enum CompanyPaymentMethod {
+    CREDIT_CARD, CASH, BANK_CHECK, BANK_TRAIT
+}
+
+enum CompanyBusinessTypeEnum{
+	SARL,
+    SUARL,
+    PHYSIQUE,
+    AUTRE
+}
+
+/**
+* Employee entity.
+* @author The Moo3in team.
+*/
+entity Employee {
+    firstName String required minlength(3)
+	lastName String required minlength(3)
+	jobTitle String
+    gender Gender
+    dateOfborth LocalDate
+    dateOfRecruitment LocalDate
+    image ImageBlob
+    email String pattern(/^[^@\s]+@[^@\s]+\.[^@\s]+$/) 
+    phoneNumber String
+	salary BigDecimal
+    commissionPct Double
+    rates Integer
+    //addressUUID UUID
+}
+
+enum Gender {
+    MALE, FEMALE
+}
+
+
+/**
+* EmployeePayment entity.
+* @author The Moo3in team.
+*/
+entity EmployeePayment{
+    details String
+    amount BigDecimal required min(0)
+    paymentDate Instant  
+    fromDate LocalDate
+    toDate LocalDate  
+    imageJustif ImageBlob 
+}
+
+/**
+* CompanyLocation entity.
+* @author The Moo3in team.
+*/
+entity CompanyLocation{
+	localNumber String
+	streetAddress String
+	postalCode String
+	city String
+	stateProvince String
+	countryName String
+	flag ImageBlob
+}
+/**
+* EmployeeLocation entity.
+* @author The Moo3in team.
+*/
+entity EmployeeLocation{
+	localNumber String
+	streetAddress String
+	postalCode String
+	city String
+	stateProvince String
+	countryName String
+	flag ImageBlob
+}
+
+////////////////////////////////////////////////////////////////////////////
+/************* Entities for Depense PART ********************/
+////////////////////////////////////////////////////////////////////////////
+/**
+* TransactionComp entity.
+* @author The Moo3in team.
+*/
+
+entity TransactionComp{
+    number String
+    details String
+    type TransactionCompTypeEnum 
+    paymentMethod TransactionCompPaymentMethod
+    withTVA Boolean
+    totalHT BigDecimal min(0)
+    totalTVA BigDecimal min(0)  
+    totaTTC BigDecimal required min(0)
+    date LocalDate required    
+
+}
+
+
+enum TransactionCompPaymentMethod {
+    CREDIT_CARD, CASH, BANK_CHECK, BANK_TRAIT
+}
+
+enum TransactionCompTypeEnum{
+	DEPENSE,
+    RECETTE
+}
+
+
+/***TVA and TAX***/
+
+/**
+* TVA entity.
+* @author The Moo3in team.
+*/
+entity TVA {
+	name String required
+    percentageValue Double required      
+}
+
+/**
+* Tax entity.
+* @author The Moo3in team.
+*/
+entity Tax {
+	name String required
+    isValued Boolean required
+    isPercentage Boolean required
+    value Double required   
+}
+
+relationship ManyToOne {
+   // CompanyUser{company(name)} to Company
+	Tax{company} to Company
+	TVA{company} to Company
+}
+
+relationship OneToOne {
+   //CompanyUser{user(login)} to User
+   Company to CompanyBankAccount
+   Company to CompanyLocation
+   Employee to EmployeeLocation
+}
+
+relationship ManyToOne{
+	//CompanyUser{company} to Company
+	TransactionComp{company} to Company
+	CompanyModule{company} to Company
+    Employee{company} to Company
+    CompanyBillPayment{company} to  Company
+}
+
+relationship OneToMany{
+   CompanyBillPayment{companyBillPaymentItem} to CompanyBillPaymentItem{companyBillPayment} 
+   CompanyModule{companyBillPaymentItem} to CompanyBillPaymentItem{companyModule} 
+   Employee{employeePayment} to EmployeePayment{employee}
+}
+
+//////////////////////////////////////////////////////
+/* Entities for notification microservice */
+////////////////////////////////////////////////////
+
+service  Tax, TVA, TransactionComp, Company, CompanyLocation, CompanyBankAccount, CompanyModule, CompanyBillPayment, CompanyBillPaymentItem, Employee, EmployeeLocation, EmployeePayment with serviceClass
+paginate Tax, TVA, TransactionComp, Company,  CompanyLocation, CompanyBankAccount, CompanyModule, CompanyBillPayment, CompanyBillPaymentItem, Employee, EmployeeLocation, EmployeePayment with pagination
+microservice Tax, TVA, TransactionComp, Company, CompanyLocation, CompanyBankAccount, CompanyModule, CompanyBillPayment, CompanyBillPaymentItem, Employee, EmployeeLocation, EmployeePayment with mooincompanies
+
+
+
+
+
+
+
+/////////////////////////////////////////////////////////////////////
+/************* Entities for mooinbase microservice ****************/
+////////////////////////////////////////////////////////////////////
+
+
+application {
+  config {
+    baseName mooinbase,
+    packageName org.pikasoft.mooin.mooinbase,
+    applicationType microservice,
+    authenticationType jwt,
+    prodDatabaseType postgresql,
+    //searchEngine elasticsearch,
+    serverPort 3403,
+    serviceDiscoveryType eureka
+  }
+  entities Depot, Product, ProductCategory, ProductMark,  TaxItem, TVAItem, Movement, 
+  Tiers, TiersBankCheck, TiersLocation, AvoirItem, Avoir, BLItem, BL, QuoteItem, 
+  Quote, Invoice, InvoiceItem, InvoicePaymentHistory
+  }
+
+
+/////////////////////////////////////////////////////////////////////
+/************* Entities for ACCCOUNT microservice ****************/
+////////////////////////////////////////////////////////////////////
+/********************* Entities for STOCK part *************************/
+/**
+* Depot entity.
+* @author The Moo3in team.
+*/
+entity Depot {
+    name String required
+    details String 
+    location String
+    companyID Long  
+    }
+
+/**
+* Product entity.
+* @author The Moo3in team.
+*/
+entity Product {
+    companyID Long
+    reference String
+    referenceProvider String
+	name String required
+    quantity Double required
+    purchaseUnitPrice BigDecimal required min(0)
+    saleUnitPrice Integer required min(0)
+    stocklimit Double 
+    stocklimitAlert Boolean 
+    unitType ProductUnitEnum
+    size Size
+    color String
+    image ImageBlob
+    isDisplayedInCashier Boolean   
+}
+
+enum Size {
+    NONE, S, M, L, XL, XXL
+}
+
+/**
+* ProductCategory entity.
+* @author The Moo3in team.
+*/
+entity ProductCategory {
+	name String required 
+	description String      
+    companyID Long  
+}
+
+/**
+* ProductMark entity.
+* @author The Moo3in team.
+*/
+entity ProductMark {
+	name String required
+	description String   
+    companyID Long  
+}
+
+/**
+* TVAItem entity.
+* @author The Moo3in team.
+*/
+entity TVAItem {
+	name String required
+    percentageValue Double required   
+    companyID Long  
+    tvaID Long  
+}
+
+/**
+* TaxItem entity.
+* @author The Moo3in team.
+*/
+entity TaxItem {
+	name String required
+    isValued Boolean required
+    isPercentage Boolean required
+    value Double required   
+    companyID Long 
+    taxID Long 
+}
+
+enum ProductUnitEnum{
+	NONE,
+	METER,
+    KG,
+    LITER,
+    PIECE,
+    UNIT
+}
+
+/**
+* Movement entity.
+* @author The Moo3in team.
+*/
+entity Movement {
+    type MovementTypeEnum required
+    reason MovementReasonEnum required
+    date Instant required
+    billID Long
+    tiersID Long
+    quantity BigDecimal required    
+    companyUserID Long
+}
+
+enum MovementTypeEnum{
+	INPUT,
+    OUTPUT
+}
+
+enum MovementReasonEnum{
+	INVOICE,
+	CAISSE,
+    MANUAL,
+    OTHER
+}
+
+relationship OneToMany{
+    ProductCategory{product} to Product{productCategory}
+    ProductMark{product} to Product{productMark}
+    Depot{product} to Product{depot}
+    Product{movement} to Movement{product}
+    Product{taxItem} to TaxItem{product}
+    Product{tvaItem} to TVAItem{product}
+}
+
+paginate Depot, Product, ProductCategory, ProductMark,  TaxItem, TVAItem with pagination
+paginate  Movement  with infinite-scroll
+service Depot, Product, ProductCategory, ProductMark,  TaxItem, TVAItem, Movement  with serviceClass
+microservice Depot, Product, ProductCategory, ProductMark,  TaxItem, TVAItem, Movement  with mooinbase
+
+
+/*********************************************************/
+/************* Entities for Invoice Part ****************/
+/********************************************************/
+/**
+* Invoice entity.
+* @author The Moo3in team.
+*/
+entity Invoice{
+    number String
+    reference String
+    status InvoiceStatusEnum 
+    type InvoiceTypeEnum
+    totalHT BigDecimal required min(0)
+    totalTVA BigDecimal required min(0)  
+    totaTTC BigDecimal required min(0)
+    date LocalDate required    
+    dueDate LocalDate
+    companyID Long 
+}
+
+/**
+* InvoiceItem entity.
+* @author The Moo3in team.
+*/
+entity InvoiceItem{
+    //productUUID UUID
+    //productReference String
+    quantity BigDecimal min(0)
+    discountRate Integer min(0)
+    totalHT BigDecimal min(0)
+    totalTVA BigDecimal min(0)  
+    totaTTC BigDecimal min(0)
+}
+
+/**
+* InvoicePaymentHistory entity.
+* @author The Moo3in team.
+*/
+entity InvoicePaymentHistory{
+    details String
+    amount BigDecimal required min(0)
+    paymentDate Instant  
+    paymentMethod InvoicePaymentMethod 
+    bankCheckorTraitNumber String
+    imageJustif ImageBlob 
+}
+
+enum InvoicePaymentMethod {
+    CREDIT_CARD, CASH, BANK_CHECK, BANK_TRAIT
+}
+
+enum InvoiceStatusEnum{
+	DRAFT, FINALIZED, PAID, PAYEMENT_IN_PROGRESS, CANCELED
+}
+
+enum InvoiceTypeEnum{
+	SALE,
+    PURCHASE
+}
+
+
+relationship OneToMany{
+   Invoice{invoiceItem} to InvoiceItem{invoice} 
+   Invoice{invoicePaymentHistory} to InvoicePaymentHistory{invoice}
+}
+
+
+
+/************* Entities for Quote Part ****************/
+/**
+* Quote entity.
+* @author The Moo3in team.
+*/
+entity Quote{
+    number String
+    reference String
+    status QuoteStatusEnum 
+    type QuoteTypeEnum
+    totalHT BigDecimal required min(0)
+    totalTVA BigDecimal required min(0)  
+    totaTTC BigDecimal required min(0)
+    date LocalDate required    
+    dueDate LocalDate
+    isConverted Boolean 
+    companyID Long 
+}
+
+/**
+* QuoteItem entity.
+* @author The Moo3in team.
+*/
+entity QuoteItem{
+    quantity BigDecimal min(0)
+    discountRate Integer min(0)
+    totalHT BigDecimal min(0)
+    totalTVA BigDecimal min(0)  
+    totaTTC BigDecimal min(0)
+}
+
+
+enum QuoteStatusEnum{
+	DRAFT, FINALIZED, CANCELED
+}
+
+enum QuoteTypeEnum{
+	SALE,
+    PURCHASE
+}
+
+relationship OneToMany{
+   Quote{quoteitem} to QuoteItem{quote} 
+}
+
+
+/************* Entities for BL Part ****************/
+/**
+* BL entity.
+* @author The Moo3in team.
+*/
+entity BL{
+    number String
+    reference String
+    status BLStatusEnum 
+    type BLTypeEnum
+    totalHT BigDecimal required min(0)
+    totalTVA BigDecimal required min(0)  
+    totaTTC BigDecimal required min(0)
+    date LocalDate required    
+    dueDate LocalDate
+    isConverted Boolean
+    companyID Long 
+
+}
+
+/**
+* BLItem entity.
+* @author The Moo3in team.
+*/
+entity BLItem{
+    quantity BigDecimal min(0)
+    discountRate Integer min(0)
+    totalHT BigDecimal min(0)
+    totalTVA BigDecimal min(0)  
+    totaTTC BigDecimal min(0)
+}
+
+
+enum BLStatusEnum{
+	DRAFT, FINALIZED, CANCELED
+}
+
+enum BLTypeEnum{
+	SALE,
+    PURCHASE
+}
+
+relationship OneToMany{
+   BL{blItem} to BLItem{bl} 
+}
+
+/************* Entities for Avoir Part ****************/
+/**
+* Avoir entity.
+* @author The Moo3in team.
+*/
+entity Avoir{
+    number String
+    reference String
+    status AvoirStatusEnum 
+    type AvoirTypeEnum
+    totalHT BigDecimal required min(0)
+    totalTVA BigDecimal required min(0)  
+    totaTTC BigDecimal required min(0)
+    date LocalDate required    
+    dueDate LocalDate
+    isConverted Boolean
+    companyID Long 
+}
+
+/**
+* AvoirItem entity.
+* @author The Moo3in team.
+*/
+entity AvoirItem{
+    quantity BigDecimal min(0)
+    discountRate Integer min(0)
+    totalHT BigDecimal min(0)
+    totalTVA BigDecimal min(0)  
+    totaTTC BigDecimal min(0)
+}
+
+
+enum AvoirStatusEnum{
+	DRAFT, FINALIZED, CANCELED
+}
+
+enum AvoirTypeEnum{
+	SALE,
+    PURCHASE
+}
+
+relationship OneToMany{
+   Avoir{avoirItem} to AvoirItem{avoir} 
+}
+
+
+/** add to base **/
+relationship ManyToOne{  
+    Invoice{tiers} to Tiers
+	Quote{tiers} to Tiers
+	BL{tiers} to Tiers
+	Avoir{tiers} to Tiers
+    
+    InvoiceItem{product} to  Product
+    QuoteItem{product} to  Product
+    BLItem{product} to  Product
+    AvoirItem{product} to  Product    
+    
+}
+
+
+service AvoirItem, Avoir, BLItem, BL, QuoteItem, Quote, Invoice, InvoiceItem, InvoicePaymentHistory with serviceClass
+paginate AvoirItem, Avoir, BLItem, BL, QuoteItem, Quote, Invoice, InvoiceItem, InvoicePaymentHistory  with pagination //pagination //infinite-scroll
+microservice AvoirItem, Avoir, BLItem, BL, QuoteItem, Quote, Invoice, InvoiceItem, InvoicePaymentHistory with mooinbase
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+ 
+/********* Tiers Moo3in Micros-services**********************************/
+entity Tiers{
+    reference String
+	firstName String required minlength(4)
+    lastName String required minlength(3)
+    phone1 String minlength(8)
+    phone2 String minlength(8)
+    image ImageBlob
+    email String required pattern(/^[^@\s]+@[^@\s]+\.[^@\s]+$/) 
+    type TiersTypeEnum
+    isCustomer Boolean required
+    isSupplier Boolean required  
+    companyID Long
+}
+
+enum TiersTypeEnum{
+	PERSON,
+    STE
+}
+
+
+entity TiersLocation{
+	localNumber String
+	streetAddress String
+	postalCode String
+	city String
+	stateProvince String
+	countryName String
+	flag ImageBlob
+}
+
+relationship OneToOne{
+     Tiers to TiersLocation
+}
+
+
+/**
+* TiersBankCheck entity.
+* @author The Moo3in team.
+*/
+entity TiersBankCheck{
+    name String
+    bankName String
+    number String 
+    amount BigDecimal required
+    dueDate LocalDate required
+    bankCheckType BankCheckType required
+    bankCheckKind BankCheckKind required
+    swift String 
+    type String
+}
+
+
+enum BankCheckKind{
+	RECEIVED, SUBMITTED
+}
+
+enum BankCheckType{
+	CHECK, TRAIT
+}
+
+relationship ManyToOne {
+    TiersBankCheck{tiers} to Tiers    
+}
+
+
+service Tiers, TiersBankCheck, TiersLocation with serviceClass
+paginate Tiers, TiersBankCheck, TiersLocation with pagination //pagination //infinite-scroll
+microservice Tiers, TiersBankCheck, TiersLocation with mooinbase
+
+
+////////////////////////////////////////////////////////////////////////////
+///************* Entities for Cashier Micro-Services ********************///
+////////////////////////////////////////////////////////////////////////////
+
+
+
+application {
+  config {
+    baseName mooincashier,
+    packageName org.pikasoft.mooin.mooincashier,
+    applicationType microservice,
+    authenticationType jwt,
+    prodDatabaseType postgresql,
+    //searchEngine elasticsearch,
+    serverPort 3404,
+    serviceDiscoveryType eureka
+  }
+ entities Cashier,
+//CashierUser,
+CashierProduct,
+CashierLocation,
+CashierCostumer,
+CashierReceipt,
+CashierReceiptItem,
+CashierReceiptPay,
+CashierAppro,
+CashierApproItem
+  }
+
+///**************** Entities for CaisseReceipt Part *******************////
+
+/**
+* Cashier entity.
+* @author The Moo3in team.
+*/
+
+entity Cashier{
+    name String required
+	withTicket Boolean
+	withTVA Boolean
+	withTax Boolean
+	withAppro Boolean
+	themeColor String
+    isActivated Boolean
+    companyID Long
+}
+
+/**
+* CashierUser entity.
+* @author The Moo3in team.
+*
+**/
+
+/*
+*entity CashierUser{
+*    firstName String required minlength(3)
+*    lastName String required minlength(3)
+*    email String required pattern(/^[^@\s]+@[^@\s]+\.[^@\s]+$/)
+*    image ImageBlob
+*    login String required
+*    pwd String required
+*    isActivated Boolean
+*    
+*    gender String
+*    phone1 String
+*    phone2 String
+*    preferredLanguage Langue    
+*    approResquestActivated Boolean
+*    approResquestAutomatic Boolean
+*	companyID Long 
+*}
+*/
+
+/**
+* CashierProduct entity.
+* @author The Moo3in team.
+*/
+entity CashierProduct {
+	productID Long required
+	cashierProdName String required
+    cashierProdQty Double required
+    cashierProdPurchaseUnitPrice Double required min(0)
+    cashierProdSaleUnitPrice Double required min(0)
+    cashierProdStockLimit Double
+    cashierProdStockLimitAlert Boolean
+}
+
+/**
+* CashierLocation entity.
+* @author The Moo3in team.
+*/
+entity CashierLocation{
+	localNumber String
+	streetAddress String
+	postalCode String
+	city String
+	stateProvince String
+	countryName String
+	flag ImageBlob
+}
+
+/********** Entities for CaisseReceipt Part ****************/
+/**
+* CashierCostumer entity.
+* @author The Moo3in team.
+*/
+entity CashierCostumer{
+    reference String pattern(/^SC[0-9]{3}COM[0-9]{2}$/)
+	firstName String required minlength(4)
+    lastName String required minlength(3)
+    phone1 String minlength(8)
+    phone2 String minlength(8)
+    image ImageBlob
+    email String pattern(/^[^@\s]+@[^@\s]+\.[^@\s]+$/) 
+    //loyaltyCardNumber String
+    //loyaltyCardType String
+}
+
+/**
+* CashierReceipt entity.
+* @author The Moo3in team.
+*/
+entity CashierReceipt{
+    number String
+    reference String
+    status CashierReceiptStatusEnum 
+    totalHT BigDecimal required min(0)
+    totalTVA BigDecimal required min(0)  
+    totaTTC BigDecimal required min(0)
+    date LocalDate required
+    dueDate LocalDate
+    isConverted Boolean
+    withTVA Boolean
+    withTax Boolean
+}
+
+/**
+* CashierReceiptItem entity.
+* @author The Moo3in team.
+*/
+entity CashierReceiptItem{
+    quantity BigDecimal min(0)
+    discountRate Integer min(0)
+    totalHT BigDecimal min(0)
+    totalTVA BigDecimal min(0)  
+    totaTTC BigDecimal min(0)
+}
+
+/**
+* CashierReceiptPay entity.
+* @author The Moo3in team.
+*/
+entity CashierReceiptPay{
+    details String
+    amount BigDecimal required min(0)
+    paymentDate Instant  
+    paymentMethod CashierReceiptPayMeth 
+    bankCheckorTraitNumber String
+    imageJustif ImageBlob 
+}
+
+
+enum CashierReceiptPayMeth {
+    CREDIT_CARD, CASH, BANK_CHECK, BANK_TRAIT
+}
+
+enum CashierReceiptStatusEnum{
+	DRAFT, FINALIZED, PAID, PAYEMENT_IN_PROGRESS, CANCELED
+}
+
+/********** Entities for Caisseappro Part ****************/
+/**
+* CashierSupplier entity.
+* @author The Moo3in team.
+*/
+/*entity CashierSupplier{
+*    reference String pattern(/^SC[0-9]{3}COM[0-9]{2}$/)
+*	firstName String required minlength(4)
+ *   lastName String required minlength(3)
+ *   phone1 String minlength(8)
+ *   phone2 String minlength(8)
+ *   image ImageBlob
+ *   email String pattern(/^[^@\s]+@[^@\s]+\.[^@\s]+$/) 
+    //loyaltyCardNumber String
+    //loyaltyCardType String
+*
+*/
+
+/**
+* Cashierappro entity.
+* @author The Moo3in team.
+*/
+entity CashierAppro{
+    number String
+    status CashierApproStatusEnum 
+    totalHT BigDecimal required min(0)
+    totalTVA BigDecimal required min(0)  
+    totaTTC BigDecimal required min(0)
+    date LocalDate required
+    isConverted Boolean
+    withTVA Boolean
+    withTax Boolean
+}
+
+/**
+* CashierapproItem entity.
+* @author The Moo3in team.
+*/
+entity CashierApproItem{
+    quantity BigDecimal min(0)
+    discountRate Integer min(0)
+    totalHT BigDecimal min(0)
+    totalTVA BigDecimal min(0)  
+    totaTTC BigDecimal min(0)
+}
+
+enum CashierApproStatusEnum{
+	DRAFT, VALIDATED, UNDER_TRAIT, CANCELED
+}
+
+
+enum Langue {
+	French, English, German, Arabic
+}
+
+
+/* relationship of Cashier Micro-Services */
+relationship OneToMany{
+	/* Receipt */
+   CashierCostumer{cashierReceipt} to CashierReceipt{cashierCostumer} 
+   CashierReceipt{cashierReceiptItem} to CashierReceiptItem{cashierReceipt} 
+   CashierReceipt{CashierReceiptPay} to CashierReceiptPay{cashierReceipt}
+	/* appro */
+   //CashierSupplier{cashierAppro} to CashierAppro{cashierSupplier} 
+   CashierAppro{cashierApproItem} to CashierApproItem{cashierAppro} 
+}
+
+relationship ManyToOne{
+	/* Receipt */
+    CashierReceiptItem{cashierProduct} to  CashierProduct
+    /* appro */
+    CashierApproItem{cashierProduct} to  CashierProduct
+}
+
+
+relationship ManyToOne {
+	//CashierUser{Cashier} to Cashier
+	CashierCostumer{Cashier} to Cashier
+	CashierReceipt{Cashier} to Cashier
+	CashierAppro{Cashier} to Cashier
+}
+
+relationship OneToOne{
+    Cashier to CashierLocation
+    CashierCostumer to CashierLocation
+}
+
+
+service Cashier,
+//CashierUser,
+CashierProduct,
+CashierLocation,
+CashierCostumer,
+CashierReceipt,
+CashierReceiptItem,
+CashierReceiptPay,
+CashierAppro,
+CashierApproItem with serviceClass
+
+paginate Cashier,
+//CashierUser,
+CashierProduct,
+CashierLocation,
+CashierCostumer,
+CashierReceipt,
+CashierReceiptItem,
+CashierReceiptPay,
+CashierAppro,
+CashierApproItem with pagination //infinite-scroll
+
+microservice Cashier,
+//CashierUser,
+CashierProduct,
+CashierLocation,
+CashierCostumer,
+CashierReceipt,
+CashierReceiptItem,
+CashierReceiptPay,
+CashierAppro,
+CashierApproItem with mooincashier
+
+
+////////////////////////////////////////////////////////
+//*********** ECOMMERCE mooin Micro-Services************/
+application {
+  config {
+    baseName mooinecommerce,
+    packageName org.pikasoft.mooin.mooinecommerce,
+    applicationType microservice,
+    authenticationType jwt,
+    prodDatabaseType postgresql,
+    //searchEngine elasticsearch,
+    serverPort 3405,
+    serviceDiscoveryType eureka
+  }
+  entities Offer, OfferOrder
+}
+
+
+/************* Entities for Offers microservice ****************/
+/**
+* Offer entity.
+* @author The Moo3in team.
+*/
+
+entity Offer{ 
+    name  String
+	description  String
+	image ImageBlob
+    dateBegin LocalDate
+    dateEnd LocalDate    
+    duration Duration
+    status OfferStatus
+    productId Long
+    saleUnitPriceBeforeDiscount BigDecimal min(0)
+    discountRate BigDecimal min(0) 
+    saleUnitPriceAfterDiscount BigDecimal min(0)
+    withTVA Boolean
+    withTax Boolean
+    isActivated Boolean    
+    companyID Long 
+}    
+  
+  
+/**
+* RequesterOffer entity.
+* @author The Moo3in team.
+*
+**/
+/*
+*entity RequesterOffer{
+*    firstName String required minlength(3)
+*    lastName String required minlength(3)
+*    email String required pattern(/^[^@\s]+@[^@\s]+\.[^@\s]+$/)
+*    image ImageBlob
+*    login String required
+*    pwd String required
+*    isActivated Boolean
+*    
+*    gender String
+*    phone1 String
+*    phone2 String
+*    preferredLanguage String    
+*    inBlackList Boolean
+*    rates Integer
+*	userID Long  
+*}
+*/
+
+
+/**
+* OfferOrder entity.
+* @author The Moo3in team.
+*/
+entity OfferOrder{       
+    quantity BigDecimal required min(1)
+    totalHT BigDecimal min(0)
+    totalTVA BigDecimal min(0)  
+    totaTTC BigDecimal min(0)
+    date LocalDate required
+    status OrderStatus required
+    requesterOfferID Long
+}
+
+enum OrderStatus {
+    DRAFT, COMPLETED, PENDING, CANCELLED
+}
+
+enum OfferStatus {
+    AVAILABLE, OUT_OF_STOCK, CLOSED
+}
+
+
+
+relationship OneToMany {
+   Offer{OfferOrder} to OfferOrder{Offer}
+}
+
+service Offer, OfferOrder with serviceClass
+paginate Offer, OfferOrder with pagination //pagination //infinite-scroll
+microservice Offer, OfferOrder  with mooinecommerce
+
+//////////////////////////////////////////////////////////
+/************* deployment SECTION Part ****************/
+///////////////////////////////////////////////////////////
+
+// will be created under 'docker-compose' folder
+deployment {
+  deploymentType docker-compose
+  appsFolders [mooingateway,mooincompanies, mooinbase, mooincashier, mooinecommerce]
+  dockerRepositoryName "rocame46" // docker hub name
+  consoleOptions [zipkin]
+}

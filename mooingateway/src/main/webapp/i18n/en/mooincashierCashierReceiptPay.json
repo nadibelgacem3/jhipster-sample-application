@@ -1,0 +1,32 @@
+{
+  "mooingatewayApp": {
+    "mooincashierCashierReceiptPay": {
+      "home": {
+        "title": "Cashier Receipt Pays",
+        "createLabel": "Create a new Cashier Receipt Pay",
+        "createOrEditLabel": "Create or edit a Cashier Receipt Pay",
+        "notFound": "No Cashier Receipt Pays found"
+      },
+      "delete": {
+        "question": "Are you sure you want to delete Cashier Receipt Pay {{ id }}?"
+      },
+      "detail": {
+        "title": "Cashier Receipt Pay"
+      },
+      "details": "Details",
+      "amount": "Amount",
+      "paymentDate": "Payment Date",
+      "paymentMethod": "Payment Method",
+      "bankCheckorTraitNumber": "Bank Checkor Trait Number",
+      "imageJustif": "Image Justif",
+      "cashierReceipt": "Cashier Receipt"
+    }
+  },
+  "mooincashierApp": {
+    "mooincashierCashierReceiptPay": {
+      "created": "A new Cashier Receipt Pay is created with identifier {{ param }}",
+      "updated": "A Cashier Receipt Pay is updated with identifier {{ param }}",
+      "deleted": "A Cashier Receipt Pay is deleted with identifier {{ param }}"
+    }
+  }
+}

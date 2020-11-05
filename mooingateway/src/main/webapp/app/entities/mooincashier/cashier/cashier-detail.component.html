@@ -1,0 +1,64 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="cashier">
+            <h2><span jhiTranslate="mooingatewayApp.mooincashierCashier.detail.title">Cashier</span> {{ cashier.id }}</h2>
+
+            <hr>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="mooingatewayApp.mooincashierCashier.name">Name</span></dt>
+                <dd>
+                    <span>{{ cashier.name }}</span>
+                </dd>
+                <dt><span jhiTranslate="mooingatewayApp.mooincashierCashier.withTicket">With Ticket</span></dt>
+                <dd>
+                    <span>{{ cashier.withTicket }}</span>
+                </dd>
+                <dt><span jhiTranslate="mooingatewayApp.mooincashierCashier.withTVA">With TVA</span></dt>
+                <dd>
+                    <span>{{ cashier.withTVA }}</span>
+                </dd>
+                <dt><span jhiTranslate="mooingatewayApp.mooincashierCashier.withTax">With Tax</span></dt>
+                <dd>
+                    <span>{{ cashier.withTax }}</span>
+                </dd>
+                <dt><span jhiTranslate="mooingatewayApp.mooincashierCashier.withAppro">With Appro</span></dt>
+                <dd>
+                    <span>{{ cashier.withAppro }}</span>
+                </dd>
+                <dt><span jhiTranslate="mooingatewayApp.mooincashierCashier.themeColor">Theme Color</span></dt>
+                <dd>
+                    <span>{{ cashier.themeColor }}</span>
+                </dd>
+                <dt><span jhiTranslate="mooingatewayApp.mooincashierCashier.isActivated">Is Activated</span></dt>
+                <dd>
+                    <span>{{ cashier.isActivated }}</span>
+                </dd>
+                <dt><span jhiTranslate="mooingatewayApp.mooincashierCashier.companyID">Company ID</span></dt>
+                <dd>
+                    <span>{{ cashier.companyID }}</span>
+                </dd>
+                <dt><span jhiTranslate="mooingatewayApp.mooincashierCashier.cashierLocation">Cashier Location</span></dt>
+                <dd>
+                    <div *ngIf="cashier.cashierLocation">
+                        <a [routerLink]="['/cashier-location', cashier.cashierLocation?.id, 'view']">{{ cashier.cashierLocation?.id }}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/cashier', cashier.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

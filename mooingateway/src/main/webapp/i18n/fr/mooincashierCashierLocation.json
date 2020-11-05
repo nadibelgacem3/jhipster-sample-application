@@ -1,0 +1,34 @@
+{
+  "mooingatewayApp": {
+    "mooincashierCashierLocation": {
+      "home": {
+        "title": "CashierLocations",
+        "createLabel": "Créer un nouveau Cashier Location",
+        "createOrEditLabel": "Créer ou éditer un Cashier Location",
+        "notFound": "Aucun Cashier Location trouvé"
+      },
+      "delete": {
+        "question": "Etes-vous certain de vouloir supprimer le Cashier Location {{ id }} ?"
+      },
+      "detail": {
+        "title": "Cashier Location"
+      },
+      "localNumber": "Local Number",
+      "streetAddress": "Street Address",
+      "postalCode": "Postal Code",
+      "city": "City",
+      "stateProvince": "State Province",
+      "countryName": "Country Name",
+      "flag": "Flag",
+      "cashier": "Cashier",
+      "cashierCostumer": "Cashier Costumer"
+    }
+  },
+  "mooincashierApp": {
+    "mooincashierCashierLocation": {
+      "created": "Un nouveau Cashier Location a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Cashier Location avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Cashier Location avec l'identifiant {{ param }} a été supprimé"
+    }
+  }
+}

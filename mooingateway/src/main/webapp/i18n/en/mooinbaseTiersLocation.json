@@ -1,0 +1,33 @@
+{
+  "mooingatewayApp": {
+    "mooinbaseTiersLocation": {
+      "home": {
+        "title": "Tiers Locations",
+        "createLabel": "Create a new Tiers Location",
+        "createOrEditLabel": "Create or edit a Tiers Location",
+        "notFound": "No Tiers Locations found"
+      },
+      "delete": {
+        "question": "Are you sure you want to delete Tiers Location {{ id }}?"
+      },
+      "detail": {
+        "title": "Tiers Location"
+      },
+      "localNumber": "Local Number",
+      "streetAddress": "Street Address",
+      "postalCode": "Postal Code",
+      "city": "City",
+      "stateProvince": "State Province",
+      "countryName": "Country Name",
+      "flag": "Flag",
+      "tiers": "Tiers"
+    }
+  },
+  "mooinbaseApp": {
+    "mooinbaseTiersLocation": {
+      "created": "A new Tiers Location is created with identifier {{ param }}",
+      "updated": "A Tiers Location is updated with identifier {{ param }}",
+      "deleted": "A Tiers Location is deleted with identifier {{ param }}"
+    }
+  }
+}

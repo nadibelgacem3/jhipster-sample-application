@@ -1,0 +1,56 @@
+{
+  "name": "EmployeeLocation",
+  "fields": [
+    {
+      "fieldName": "localNumber",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "streetAddress",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "postalCode",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "city",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "stateProvince",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "countryName",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "flag",
+      "fieldType": "byte[]",
+      "fieldTypeBlobContent": "image"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "one-to-one",
+      "otherEntityName": "employee",
+      "otherEntityRelationshipName": "employeeLocation",
+      "relationshipName": "employee",
+      "ownerSide": false
+    }
+  ],
+  "changelogDate": "20201105130221",
+  "javadoc": "EmployeeLocation entity.\\n@author The Moo3in team.",
+  "entityTableName": "employee_location",
+  "dto": "no",
+  "pagination": "pagination",
+  "service": "serviceClass",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": ["mooingateway", "mooincompanies"],
+  "microserviceName": "mooincompanies"
+}

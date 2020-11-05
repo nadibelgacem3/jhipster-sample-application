@@ -1,0 +1,99 @@
+{
+  "name": "CompanyBillPayment",
+  "fields": [
+    {
+      "fieldName": "number",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "details",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "paymentDate",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "paymentMethod",
+      "fieldType": "CompanyPaymentMethod",
+      "fieldValues": "CREDIT_CARD,CASH,BANK_CHECK,BANK_TRAIT"
+    },
+    {
+      "fieldName": "bankCheckorTraitNumber",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "imageJustif",
+      "fieldType": "byte[]",
+      "fieldTypeBlobContent": "image"
+    },
+    {
+      "fieldName": "status",
+      "fieldType": "CompanyModulePaymentStatus",
+      "fieldValues": "DRAFT_PANIER,CONFIRMED,CANCELED,UNDER_TREATMENT"
+    },
+    {
+      "fieldName": "totalHT",
+      "fieldType": "BigDecimal",
+      "fieldValidateRules": ["required", "min"],
+      "fieldValidateRulesMin": "0"
+    },
+    {
+      "fieldName": "totalTVA",
+      "fieldType": "BigDecimal",
+      "fieldValidateRules": ["required", "min"],
+      "fieldValidateRulesMin": "0"
+    },
+    {
+      "fieldName": "totaTTC",
+      "fieldType": "BigDecimal",
+      "fieldValidateRules": ["required", "min"],
+      "fieldValidateRulesMin": "0"
+    },
+    {
+      "fieldName": "date",
+      "fieldType": "LocalDate",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "dueDate",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "withTVA",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldName": "withTax",
+      "fieldType": "Boolean"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "companyBillPaymentItem",
+      "otherEntityRelationshipName": "companyBillPayment",
+      "relationshipName": "companyBillPaymentItem"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "company",
+      "otherEntityRelationshipName": "companyBillPayment",
+      "relationshipName": "company",
+      "otherEntityField": "id"
+    }
+  ],
+  "changelogDate": "20201105125721",
+  "javadoc": "CompanyBillPayment entity.\\n@author The Moo3in team.",
+  "entityTableName": "company_bill_payment",
+  "dto": "no",
+  "pagination": "pagination",
+  "service": "serviceClass",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": ["mooingateway", "mooincompanies"],
+  "microserviceName": "mooincompanies"
+}

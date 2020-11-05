@@ -1,0 +1,32 @@
+{
+  "mooingatewayApp": {
+    "mooincashierCashierProduct": {
+      "home": {
+        "title": "CashierProducts",
+        "createLabel": "Créer un nouveau Cashier Product",
+        "createOrEditLabel": "Créer ou éditer un Cashier Product",
+        "notFound": "Aucun Cashier Product trouvé"
+      },
+      "delete": {
+        "question": "Etes-vous certain de vouloir supprimer le Cashier Product {{ id }} ?"
+      },
+      "detail": {
+        "title": "Cashier Product"
+      },
+      "productID": "Product ID",
+      "cashierProdName": "Cashier Prod Name",
+      "cashierProdQty": "Cashier Prod Qty",
+      "cashierProdPurchaseUnitPrice": "Cashier Prod Purchase Unit Price",
+      "cashierProdSaleUnitPrice": "Cashier Prod Sale Unit Price",
+      "cashierProdStockLimit": "Cashier Prod Stock Limit",
+      "cashierProdStockLimitAlert": "Cashier Prod Stock Limit Alert"
+    }
+  },
+  "mooincashierApp": {
+    "mooincashierCashierProduct": {
+      "created": "Un nouveau Cashier Product a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Cashier Product avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Cashier Product avec l'identifiant {{ param }} a été supprimé"
+    }
+  }
+}

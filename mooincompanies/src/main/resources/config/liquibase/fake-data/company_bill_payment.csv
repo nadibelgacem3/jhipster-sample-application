@@ -1,0 +1,11 @@
+id;number;details;payment_date;payment_method;bank_checkor_trait_number;image_justif;image_justif_content_type;status;total_ht;total_tva;tota_ttc;date;due_date;with_tva;with_tax
+1;Future Product;bandwidth;2020-11-04;CASH;Field calculating Mobility;../fake-data/blob/hipster.png;image/png;CONFIRMED;66354;80058;51764;2020-11-05;2020-11-05;true;true
+2;matrix auxiliary Licensed Frozen Soap;connecting back-end;2020-11-05;BANK_TRAIT;Beauty local;../fake-data/blob/hipster.png;image/png;UNDER_TREATMENT;7717;22771;56256;2020-11-05;2020-11-04;true;true
+3;demand-driven bypassing online;sticky;2020-11-04;CASH;hacking Fish JSON;../fake-data/blob/hipster.png;image/png;CANCELED;5640;18784;41609;2020-11-04;2020-11-05;false;true
+4;driver;Connecticut connecting Hong Kong;2020-11-05;BANK_TRAIT;Metrics;../fake-data/blob/hipster.png;image/png;CONFIRMED;81021;20049;84126;2020-11-04;2020-11-04;true;false
+5;backing up;Holy See (Vatican City State) Creative;2020-11-04;BANK_CHECK;Salad matrix 1080p;../fake-data/blob/hipster.png;image/png;CANCELED;85603;35830;74764;2020-11-04;2020-11-04;true;true
+6;Designer cyan;wireless;2020-11-05;BANK_CHECK;Officer salmon RSS;../fake-data/blob/hipster.png;image/png;DRAFT_PANIER;40234;86174;60987;2020-11-05;2020-11-04;true;false
+7;quantifying;transmitting leverage Optional;2020-11-05;BANK_CHECK;alarm bypassing;../fake-data/blob/hipster.png;image/png;UNDER_TREATMENT;88004;40599;44801;2020-11-04;2020-11-05;false;true
+8;French Southern Territories web-enabled;gold Configurable copying;2020-11-05;CASH;Vermont extranet methodologies;../fake-data/blob/hipster.png;image/png;CANCELED;76602;22668;32226;2020-11-04;2020-11-05;false;true
+9;back-end deploy De-engineered;Division Organized Steel;2020-11-05;CREDIT_CARD;Fresh backing up Roads;../fake-data/blob/hipster.png;image/png;CONFIRMED;58652;66751;79884;2020-11-04;2020-11-04;false;true
+10;dynamic Reactive;Run Future;2020-11-04;BANK_CHECK;magnetic Prairie ubiquitous;../fake-data/blob/hipster.png;image/png;DRAFT_PANIER;14184;87213;96538;2020-11-04;2020-11-04;false;false

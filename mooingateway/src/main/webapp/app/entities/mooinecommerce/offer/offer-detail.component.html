@@ -1,0 +1,91 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="offer">
+            <h2><span jhiTranslate="mooingatewayApp.mooinecommerceOffer.detail.title">Offer</span> {{ offer.id }}</h2>
+
+            <hr>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="mooingatewayApp.mooinecommerceOffer.name">Name</span></dt>
+                <dd>
+                    <span>{{ offer.name }}</span>
+                </dd>
+                <dt><span jhiTranslate="mooingatewayApp.mooinecommerceOffer.description">Description</span></dt>
+                <dd>
+                    <span>{{ offer.description }}</span>
+                </dd>
+                <dt><span jhiTranslate="mooingatewayApp.mooinecommerceOffer.image">Image</span></dt>
+                <dd>
+                    <div *ngIf="offer.image">
+                        <a (click)="openFile(offer.imageContentType, offer.image)">
+                            <img [src]="'data:' + offer.imageContentType + ';base64,' + offer.image" style="max-width: 100%;" alt="offer image"/>
+                        </a>
+                        {{ offer.imageContentType }}, {{ byteSize(offer.image) }}
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="mooingatewayApp.mooinecommerceOffer.dateBegin">Date Begin</span></dt>
+                <dd>
+                    <span>{{ offer.dateBegin }}</span>
+                </dd>
+                <dt><span jhiTranslate="mooingatewayApp.mooinecommerceOffer.dateEnd">Date End</span></dt>
+                <dd>
+                    <span>{{ offer.dateEnd }}</span>
+                </dd>
+                <dt><span jhiTranslate="mooingatewayApp.mooinecommerceOffer.duration">Duration</span></dt>
+                <dd>
+                    <span>{{ offer.duration }}</span>
+                </dd>
+                <dt><span jhiTranslate="mooingatewayApp.mooinecommerceOffer.status">Status</span></dt>
+                <dd>
+                    <span jhiTranslate="{{ 'mooingatewayApp.OfferStatus.' + offer.status }}">{{ offer.status }}</span>
+                </dd>
+                <dt><span jhiTranslate="mooingatewayApp.mooinecommerceOffer.productId">Product Id</span></dt>
+                <dd>
+                    <span>{{ offer.productId }}</span>
+                </dd>
+                <dt><span jhiTranslate="mooingatewayApp.mooinecommerceOffer.saleUnitPriceBeforeDiscount">Sale Unit Price Before Discount</span></dt>
+                <dd>
+                    <span>{{ offer.saleUnitPriceBeforeDiscount }}</span>
+                </dd>
+                <dt><span jhiTranslate="mooingatewayApp.mooinecommerceOffer.discountRate">Discount Rate</span></dt>
+                <dd>
+                    <span>{{ offer.discountRate }}</span>
+                </dd>
+                <dt><span jhiTranslate="mooingatewayApp.mooinecommerceOffer.saleUnitPriceAfterDiscount">Sale Unit Price After Discount</span></dt>
+                <dd>
+                    <span>{{ offer.saleUnitPriceAfterDiscount }}</span>
+                </dd>
+                <dt><span jhiTranslate="mooingatewayApp.mooinecommerceOffer.withTVA">With TVA</span></dt>
+                <dd>
+                    <span>{{ offer.withTVA }}</span>
+                </dd>
+                <dt><span jhiTranslate="mooingatewayApp.mooinecommerceOffer.withTax">With Tax</span></dt>
+                <dd>
+                    <span>{{ offer.withTax }}</span>
+                </dd>
+                <dt><span jhiTranslate="mooingatewayApp.mooinecommerceOffer.isActivated">Is Activated</span></dt>
+                <dd>
+                    <span>{{ offer.isActivated }}</span>
+                </dd>
+                <dt><span jhiTranslate="mooingatewayApp.mooinecommerceOffer.companyID">Company ID</span></dt>
+                <dd>
+                    <span>{{ offer.companyID }}</span>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/offer', offer.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

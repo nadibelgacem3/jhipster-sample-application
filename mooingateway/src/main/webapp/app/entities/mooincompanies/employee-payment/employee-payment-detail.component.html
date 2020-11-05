@@ -1,0 +1,61 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="employeePayment">
+            <h2><span jhiTranslate="mooingatewayApp.mooincompaniesEmployeePayment.detail.title">Employee Payment</span> {{ employeePayment.id }}</h2>
+
+            <hr>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="mooingatewayApp.mooincompaniesEmployeePayment.details">Details</span></dt>
+                <dd>
+                    <span>{{ employeePayment.details }}</span>
+                </dd>
+                <dt><span jhiTranslate="mooingatewayApp.mooincompaniesEmployeePayment.amount">Amount</span></dt>
+                <dd>
+                    <span>{{ employeePayment.amount }}</span>
+                </dd>
+                <dt><span jhiTranslate="mooingatewayApp.mooincompaniesEmployeePayment.paymentDate">Payment Date</span></dt>
+                <dd>
+                    <span>{{ employeePayment.paymentDate }}</span>
+                </dd>
+                <dt><span jhiTranslate="mooingatewayApp.mooincompaniesEmployeePayment.fromDate">From Date</span></dt>
+                <dd>
+                    <span>{{ employeePayment.fromDate }}</span>
+                </dd>
+                <dt><span jhiTranslate="mooingatewayApp.mooincompaniesEmployeePayment.toDate">To Date</span></dt>
+                <dd>
+                    <span>{{ employeePayment.toDate }}</span>
+                </dd>
+                <dt><span jhiTranslate="mooingatewayApp.mooincompaniesEmployeePayment.imageJustif">Image Justif</span></dt>
+                <dd>
+                    <div *ngIf="employeePayment.imageJustif">
+                        <a (click)="openFile(employeePayment.imageJustifContentType, employeePayment.imageJustif)">
+                            <img [src]="'data:' + employeePayment.imageJustifContentType + ';base64,' + employeePayment.imageJustif" style="max-width: 100%;" alt="employeePayment image"/>
+                        </a>
+                        {{ employeePayment.imageJustifContentType }}, {{ byteSize(employeePayment.imageJustif) }}
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="mooingatewayApp.mooincompaniesEmployeePayment.employee">Employee</span></dt>
+                <dd>
+                    <div *ngIf="employeePayment.employee">
+                        <a [routerLink]="['/employee', employeePayment.employee?.id, 'view']">{{ employeePayment.employee?.id }}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/employee-payment', employeePayment.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

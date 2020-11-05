@@ -1,0 +1,32 @@
+{
+  "mooingatewayApp": {
+    "mooincompaniesCompanyModule": {
+      "home": {
+        "title": "CompanyModules",
+        "createLabel": "Créer un nouveau Company Module",
+        "createOrEditLabel": "Créer ou éditer un Company Module",
+        "notFound": "Aucun Company Module trouvé"
+      },
+      "delete": {
+        "question": "Etes-vous certain de vouloir supprimer le Company Module {{ id }} ?"
+      },
+      "detail": {
+        "title": "Company Module"
+      },
+      "name": "Name",
+      "activatedAt": "Activated At",
+      "activatedUntil": "Activated Until",
+      "isActivated": "Is Activated",
+      "price": "Price",
+      "companyBillPaymentItem": "Company Bill Payment Item",
+      "company": "Company"
+    }
+  },
+  "mooincompaniesApp": {
+    "mooincompaniesCompanyModule": {
+      "created": "Un nouveau Company Module a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Company Module avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Company Module avec l'identifiant {{ param }} a été supprimé"
+    }
+  }
+}

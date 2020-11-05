@@ -1,0 +1,58 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="avoirItem">
+            <h2><span jhiTranslate="mooingatewayApp.mooinbaseAvoirItem.detail.title">Avoir Item</span> {{ avoirItem.id }}</h2>
+
+            <hr>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="mooingatewayApp.mooinbaseAvoirItem.quantity">Quantity</span></dt>
+                <dd>
+                    <span>{{ avoirItem.quantity }}</span>
+                </dd>
+                <dt><span jhiTranslate="mooingatewayApp.mooinbaseAvoirItem.discountRate">Discount Rate</span></dt>
+                <dd>
+                    <span>{{ avoirItem.discountRate }}</span>
+                </dd>
+                <dt><span jhiTranslate="mooingatewayApp.mooinbaseAvoirItem.totalHT">Total HT</span></dt>
+                <dd>
+                    <span>{{ avoirItem.totalHT }}</span>
+                </dd>
+                <dt><span jhiTranslate="mooingatewayApp.mooinbaseAvoirItem.totalTVA">Total TVA</span></dt>
+                <dd>
+                    <span>{{ avoirItem.totalTVA }}</span>
+                </dd>
+                <dt><span jhiTranslate="mooingatewayApp.mooinbaseAvoirItem.totaTTC">Tota TTC</span></dt>
+                <dd>
+                    <span>{{ avoirItem.totaTTC }}</span>
+                </dd>
+                <dt><span jhiTranslate="mooingatewayApp.mooinbaseAvoirItem.product">Product</span></dt>
+                <dd>
+                    <div *ngIf="avoirItem.product">
+                        <a [routerLink]="['/product', avoirItem.product?.id, 'view']">{{ avoirItem.product?.id }}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="mooingatewayApp.mooinbaseAvoirItem.avoir">Avoir</span></dt>
+                <dd>
+                    <div *ngIf="avoirItem.avoir">
+                        <a [routerLink]="['/avoir', avoirItem.avoir?.id, 'view']">{{ avoirItem.avoir?.id }}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/avoir-item', avoirItem.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

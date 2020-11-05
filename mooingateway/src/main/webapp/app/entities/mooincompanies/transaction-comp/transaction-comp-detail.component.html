@@ -1,0 +1,68 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="transactionComp">
+            <h2><span jhiTranslate="mooingatewayApp.mooincompaniesTransactionComp.detail.title">Transaction Comp</span> {{ transactionComp.id }}</h2>
+
+            <hr>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="mooingatewayApp.mooincompaniesTransactionComp.number">Number</span></dt>
+                <dd>
+                    <span>{{ transactionComp.number }}</span>
+                </dd>
+                <dt><span jhiTranslate="mooingatewayApp.mooincompaniesTransactionComp.details">Details</span></dt>
+                <dd>
+                    <span>{{ transactionComp.details }}</span>
+                </dd>
+                <dt><span jhiTranslate="mooingatewayApp.mooincompaniesTransactionComp.type">Type</span></dt>
+                <dd>
+                    <span jhiTranslate="{{ 'mooingatewayApp.TransactionCompTypeEnum.' + transactionComp.type }}">{{ transactionComp.type }}</span>
+                </dd>
+                <dt><span jhiTranslate="mooingatewayApp.mooincompaniesTransactionComp.paymentMethod">Payment Method</span></dt>
+                <dd>
+                    <span jhiTranslate="{{ 'mooingatewayApp.TransactionCompPaymentMethod.' + transactionComp.paymentMethod }}">{{ transactionComp.paymentMethod }}</span>
+                </dd>
+                <dt><span jhiTranslate="mooingatewayApp.mooincompaniesTransactionComp.withTVA">With TVA</span></dt>
+                <dd>
+                    <span>{{ transactionComp.withTVA }}</span>
+                </dd>
+                <dt><span jhiTranslate="mooingatewayApp.mooincompaniesTransactionComp.totalHT">Total HT</span></dt>
+                <dd>
+                    <span>{{ transactionComp.totalHT }}</span>
+                </dd>
+                <dt><span jhiTranslate="mooingatewayApp.mooincompaniesTransactionComp.totalTVA">Total TVA</span></dt>
+                <dd>
+                    <span>{{ transactionComp.totalTVA }}</span>
+                </dd>
+                <dt><span jhiTranslate="mooingatewayApp.mooincompaniesTransactionComp.totaTTC">Tota TTC</span></dt>
+                <dd>
+                    <span>{{ transactionComp.totaTTC }}</span>
+                </dd>
+                <dt><span jhiTranslate="mooingatewayApp.mooincompaniesTransactionComp.date">Date</span></dt>
+                <dd>
+                    <span>{{ transactionComp.date }}</span>
+                </dd>
+                <dt><span jhiTranslate="mooingatewayApp.mooincompaniesTransactionComp.company">Company</span></dt>
+                <dd>
+                    <div *ngIf="transactionComp.company">
+                        <a [routerLink]="['/company', transactionComp.company?.id, 'view']">{{ transactionComp.company?.id }}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/transaction-comp', transactionComp.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

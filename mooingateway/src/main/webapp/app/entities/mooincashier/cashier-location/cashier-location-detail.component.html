@@ -1,0 +1,59 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="cashierLocation">
+            <h2><span jhiTranslate="mooingatewayApp.mooincashierCashierLocation.detail.title">Cashier Location</span> {{ cashierLocation.id }}</h2>
+
+            <hr>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="mooingatewayApp.mooincashierCashierLocation.localNumber">Local Number</span></dt>
+                <dd>
+                    <span>{{ cashierLocation.localNumber }}</span>
+                </dd>
+                <dt><span jhiTranslate="mooingatewayApp.mooincashierCashierLocation.streetAddress">Street Address</span></dt>
+                <dd>
+                    <span>{{ cashierLocation.streetAddress }}</span>
+                </dd>
+                <dt><span jhiTranslate="mooingatewayApp.mooincashierCashierLocation.postalCode">Postal Code</span></dt>
+                <dd>
+                    <span>{{ cashierLocation.postalCode }}</span>
+                </dd>
+                <dt><span jhiTranslate="mooingatewayApp.mooincashierCashierLocation.city">City</span></dt>
+                <dd>
+                    <span>{{ cashierLocation.city }}</span>
+                </dd>
+                <dt><span jhiTranslate="mooingatewayApp.mooincashierCashierLocation.stateProvince">State Province</span></dt>
+                <dd>
+                    <span>{{ cashierLocation.stateProvince }}</span>
+                </dd>
+                <dt><span jhiTranslate="mooingatewayApp.mooincashierCashierLocation.countryName">Country Name</span></dt>
+                <dd>
+                    <span>{{ cashierLocation.countryName }}</span>
+                </dd>
+                <dt><span jhiTranslate="mooingatewayApp.mooincashierCashierLocation.flag">Flag</span></dt>
+                <dd>
+                    <div *ngIf="cashierLocation.flag">
+                        <a (click)="openFile(cashierLocation.flagContentType, cashierLocation.flag)">
+                            <img [src]="'data:' + cashierLocation.flagContentType + ';base64,' + cashierLocation.flag" style="max-width: 100%;" alt="cashierLocation image"/>
+                        </a>
+                        {{ cashierLocation.flagContentType }}, {{ byteSize(cashierLocation.flag) }}
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/cashier-location', cashierLocation.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,108 @@
+<div>
+    <h2 id="page-heading">
+        <span jhiTranslate="mooingatewayApp.mooincompaniesCompanyBillPayment.home.title">Company Bill Payments</span>
+
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-company-bill-payment" [routerLink]="['/company-bill-payment/new']">
+            <fa-icon icon="plus"></fa-icon>
+            <span  jhiTranslate="mooingatewayApp.mooincompaniesCompanyBillPayment.home.createLabel">
+            Create a new Company Bill Payment
+            </span>
+        </button>
+    </h2>
+
+    <jhi-alert-error></jhi-alert-error>
+
+    <jhi-alert></jhi-alert>
+
+    <div class="alert alert-warning" id="no-result" *ngIf="companyBillPayments?.length === 0">
+        <span jhiTranslate="mooingatewayApp.mooincompaniesCompanyBillPayment.home.notFound">No companyBillPayments found</span>
+    </div>
+
+    <div class="table-responsive" id="entities" *ngIf="companyBillPayments && companyBillPayments.length > 0">
+        <table class="table table-striped" aria-describedby="page-heading">
+            <thead>
+                <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" [callback]="loadPage.bind(this)">
+                    <th scope="col"  jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="number"><span jhiTranslate="mooingatewayApp.mooincompaniesCompanyBillPayment.number">Number</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="details"><span jhiTranslate="mooingatewayApp.mooincompaniesCompanyBillPayment.details">Details</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="paymentDate"><span jhiTranslate="mooingatewayApp.mooincompaniesCompanyBillPayment.paymentDate">Payment Date</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="paymentMethod"><span jhiTranslate="mooingatewayApp.mooincompaniesCompanyBillPayment.paymentMethod">Payment Method</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="bankCheckorTraitNumber"><span jhiTranslate="mooingatewayApp.mooincompaniesCompanyBillPayment.bankCheckorTraitNumber">Bank Checkor Trait Number</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="imageJustif"><span jhiTranslate="mooingatewayApp.mooincompaniesCompanyBillPayment.imageJustif">Image Justif</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="status"><span jhiTranslate="mooingatewayApp.mooincompaniesCompanyBillPayment.status">Status</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="totalHT"><span jhiTranslate="mooingatewayApp.mooincompaniesCompanyBillPayment.totalHT">Total HT</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="totalTVA"><span jhiTranslate="mooingatewayApp.mooincompaniesCompanyBillPayment.totalTVA">Total TVA</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="totaTTC"><span jhiTranslate="mooingatewayApp.mooincompaniesCompanyBillPayment.totaTTC">Tota TTC</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="date"><span jhiTranslate="mooingatewayApp.mooincompaniesCompanyBillPayment.date">Date</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="dueDate"><span jhiTranslate="mooingatewayApp.mooincompaniesCompanyBillPayment.dueDate">Due Date</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="withTVA"><span jhiTranslate="mooingatewayApp.mooincompaniesCompanyBillPayment.withTVA">With TVA</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="withTax"><span jhiTranslate="mooingatewayApp.mooincompaniesCompanyBillPayment.withTax">With Tax</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="company.id"><span jhiTranslate="mooingatewayApp.mooincompaniesCompanyBillPayment.company">Company</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let companyBillPayment of companyBillPayments ;trackBy: trackId">
+                    <td><a [routerLink]="['/company-bill-payment', companyBillPayment.id, 'view']">{{ companyBillPayment.id }}</a></td>
+                    <td>{{ companyBillPayment.number }}</td>
+                    <td>{{ companyBillPayment.details }}</td>
+                    <td>{{ companyBillPayment.paymentDate | date:'mediumDate' }}</td>
+                    <td jhiTranslate="{{ 'mooingatewayApp.CompanyPaymentMethod.' + companyBillPayment.paymentMethod }}">{{ companyBillPayment.paymentMethod }}</td>
+                    <td>{{ companyBillPayment.bankCheckorTraitNumber }}</td>
+                    <td>
+                        <a *ngIf="companyBillPayment.imageJustif" (click)="openFile(companyBillPayment.imageJustifContentType, companyBillPayment.imageJustif)">
+                            <img [src]="'data:' + companyBillPayment.imageJustifContentType + ';base64,' + companyBillPayment.imageJustif" style="max-height: 30px;" alt="companyBillPayment image"/>
+                        </a>
+                        <span *ngIf="companyBillPayment.imageJustif">{{ companyBillPayment.imageJustifContentType }}, {{ byteSize(companyBillPayment.imageJustif) }}</span>
+                    </td>
+                    <td jhiTranslate="{{ 'mooingatewayApp.CompanyModulePaymentStatus.' + companyBillPayment.status }}">{{ companyBillPayment.status }}</td>
+                    <td>{{ companyBillPayment.totalHT }}</td>
+                    <td>{{ companyBillPayment.totalTVA }}</td>
+                    <td>{{ companyBillPayment.totaTTC }}</td>
+                    <td>{{ companyBillPayment.date | date:'mediumDate' }}</td>
+                    <td>{{ companyBillPayment.dueDate | date:'mediumDate' }}</td>
+                    <td>{{ companyBillPayment.withTVA }}</td>
+                    <td>{{ companyBillPayment.withTax }}</td>
+                    <td>
+                        <div *ngIf="companyBillPayment.company">
+                            <a [routerLink]="['/company', companyBillPayment.company?.id, 'view']" >{{ companyBillPayment.company?.id }}</a>
+                        </div>
+                    </td>
+                    <td class="text-right">
+                        <div class="btn-group">
+                            <button type="submit"
+                                    [routerLink]="['/company-bill-payment', companyBillPayment.id, 'view']"
+                                    class="btn btn-info btn-sm">
+                                <fa-icon icon="eye"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                            </button>
+
+                            <button type="submit"
+                                    [routerLink]="['/company-bill-payment', companyBillPayment.id, 'edit']"
+                                    class="btn btn-primary btn-sm">
+                                <fa-icon icon="pencil-alt"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                            </button>
+
+                            <button type="submit" (click)="delete(companyBillPayment)"
+                                    class="btn btn-danger btn-sm">
+                                <fa-icon icon="times"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div *ngIf="companyBillPayments && companyBillPayments.length > 0">
+        <div class="row justify-content-center">
+            <jhi-item-count [page]="page" [total]="totalItems" [itemsPerPage]="itemsPerPage"></jhi-item-count>
+        </div>
+
+        <div class="row justify-content-center">
+            <ngb-pagination [collectionSize]="totalItems" [(page)]="ngbPaginationPage" [pageSize]="itemsPerPage" [maxSize]="5" [rotate]="true" [boundaryLinks]="true" (pageChange)="loadPage($event)"></ngb-pagination>
+        </div>
+    </div>
+</div>

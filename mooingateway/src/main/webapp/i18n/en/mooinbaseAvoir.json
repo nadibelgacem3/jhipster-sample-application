@@ -1,0 +1,38 @@
+{
+  "mooingatewayApp": {
+    "mooinbaseAvoir": {
+      "home": {
+        "title": "Avoirs",
+        "createLabel": "Create a new Avoir",
+        "createOrEditLabel": "Create or edit a Avoir",
+        "notFound": "No Avoirs found"
+      },
+      "delete": {
+        "question": "Are you sure you want to delete Avoir {{ id }}?"
+      },
+      "detail": {
+        "title": "Avoir"
+      },
+      "number": "Number",
+      "reference": "Reference",
+      "status": "Status",
+      "type": "Type",
+      "totalHT": "Total HT",
+      "totalTVA": "Total TVA",
+      "totaTTC": "Tota TTC",
+      "date": "Date",
+      "dueDate": "Due Date",
+      "isConverted": "Is Converted",
+      "companyID": "Company ID",
+      "avoirItem": "Avoir Item",
+      "tiers": "Tiers"
+    }
+  },
+  "mooinbaseApp": {
+    "mooinbaseAvoir": {
+      "created": "A new Avoir is created with identifier {{ param }}",
+      "updated": "A Avoir is updated with identifier {{ param }}",
+      "deleted": "A Avoir is deleted with identifier {{ param }}"
+    }
+  }
+}

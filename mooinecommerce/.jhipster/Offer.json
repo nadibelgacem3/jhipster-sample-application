@@ -1,0 +1,94 @@
+{
+  "name": "Offer",
+  "fields": [
+    {
+      "fieldName": "name",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "description",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "image",
+      "fieldType": "byte[]",
+      "fieldTypeBlobContent": "image"
+    },
+    {
+      "fieldName": "dateBegin",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "dateEnd",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "duration",
+      "fieldType": "Duration"
+    },
+    {
+      "fieldName": "status",
+      "fieldType": "OfferStatus",
+      "fieldValues": "AVAILABLE,OUT_OF_STOCK,CLOSED"
+    },
+    {
+      "fieldName": "productId",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "saleUnitPriceBeforeDiscount",
+      "fieldType": "BigDecimal",
+      "fieldValidateRules": ["min"],
+      "fieldValidateRulesMin": "0"
+    },
+    {
+      "fieldName": "discountRate",
+      "fieldType": "BigDecimal",
+      "fieldValidateRules": ["min"],
+      "fieldValidateRulesMin": "0"
+    },
+    {
+      "fieldName": "saleUnitPriceAfterDiscount",
+      "fieldType": "BigDecimal",
+      "fieldValidateRules": ["min"],
+      "fieldValidateRulesMin": "0"
+    },
+    {
+      "fieldName": "withTVA",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldName": "withTax",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldName": "isActivated",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldName": "companyID",
+      "fieldType": "Long"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "offerOrder",
+      "otherEntityRelationshipName": "offer",
+      "relationshipName": "offerOrder"
+    }
+  ],
+  "changelogDate": "20201105133421",
+  "javadoc": "Offer entity.\\n@author The Moo3in team.",
+  "entityTableName": "offer",
+  "dto": "no",
+  "pagination": "pagination",
+  "service": "serviceClass",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": ["mooingateway", "mooinecommerce"],
+  "microserviceName": "mooinecommerce"
+}

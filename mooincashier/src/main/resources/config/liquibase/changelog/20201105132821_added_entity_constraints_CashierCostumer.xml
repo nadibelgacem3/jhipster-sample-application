@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.9.xsd">
+    <!--
+        Added the constraints for entity CashierCostumer.
+    -->
+    <changeSet id="20201105132821-2" author="jhipster">
+        
+        <addForeignKeyConstraint baseColumnNames="cashier_location_id"
+                                 baseTableName="cashier_costumer"
+                                 constraintName="fk_cashier_costumer_cashier_location_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="cashier_location"/>
+
+        <addForeignKeyConstraint baseColumnNames="cashier_id"
+                                 baseTableName="cashier_costumer"
+                                 constraintName="fk_cashier_costumer_cashier_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="cashier"/>
+
+    </changeSet>
+</databaseChangeLog>

@@ -1,0 +1,11 @@
+id;company_id;reference;reference_provider;name;quantity;purchase_unit_price;sale_unit_price;stocklimit;stocklimit_alert;unit_type;size;color;image;image_content_type;is_displayed_in_cashier
+1;23324;Checking Account;Gambia Assistant;South Dakota monetize Principal;76190;35091;34790;81149;true;UNIT;L;black;../fake-data/blob/hipster.png;image/png;false
+2;88209;Unbranded Centers;Generic Metal Tuna;navigating Metical;43291;9654;32061;94707;true;LITER;L;magenta;../fake-data/blob/hipster.png;image/png;true
+3;18327;Lao People's Democratic Republic;neutral;Rustic Concrete Car;78661;16911;11502;56622;true;UNIT;NONE;fuchsia;../fake-data/blob/hipster.png;image/png;true
+4;86396;Personal Loan Account yellow;Cape Verde;intangible homogeneous;66238;45935;14557;63453;true;METER;XXL;turquoise;../fake-data/blob/hipster.png;image/png;false
+5;8723;tangible;Checking Account methodical optical;Cheese rich multi-byte;80408;45155;90340;80952;false;NONE;XXL;white;../fake-data/blob/hipster.png;image/png;true
+6;19864;wireless navigate grey;solution Automotive;e-commerce Ergonomic Concrete Salad;26246;9545;6953;93852;false;METER;NONE;azure;../fake-data/blob/hipster.png;image/png;false
+7;53352;Zimbabwe Small Wooden Chicken Balboa US Dollar;Mobility multi-byte Incredible Steel Soap;IB;90897;52857;55509;1215;true;METER;XXL;lavender;../fake-data/blob/hipster.png;image/png;false
+8;26258;International online;Home Loan Account Practical Frozen Shirt Bedfordshire;capacity invoice e-services;70125;94054;10382;47027;true;METER;XL;white;../fake-data/blob/hipster.png;image/png;true
+9;64262;index Borders moratorium;Stand-alone;Soft;82670;75593;65021;19001;false;METER;M;olive;../fake-data/blob/hipster.png;image/png;false
+10;606;Congo;Engineer protocol;Cheese portals;61683;51148;36478;41867;false;NONE;L;lime;../fake-data/blob/hipster.png;image/png;true

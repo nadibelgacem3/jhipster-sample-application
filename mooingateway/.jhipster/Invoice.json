@@ -1,0 +1,88 @@
+{
+  "name": "Invoice",
+  "fields": [
+    {
+      "fieldName": "number",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "reference",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "status",
+      "fieldType": "InvoiceStatusEnum",
+      "fieldValues": "DRAFT,FINALIZED,PAID,PAYEMENT_IN_PROGRESS,CANCELED"
+    },
+    {
+      "fieldName": "type",
+      "fieldType": "InvoiceTypeEnum",
+      "fieldValues": "SALE,PURCHASE"
+    },
+    {
+      "fieldName": "totalHT",
+      "fieldType": "BigDecimal",
+      "fieldValidateRules": ["required", "min"],
+      "fieldValidateRulesMin": "0"
+    },
+    {
+      "fieldName": "totalTVA",
+      "fieldType": "BigDecimal",
+      "fieldValidateRules": ["required", "min"],
+      "fieldValidateRulesMin": "0"
+    },
+    {
+      "fieldName": "totaTTC",
+      "fieldType": "BigDecimal",
+      "fieldValidateRules": ["required", "min"],
+      "fieldValidateRulesMin": "0"
+    },
+    {
+      "fieldName": "date",
+      "fieldType": "LocalDate",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "dueDate",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "companyID",
+      "fieldType": "Long"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "invoiceItem",
+      "otherEntityRelationshipName": "invoice",
+      "relationshipName": "invoiceItem"
+    },
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "invoicePaymentHistory",
+      "otherEntityRelationshipName": "invoice",
+      "relationshipName": "invoicePaymentHistory"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "tiers",
+      "otherEntityRelationshipName": "invoice",
+      "relationshipName": "tiers",
+      "otherEntityField": "id"
+    }
+  ],
+  "changelogDate": "20201105131321",
+  "javadoc": "Invoice entity.\\n@author The Moo3in team.",
+  "entityTableName": "invoice",
+  "dto": "no",
+  "pagination": "pagination",
+  "service": "serviceClass",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": ["mooingateway", "mooinbase"],
+  "microserviceName": "mooinbase"
+}

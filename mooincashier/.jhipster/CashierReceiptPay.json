@@ -1,0 +1,55 @@
+{
+  "name": "CashierReceiptPay",
+  "fields": [
+    {
+      "fieldName": "details",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "amount",
+      "fieldType": "BigDecimal",
+      "fieldValidateRules": ["required", "min"],
+      "fieldValidateRulesMin": "0"
+    },
+    {
+      "fieldName": "paymentDate",
+      "fieldType": "Instant"
+    },
+    {
+      "fieldName": "paymentMethod",
+      "fieldType": "CashierReceiptPayMeth",
+      "fieldValues": "CREDIT_CARD,CASH,BANK_CHECK,BANK_TRAIT"
+    },
+    {
+      "fieldName": "bankCheckorTraitNumber",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "imageJustif",
+      "fieldType": "byte[]",
+      "fieldTypeBlobContent": "image"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "cashierReceipt",
+      "otherEntityRelationshipName": "cashierReceiptPay",
+      "relationshipName": "cashierReceipt",
+      "otherEntityField": "id"
+    }
+  ],
+  "changelogDate": "20201105133121",
+  "javadoc": "CashierReceiptPay entity.\\n@author The Moo3in team.",
+  "entityTableName": "cashier_receipt_pay",
+  "dto": "no",
+  "pagination": "pagination",
+  "service": "serviceClass",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": ["mooingateway", "mooincashier"],
+  "microserviceName": "mooincashier"
+}

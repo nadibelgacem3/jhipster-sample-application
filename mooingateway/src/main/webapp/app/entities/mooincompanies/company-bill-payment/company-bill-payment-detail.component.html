@@ -1,0 +1,93 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="companyBillPayment">
+            <h2><span jhiTranslate="mooingatewayApp.mooincompaniesCompanyBillPayment.detail.title">Company Bill Payment</span> {{ companyBillPayment.id }}</h2>
+
+            <hr>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="mooingatewayApp.mooincompaniesCompanyBillPayment.number">Number</span></dt>
+                <dd>
+                    <span>{{ companyBillPayment.number }}</span>
+                </dd>
+                <dt><span jhiTranslate="mooingatewayApp.mooincompaniesCompanyBillPayment.details">Details</span></dt>
+                <dd>
+                    <span>{{ companyBillPayment.details }}</span>
+                </dd>
+                <dt><span jhiTranslate="mooingatewayApp.mooincompaniesCompanyBillPayment.paymentDate">Payment Date</span></dt>
+                <dd>
+                    <span>{{ companyBillPayment.paymentDate }}</span>
+                </dd>
+                <dt><span jhiTranslate="mooingatewayApp.mooincompaniesCompanyBillPayment.paymentMethod">Payment Method</span></dt>
+                <dd>
+                    <span jhiTranslate="{{ 'mooingatewayApp.CompanyPaymentMethod.' + companyBillPayment.paymentMethod }}">{{ companyBillPayment.paymentMethod }}</span>
+                </dd>
+                <dt><span jhiTranslate="mooingatewayApp.mooincompaniesCompanyBillPayment.bankCheckorTraitNumber">Bank Checkor Trait Number</span></dt>
+                <dd>
+                    <span>{{ companyBillPayment.bankCheckorTraitNumber }}</span>
+                </dd>
+                <dt><span jhiTranslate="mooingatewayApp.mooincompaniesCompanyBillPayment.imageJustif">Image Justif</span></dt>
+                <dd>
+                    <div *ngIf="companyBillPayment.imageJustif">
+                        <a (click)="openFile(companyBillPayment.imageJustifContentType, companyBillPayment.imageJustif)">
+                            <img [src]="'data:' + companyBillPayment.imageJustifContentType + ';base64,' + companyBillPayment.imageJustif" style="max-width: 100%;" alt="companyBillPayment image"/>
+                        </a>
+                        {{ companyBillPayment.imageJustifContentType }}, {{ byteSize(companyBillPayment.imageJustif) }}
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="mooingatewayApp.mooincompaniesCompanyBillPayment.status">Status</span></dt>
+                <dd>
+                    <span jhiTranslate="{{ 'mooingatewayApp.CompanyModulePaymentStatus.' + companyBillPayment.status }}">{{ companyBillPayment.status }}</span>
+                </dd>
+                <dt><span jhiTranslate="mooingatewayApp.mooincompaniesCompanyBillPayment.totalHT">Total HT</span></dt>
+                <dd>
+                    <span>{{ companyBillPayment.totalHT }}</span>
+                </dd>
+                <dt><span jhiTranslate="mooingatewayApp.mooincompaniesCompanyBillPayment.totalTVA">Total TVA</span></dt>
+                <dd>
+                    <span>{{ companyBillPayment.totalTVA }}</span>
+                </dd>
+                <dt><span jhiTranslate="mooingatewayApp.mooincompaniesCompanyBillPayment.totaTTC">Tota TTC</span></dt>
+                <dd>
+                    <span>{{ companyBillPayment.totaTTC }}</span>
+                </dd>
+                <dt><span jhiTranslate="mooingatewayApp.mooincompaniesCompanyBillPayment.date">Date</span></dt>
+                <dd>
+                    <span>{{ companyBillPayment.date }}</span>
+                </dd>
+                <dt><span jhiTranslate="mooingatewayApp.mooincompaniesCompanyBillPayment.dueDate">Due Date</span></dt>
+                <dd>
+                    <span>{{ companyBillPayment.dueDate }}</span>
+                </dd>
+                <dt><span jhiTranslate="mooingatewayApp.mooincompaniesCompanyBillPayment.withTVA">With TVA</span></dt>
+                <dd>
+                    <span>{{ companyBillPayment.withTVA }}</span>
+                </dd>
+                <dt><span jhiTranslate="mooingatewayApp.mooincompaniesCompanyBillPayment.withTax">With Tax</span></dt>
+                <dd>
+                    <span>{{ companyBillPayment.withTax }}</span>
+                </dd>
+                <dt><span jhiTranslate="mooingatewayApp.mooincompaniesCompanyBillPayment.company">Company</span></dt>
+                <dd>
+                    <div *ngIf="companyBillPayment.company">
+                        <a [routerLink]="['/company', companyBillPayment.company?.id, 'view']">{{ companyBillPayment.company?.id }}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/company-bill-payment', companyBillPayment.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

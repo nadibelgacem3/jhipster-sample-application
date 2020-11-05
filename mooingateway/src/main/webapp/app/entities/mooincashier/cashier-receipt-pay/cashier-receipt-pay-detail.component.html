@@ -1,0 +1,61 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="cashierReceiptPay">
+            <h2><span jhiTranslate="mooingatewayApp.mooincashierCashierReceiptPay.detail.title">Cashier Receipt Pay</span> {{ cashierReceiptPay.id }}</h2>
+
+            <hr>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="mooingatewayApp.mooincashierCashierReceiptPay.details">Details</span></dt>
+                <dd>
+                    <span>{{ cashierReceiptPay.details }}</span>
+                </dd>
+                <dt><span jhiTranslate="mooingatewayApp.mooincashierCashierReceiptPay.amount">Amount</span></dt>
+                <dd>
+                    <span>{{ cashierReceiptPay.amount }}</span>
+                </dd>
+                <dt><span jhiTranslate="mooingatewayApp.mooincashierCashierReceiptPay.paymentDate">Payment Date</span></dt>
+                <dd>
+                    <span>{{ cashierReceiptPay.paymentDate }}</span>
+                </dd>
+                <dt><span jhiTranslate="mooingatewayApp.mooincashierCashierReceiptPay.paymentMethod">Payment Method</span></dt>
+                <dd>
+                    <span jhiTranslate="{{ 'mooingatewayApp.CashierReceiptPayMeth.' + cashierReceiptPay.paymentMethod }}">{{ cashierReceiptPay.paymentMethod }}</span>
+                </dd>
+                <dt><span jhiTranslate="mooingatewayApp.mooincashierCashierReceiptPay.bankCheckorTraitNumber">Bank Checkor Trait Number</span></dt>
+                <dd>
+                    <span>{{ cashierReceiptPay.bankCheckorTraitNumber }}</span>
+                </dd>
+                <dt><span jhiTranslate="mooingatewayApp.mooincashierCashierReceiptPay.imageJustif">Image Justif</span></dt>
+                <dd>
+                    <div *ngIf="cashierReceiptPay.imageJustif">
+                        <a (click)="openFile(cashierReceiptPay.imageJustifContentType, cashierReceiptPay.imageJustif)">
+                            <img [src]="'data:' + cashierReceiptPay.imageJustifContentType + ';base64,' + cashierReceiptPay.imageJustif" style="max-width: 100%;" alt="cashierReceiptPay image"/>
+                        </a>
+                        {{ cashierReceiptPay.imageJustifContentType }}, {{ byteSize(cashierReceiptPay.imageJustif) }}
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="mooingatewayApp.mooincashierCashierReceiptPay.cashierReceipt">Cashier Receipt</span></dt>
+                <dd>
+                    <div *ngIf="cashierReceiptPay.cashierReceipt">
+                        <a [routerLink]="['/cashier-receipt', cashierReceiptPay.cashierReceipt?.id, 'view']">{{ cashierReceiptPay.cashierReceipt?.id }}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/cashier-receipt-pay', cashierReceiptPay.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

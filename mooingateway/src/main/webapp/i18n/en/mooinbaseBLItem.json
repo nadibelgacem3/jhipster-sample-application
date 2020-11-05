@@ -1,0 +1,32 @@
+{
+  "mooingatewayApp": {
+    "mooinbaseBLItem": {
+      "home": {
+        "title": "BL Items",
+        "createLabel": "Create a new BL Item",
+        "createOrEditLabel": "Create or edit a BL Item",
+        "notFound": "No BL Items found"
+      },
+      "delete": {
+        "question": "Are you sure you want to delete BL Item {{ id }}?"
+      },
+      "detail": {
+        "title": "BL Item"
+      },
+      "quantity": "Quantity",
+      "discountRate": "Discount Rate",
+      "totalHT": "Total HT",
+      "totalTVA": "Total TVA",
+      "totaTTC": "Tota TTC",
+      "product": "Product",
+      "bl": "Bl"
+    }
+  },
+  "mooinbaseApp": {
+    "mooinbaseBLItem": {
+      "created": "A new BL Item is created with identifier {{ param }}",
+      "updated": "A BL Item is updated with identifier {{ param }}",
+      "deleted": "A BL Item is deleted with identifier {{ param }}"
+    }
+  }
+}

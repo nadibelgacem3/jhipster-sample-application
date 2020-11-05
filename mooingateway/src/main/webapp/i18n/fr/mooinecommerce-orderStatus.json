@@ -1,0 +1,11 @@
+{
+  "mooingatewayApp": {
+    "OrderStatus": {
+      "null": "",
+      "DRAFT": "DRAFT",
+      "COMPLETED": "COMPLETED",
+      "PENDING": "PENDING",
+      "CANCELLED": "CANCELLED"
+    }
+  }
+}

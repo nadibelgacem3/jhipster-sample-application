@@ -1,0 +1,92 @@
+<div>
+    <h2 id="page-heading">
+        <span jhiTranslate="mooingatewayApp.mooincashierCashierReceiptPay.home.title">Cashier Receipt Pays</span>
+
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-cashier-receipt-pay" [routerLink]="['/cashier-receipt-pay/new']">
+            <fa-icon icon="plus"></fa-icon>
+            <span  jhiTranslate="mooingatewayApp.mooincashierCashierReceiptPay.home.createLabel">
+            Create a new Cashier Receipt Pay
+            </span>
+        </button>
+    </h2>
+
+    <jhi-alert-error></jhi-alert-error>
+
+    <jhi-alert></jhi-alert>
+
+    <div class="alert alert-warning" id="no-result" *ngIf="cashierReceiptPays?.length === 0">
+        <span jhiTranslate="mooingatewayApp.mooincashierCashierReceiptPay.home.notFound">No cashierReceiptPays found</span>
+    </div>
+
+    <div class="table-responsive" id="entities" *ngIf="cashierReceiptPays && cashierReceiptPays.length > 0">
+        <table class="table table-striped" aria-describedby="page-heading">
+            <thead>
+                <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" [callback]="loadPage.bind(this)">
+                    <th scope="col"  jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="details"><span jhiTranslate="mooingatewayApp.mooincashierCashierReceiptPay.details">Details</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="amount"><span jhiTranslate="mooingatewayApp.mooincashierCashierReceiptPay.amount">Amount</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="paymentDate"><span jhiTranslate="mooingatewayApp.mooincashierCashierReceiptPay.paymentDate">Payment Date</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="paymentMethod"><span jhiTranslate="mooingatewayApp.mooincashierCashierReceiptPay.paymentMethod">Payment Method</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="bankCheckorTraitNumber"><span jhiTranslate="mooingatewayApp.mooincashierCashierReceiptPay.bankCheckorTraitNumber">Bank Checkor Trait Number</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="imageJustif"><span jhiTranslate="mooingatewayApp.mooincashierCashierReceiptPay.imageJustif">Image Justif</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="cashierReceipt.id"><span jhiTranslate="mooingatewayApp.mooincashierCashierReceiptPay.cashierReceipt">Cashier Receipt</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let cashierReceiptPay of cashierReceiptPays ;trackBy: trackId">
+                    <td><a [routerLink]="['/cashier-receipt-pay', cashierReceiptPay.id, 'view']">{{ cashierReceiptPay.id }}</a></td>
+                    <td>{{ cashierReceiptPay.details }}</td>
+                    <td>{{ cashierReceiptPay.amount }}</td>
+                    <td>{{ cashierReceiptPay.paymentDate | date:'medium' }}</td>
+                    <td jhiTranslate="{{ 'mooingatewayApp.CashierReceiptPayMeth.' + cashierReceiptPay.paymentMethod }}">{{ cashierReceiptPay.paymentMethod }}</td>
+                    <td>{{ cashierReceiptPay.bankCheckorTraitNumber }}</td>
+                    <td>
+                        <a *ngIf="cashierReceiptPay.imageJustif" (click)="openFile(cashierReceiptPay.imageJustifContentType, cashierReceiptPay.imageJustif)">
+                            <img [src]="'data:' + cashierReceiptPay.imageJustifContentType + ';base64,' + cashierReceiptPay.imageJustif" style="max-height: 30px;" alt="cashierReceiptPay image"/>
+                        </a>
+                        <span *ngIf="cashierReceiptPay.imageJustif">{{ cashierReceiptPay.imageJustifContentType }}, {{ byteSize(cashierReceiptPay.imageJustif) }}</span>
+                    </td>
+                    <td>
+                        <div *ngIf="cashierReceiptPay.cashierReceipt">
+                            <a [routerLink]="['/cashier-receipt', cashierReceiptPay.cashierReceipt?.id, 'view']" >{{ cashierReceiptPay.cashierReceipt?.id }}</a>
+                        </div>
+                    </td>
+                    <td class="text-right">
+                        <div class="btn-group">
+                            <button type="submit"
+                                    [routerLink]="['/cashier-receipt-pay', cashierReceiptPay.id, 'view']"
+                                    class="btn btn-info btn-sm">
+                                <fa-icon icon="eye"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                            </button>
+
+                            <button type="submit"
+                                    [routerLink]="['/cashier-receipt-pay', cashierReceiptPay.id, 'edit']"
+                                    class="btn btn-primary btn-sm">
+                                <fa-icon icon="pencil-alt"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                            </button>
+
+                            <button type="submit" (click)="delete(cashierReceiptPay)"
+                                    class="btn btn-danger btn-sm">
+                                <fa-icon icon="times"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div *ngIf="cashierReceiptPays && cashierReceiptPays.length > 0">
+        <div class="row justify-content-center">
+            <jhi-item-count [page]="page" [total]="totalItems" [itemsPerPage]="itemsPerPage"></jhi-item-count>
+        </div>
+
+        <div class="row justify-content-center">
+            <ngb-pagination [collectionSize]="totalItems" [(page)]="ngbPaginationPage" [pageSize]="itemsPerPage" [maxSize]="5" [rotate]="true" [boundaryLinks]="true" (pageChange)="loadPage($event)"></ngb-pagination>
+        </div>
+    </div>
+</div>

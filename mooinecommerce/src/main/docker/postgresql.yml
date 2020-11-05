@@ -1,0 +1,12 @@
+version: '2'
+services:
+  mooinecommerce-postgresql:
+    image: postgres:12.3
+    # volumes:
+    #     - ~/volumes/jhipster/mooinecommerce/postgresql/:/var/lib/postgresql/data/
+    environment:
+      - POSTGRES_USER=mooinecommerce
+      - POSTGRES_PASSWORD=
+      - POSTGRES_HOST_AUTH_METHOD=trust
+    ports:
+      - 5432:5432

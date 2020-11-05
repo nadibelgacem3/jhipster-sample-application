@@ -1,0 +1,76 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="avoir">
+            <h2><span jhiTranslate="mooingatewayApp.mooinbaseAvoir.detail.title">Avoir</span> {{ avoir.id }}</h2>
+
+            <hr>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="mooingatewayApp.mooinbaseAvoir.number">Number</span></dt>
+                <dd>
+                    <span>{{ avoir.number }}</span>
+                </dd>
+                <dt><span jhiTranslate="mooingatewayApp.mooinbaseAvoir.reference">Reference</span></dt>
+                <dd>
+                    <span>{{ avoir.reference }}</span>
+                </dd>
+                <dt><span jhiTranslate="mooingatewayApp.mooinbaseAvoir.status">Status</span></dt>
+                <dd>
+                    <span jhiTranslate="{{ 'mooingatewayApp.AvoirStatusEnum.' + avoir.status }}">{{ avoir.status }}</span>
+                </dd>
+                <dt><span jhiTranslate="mooingatewayApp.mooinbaseAvoir.type">Type</span></dt>
+                <dd>
+                    <span jhiTranslate="{{ 'mooingatewayApp.AvoirTypeEnum.' + avoir.type }}">{{ avoir.type }}</span>
+                </dd>
+                <dt><span jhiTranslate="mooingatewayApp.mooinbaseAvoir.totalHT">Total HT</span></dt>
+                <dd>
+                    <span>{{ avoir.totalHT }}</span>
+                </dd>
+                <dt><span jhiTranslate="mooingatewayApp.mooinbaseAvoir.totalTVA">Total TVA</span></dt>
+                <dd>
+                    <span>{{ avoir.totalTVA }}</span>
+                </dd>
+                <dt><span jhiTranslate="mooingatewayApp.mooinbaseAvoir.totaTTC">Tota TTC</span></dt>
+                <dd>
+                    <span>{{ avoir.totaTTC }}</span>
+                </dd>
+                <dt><span jhiTranslate="mooingatewayApp.mooinbaseAvoir.date">Date</span></dt>
+                <dd>
+                    <span>{{ avoir.date }}</span>
+                </dd>
+                <dt><span jhiTranslate="mooingatewayApp.mooinbaseAvoir.dueDate">Due Date</span></dt>
+                <dd>
+                    <span>{{ avoir.dueDate }}</span>
+                </dd>
+                <dt><span jhiTranslate="mooingatewayApp.mooinbaseAvoir.isConverted">Is Converted</span></dt>
+                <dd>
+                    <span>{{ avoir.isConverted }}</span>
+                </dd>
+                <dt><span jhiTranslate="mooingatewayApp.mooinbaseAvoir.companyID">Company ID</span></dt>
+                <dd>
+                    <span>{{ avoir.companyID }}</span>
+                </dd>
+                <dt><span jhiTranslate="mooingatewayApp.mooinbaseAvoir.tiers">Tiers</span></dt>
+                <dd>
+                    <div *ngIf="avoir.tiers">
+                        <a [routerLink]="['/tiers', avoir.tiers?.id, 'view']">{{ avoir.tiers?.id }}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/avoir', avoir.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

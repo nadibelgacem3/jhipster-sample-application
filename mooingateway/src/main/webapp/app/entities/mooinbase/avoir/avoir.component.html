@@ -1,0 +1,97 @@
+<div>
+    <h2 id="page-heading">
+        <span jhiTranslate="mooingatewayApp.mooinbaseAvoir.home.title">Avoirs</span>
+
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-avoir" [routerLink]="['/avoir/new']">
+            <fa-icon icon="plus"></fa-icon>
+            <span  jhiTranslate="mooingatewayApp.mooinbaseAvoir.home.createLabel">
+            Create a new Avoir
+            </span>
+        </button>
+    </h2>
+
+    <jhi-alert-error></jhi-alert-error>
+
+    <jhi-alert></jhi-alert>
+
+    <div class="alert alert-warning" id="no-result" *ngIf="avoirs?.length === 0">
+        <span jhiTranslate="mooingatewayApp.mooinbaseAvoir.home.notFound">No avoirs found</span>
+    </div>
+
+    <div class="table-responsive" id="entities" *ngIf="avoirs && avoirs.length > 0">
+        <table class="table table-striped" aria-describedby="page-heading">
+            <thead>
+                <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" [callback]="loadPage.bind(this)">
+                    <th scope="col"  jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="number"><span jhiTranslate="mooingatewayApp.mooinbaseAvoir.number">Number</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="reference"><span jhiTranslate="mooingatewayApp.mooinbaseAvoir.reference">Reference</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="status"><span jhiTranslate="mooingatewayApp.mooinbaseAvoir.status">Status</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="type"><span jhiTranslate="mooingatewayApp.mooinbaseAvoir.type">Type</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="totalHT"><span jhiTranslate="mooingatewayApp.mooinbaseAvoir.totalHT">Total HT</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="totalTVA"><span jhiTranslate="mooingatewayApp.mooinbaseAvoir.totalTVA">Total TVA</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="totaTTC"><span jhiTranslate="mooingatewayApp.mooinbaseAvoir.totaTTC">Tota TTC</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="date"><span jhiTranslate="mooingatewayApp.mooinbaseAvoir.date">Date</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="dueDate"><span jhiTranslate="mooingatewayApp.mooinbaseAvoir.dueDate">Due Date</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="isConverted"><span jhiTranslate="mooingatewayApp.mooinbaseAvoir.isConverted">Is Converted</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="companyID"><span jhiTranslate="mooingatewayApp.mooinbaseAvoir.companyID">Company ID</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="tiers.id"><span jhiTranslate="mooingatewayApp.mooinbaseAvoir.tiers">Tiers</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let avoir of avoirs ;trackBy: trackId">
+                    <td><a [routerLink]="['/avoir', avoir.id, 'view']">{{ avoir.id }}</a></td>
+                    <td>{{ avoir.number }}</td>
+                    <td>{{ avoir.reference }}</td>
+                    <td jhiTranslate="{{ 'mooingatewayApp.AvoirStatusEnum.' + avoir.status }}">{{ avoir.status }}</td>
+                    <td jhiTranslate="{{ 'mooingatewayApp.AvoirTypeEnum.' + avoir.type }}">{{ avoir.type }}</td>
+                    <td>{{ avoir.totalHT }}</td>
+                    <td>{{ avoir.totalTVA }}</td>
+                    <td>{{ avoir.totaTTC }}</td>
+                    <td>{{ avoir.date | date:'mediumDate' }}</td>
+                    <td>{{ avoir.dueDate | date:'mediumDate' }}</td>
+                    <td>{{ avoir.isConverted }}</td>
+                    <td>{{ avoir.companyID }}</td>
+                    <td>
+                        <div *ngIf="avoir.tiers">
+                            <a [routerLink]="['/tiers', avoir.tiers?.id, 'view']" >{{ avoir.tiers?.id }}</a>
+                        </div>
+                    </td>
+                    <td class="text-right">
+                        <div class="btn-group">
+                            <button type="submit"
+                                    [routerLink]="['/avoir', avoir.id, 'view']"
+                                    class="btn btn-info btn-sm">
+                                <fa-icon icon="eye"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                            </button>
+
+                            <button type="submit"
+                                    [routerLink]="['/avoir', avoir.id, 'edit']"
+                                    class="btn btn-primary btn-sm">
+                                <fa-icon icon="pencil-alt"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                            </button>
+
+                            <button type="submit" (click)="delete(avoir)"
+                                    class="btn btn-danger btn-sm">
+                                <fa-icon icon="times"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div *ngIf="avoirs && avoirs.length > 0">
+        <div class="row justify-content-center">
+            <jhi-item-count [page]="page" [total]="totalItems" [itemsPerPage]="itemsPerPage"></jhi-item-count>
+        </div>
+
+        <div class="row justify-content-center">
+            <ngb-pagination [collectionSize]="totalItems" [(page)]="ngbPaginationPage" [pageSize]="itemsPerPage" [maxSize]="5" [rotate]="true" [boundaryLinks]="true" (pageChange)="loadPage($event)"></ngb-pagination>
+        </div>
+    </div>
+</div>

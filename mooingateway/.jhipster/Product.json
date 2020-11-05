@@ -1,0 +1,124 @@
+{
+  "name": "Product",
+  "fields": [
+    {
+      "fieldName": "companyID",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "reference",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "referenceProvider",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "name",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "quantity",
+      "fieldType": "Double",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "purchaseUnitPrice",
+      "fieldType": "BigDecimal",
+      "fieldValidateRules": ["required", "min"],
+      "fieldValidateRulesMin": "0"
+    },
+    {
+      "fieldName": "saleUnitPrice",
+      "fieldType": "Integer",
+      "fieldValidateRules": ["required", "min"],
+      "fieldValidateRulesMin": "0"
+    },
+    {
+      "fieldName": "stocklimit",
+      "fieldType": "Double"
+    },
+    {
+      "fieldName": "stocklimitAlert",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldName": "unitType",
+      "fieldType": "ProductUnitEnum",
+      "fieldValues": "NONE,METER,KG,LITER,PIECE,UNIT"
+    },
+    {
+      "fieldName": "size",
+      "fieldType": "Size",
+      "fieldValues": "NONE,S,M,L,XL,XXL"
+    },
+    {
+      "fieldName": "color",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "image",
+      "fieldType": "byte[]",
+      "fieldTypeBlobContent": "image"
+    },
+    {
+      "fieldName": "isDisplayedInCashier",
+      "fieldType": "Boolean"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "movement",
+      "otherEntityRelationshipName": "product",
+      "relationshipName": "movement"
+    },
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "taxItem",
+      "otherEntityRelationshipName": "product",
+      "relationshipName": "taxItem"
+    },
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "tVAItem",
+      "otherEntityRelationshipName": "product",
+      "relationshipName": "tvaItem"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "productCategory",
+      "otherEntityRelationshipName": "product",
+      "relationshipName": "productCategory",
+      "otherEntityField": "id"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "productMark",
+      "otherEntityRelationshipName": "product",
+      "relationshipName": "productMark",
+      "otherEntityField": "id"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "depot",
+      "otherEntityRelationshipName": "product",
+      "relationshipName": "depot",
+      "otherEntityField": "id"
+    }
+  ],
+  "changelogDate": "20201105130721",
+  "javadoc": "Product entity.\\n@author The Moo3in team.",
+  "entityTableName": "product",
+  "dto": "no",
+  "pagination": "pagination",
+  "service": "serviceClass",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": ["mooingateway", "mooinbase"],
+  "microserviceName": "mooinbase"
+}

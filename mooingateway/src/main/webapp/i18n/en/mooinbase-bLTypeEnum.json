@@ -1,0 +1,9 @@
+{
+  "mooingatewayApp": {
+    "BLTypeEnum": {
+      "null": "",
+      "SALE": "SALE",
+      "PURCHASE": "PURCHASE"
+    }
+  }
+}

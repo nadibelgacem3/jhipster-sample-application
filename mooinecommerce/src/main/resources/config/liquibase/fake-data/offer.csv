@@ -1,0 +1,11 @@
+id;name;description;image;image_content_type;date_begin;date_end;duration;status;product_id;sale_unit_price_before_discount;discount_rate;sale_unit_price_after_discount;with_tva;with_tax;is_activated;company_id
+1;Secured Soft Universal;Direct;../fake-data/blob/hipster.png;image/png;2020-11-05;2020-11-05;90706;CLOSED;98182;96750;27279;66023;true;false;false;56106
+2;deposit;turquoise;../fake-data/blob/hipster.png;image/png;2020-11-05;2020-11-04;30211;AVAILABLE;78410;19193;86524;64102;true;false;true;58353
+3;Seamless purple;Djibouti Franc;../fake-data/blob/hipster.png;image/png;2020-11-05;2020-11-05;1479;AVAILABLE;23433;84896;70955;72023;true;false;true;87190
+4;Fresh;Seamless;../fake-data/blob/hipster.png;image/png;2020-11-05;2020-11-04;59260;CLOSED;89489;47533;70920;41361;true;true;false;64089
+5;Rustic;Guatemala payment;../fake-data/blob/hipster.png;image/png;2020-11-05;2020-11-04;3071;AVAILABLE;89387;7033;30848;77745;false;false;true;65751
+6;pink needs-based cultivate;Savings Account;../fake-data/blob/hipster.png;image/png;2020-11-05;2020-11-04;90450;AVAILABLE;40098;28811;95775;6874;false;false;false;57210
+7;Associate Money Market Account;Developer Licensed Frozen Pants;../fake-data/blob/hipster.png;image/png;2020-11-05;2020-11-05;76073;CLOSED;89179;25539;89038;74327;true;false;false;21316
+8;copying Table;Accountability;../fake-data/blob/hipster.png;image/png;2020-11-05;2020-11-04;11300;AVAILABLE;68713;41906;7067;53085;false;true;true;56533
+9;HDD;District Functionality;../fake-data/blob/hipster.png;image/png;2020-11-04;2020-11-05;75582;CLOSED;52644;1443;45734;94103;false;false;false;68343
+10;Investor Small Rubber Computer;Metal hacking;../fake-data/blob/hipster.png;image/png;2020-11-04;2020-11-05;95245;CLOSED;7579;63909;85822;64882;true;false;true;70924

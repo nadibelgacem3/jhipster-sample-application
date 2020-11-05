@@ -1,0 +1,10 @@
+{
+  "mooingatewayApp": {
+    "QuoteStatusEnum": {
+      "null": "",
+      "DRAFT": "DRAFT",
+      "FINALIZED": "FINALIZED",
+      "CANCELED": "CANCELED"
+    }
+  }
+}

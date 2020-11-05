@@ -1,0 +1,32 @@
+{
+  "mooingatewayApp": {
+    "mooinbaseQuoteItem": {
+      "home": {
+        "title": "QuoteItems",
+        "createLabel": "Créer un nouveau Quote Item",
+        "createOrEditLabel": "Créer ou éditer un Quote Item",
+        "notFound": "Aucun Quote Item trouvé"
+      },
+      "delete": {
+        "question": "Etes-vous certain de vouloir supprimer le Quote Item {{ id }} ?"
+      },
+      "detail": {
+        "title": "Quote Item"
+      },
+      "quantity": "Quantity",
+      "discountRate": "Discount Rate",
+      "totalHT": "Total HT",
+      "totalTVA": "Total TVA",
+      "totaTTC": "Tota TTC",
+      "product": "Product",
+      "quote": "Quote"
+    }
+  },
+  "mooinbaseApp": {
+    "mooinbaseQuoteItem": {
+      "created": "Un nouveau Quote Item a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Quote Item avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Quote Item avec l'identifiant {{ param }} a été supprimé"
+    }
+  }
+}

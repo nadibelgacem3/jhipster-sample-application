@@ -1,0 +1,11 @@
+{
+  "mooingatewayApp": {
+    "MovementReasonEnum": {
+      "null": "",
+      "INVOICE": "INVOICE",
+      "CAISSE": "CAISSE",
+      "MANUAL": "MANUAL",
+      "OTHER": "OTHER"
+    }
+  }
+}

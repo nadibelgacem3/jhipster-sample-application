@@ -1,0 +1,98 @@
+{
+  "name": "CashierReceipt",
+  "fields": [
+    {
+      "fieldName": "number",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "reference",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "status",
+      "fieldType": "CashierReceiptStatusEnum",
+      "fieldValues": "DRAFT,FINALIZED,PAID,PAYEMENT_IN_PROGRESS,CANCELED"
+    },
+    {
+      "fieldName": "totalHT",
+      "fieldType": "BigDecimal",
+      "fieldValidateRules": ["required", "min"],
+      "fieldValidateRulesMin": "0"
+    },
+    {
+      "fieldName": "totalTVA",
+      "fieldType": "BigDecimal",
+      "fieldValidateRules": ["required", "min"],
+      "fieldValidateRulesMin": "0"
+    },
+    {
+      "fieldName": "totaTTC",
+      "fieldType": "BigDecimal",
+      "fieldValidateRules": ["required", "min"],
+      "fieldValidateRulesMin": "0"
+    },
+    {
+      "fieldName": "date",
+      "fieldType": "LocalDate",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "dueDate",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "isConverted",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldName": "withTVA",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldName": "withTax",
+      "fieldType": "Boolean"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "cashierReceiptItem",
+      "otherEntityRelationshipName": "cashierReceipt",
+      "relationshipName": "cashierReceiptItem"
+    },
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "cashierReceiptPay",
+      "otherEntityRelationshipName": "cashierReceipt",
+      "relationshipName": "cashierReceiptPay"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "cashier",
+      "otherEntityRelationshipName": "cashierReceipt",
+      "relationshipName": "cashier",
+      "otherEntityField": "id"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "cashierCostumer",
+      "otherEntityRelationshipName": "cashierReceipt",
+      "relationshipName": "cashierCostumer",
+      "otherEntityField": "id"
+    }
+  ],
+  "changelogDate": "20201105132921",
+  "javadoc": "CashierReceipt entity.\\n@author The Moo3in team.",
+  "entityTableName": "cashier_receipt",
+  "dto": "no",
+  "pagination": "pagination",
+  "service": "serviceClass",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": ["mooingateway", "mooincashier"],
+  "microserviceName": "mooincashier"
+}

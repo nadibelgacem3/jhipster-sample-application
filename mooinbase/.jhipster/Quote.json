@@ -1,0 +1,86 @@
+{
+  "name": "Quote",
+  "fields": [
+    {
+      "fieldName": "number",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "reference",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "status",
+      "fieldType": "QuoteStatusEnum",
+      "fieldValues": "DRAFT,FINALIZED,CANCELED"
+    },
+    {
+      "fieldName": "type",
+      "fieldType": "QuoteTypeEnum",
+      "fieldValues": "SALE,PURCHASE"
+    },
+    {
+      "fieldName": "totalHT",
+      "fieldType": "BigDecimal",
+      "fieldValidateRules": ["required", "min"],
+      "fieldValidateRulesMin": "0"
+    },
+    {
+      "fieldName": "totalTVA",
+      "fieldType": "BigDecimal",
+      "fieldValidateRules": ["required", "min"],
+      "fieldValidateRulesMin": "0"
+    },
+    {
+      "fieldName": "totaTTC",
+      "fieldType": "BigDecimal",
+      "fieldValidateRules": ["required", "min"],
+      "fieldValidateRulesMin": "0"
+    },
+    {
+      "fieldName": "date",
+      "fieldType": "LocalDate",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "dueDate",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "isConverted",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldName": "companyID",
+      "fieldType": "Long"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "quoteItem",
+      "otherEntityRelationshipName": "quote",
+      "relationshipName": "quoteitem"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "tiers",
+      "otherEntityRelationshipName": "quote",
+      "relationshipName": "tiers",
+      "otherEntityField": "id"
+    }
+  ],
+  "changelogDate": "20201105131621",
+  "javadoc": "Quote entity.\\n@author The Moo3in team.",
+  "entityTableName": "quote",
+  "dto": "no",
+  "pagination": "pagination",
+  "service": "serviceClass",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": ["mooingateway", "mooinbase"],
+  "microserviceName": "mooinbase"
+}

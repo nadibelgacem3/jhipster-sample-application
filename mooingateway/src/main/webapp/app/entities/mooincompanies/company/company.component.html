@@ -1,0 +1,122 @@
+<div>
+    <h2 id="page-heading">
+        <span jhiTranslate="mooingatewayApp.mooincompaniesCompany.home.title">Companies</span>
+
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-company" [routerLink]="['/company/new']">
+            <fa-icon icon="plus"></fa-icon>
+            <span  jhiTranslate="mooingatewayApp.mooincompaniesCompany.home.createLabel">
+            Create a new Company
+            </span>
+        </button>
+    </h2>
+
+    <jhi-alert-error></jhi-alert-error>
+
+    <jhi-alert></jhi-alert>
+
+    <div class="alert alert-warning" id="no-result" *ngIf="companies?.length === 0">
+        <span jhiTranslate="mooingatewayApp.mooincompaniesCompany.home.notFound">No companies found</span>
+    </div>
+
+    <div class="table-responsive" id="entities" *ngIf="companies && companies.length > 0">
+        <table class="table table-striped" aria-describedby="page-heading">
+            <thead>
+                <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" [callback]="loadPage.bind(this)">
+                    <th scope="col"  jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="name"><span jhiTranslate="mooingatewayApp.mooincompaniesCompany.name">Name</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="logo"><span jhiTranslate="mooingatewayApp.mooincompaniesCompany.logo">Logo</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="phone1"><span jhiTranslate="mooingatewayApp.mooincompaniesCompany.phone1">Phone 1</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="phone2"><span jhiTranslate="mooingatewayApp.mooincompaniesCompany.phone2">Phone 2</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="fax"><span jhiTranslate="mooingatewayApp.mooincompaniesCompany.fax">Fax</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="email1"><span jhiTranslate="mooingatewayApp.mooincompaniesCompany.email1">Email 1</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="email2"><span jhiTranslate="mooingatewayApp.mooincompaniesCompany.email2">Email 2</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="description"><span jhiTranslate="mooingatewayApp.mooincompaniesCompany.description">Description</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="businessType"><span jhiTranslate="mooingatewayApp.mooincompaniesCompany.businessType">Business Type</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="currencyUnit"><span jhiTranslate="mooingatewayApp.mooincompaniesCompany.currencyUnit">Currency Unit</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="currencyQuotient"><span jhiTranslate="mooingatewayApp.mooincompaniesCompany.currencyQuotient">Currency Quotient</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="commercialRegister"><span jhiTranslate="mooingatewayApp.mooincompaniesCompany.commercialRegister">Commercial Register</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="isActivated"><span jhiTranslate="mooingatewayApp.mooincompaniesCompany.isActivated">Is Activated</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="themeColor"><span jhiTranslate="mooingatewayApp.mooincompaniesCompany.themeColor">Theme Color</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="facebook"><span jhiTranslate="mooingatewayApp.mooincompaniesCompany.facebook">Facebook</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="linkedin"><span jhiTranslate="mooingatewayApp.mooincompaniesCompany.linkedin">Linkedin</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="twitter"><span jhiTranslate="mooingatewayApp.mooincompaniesCompany.twitter">Twitter</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="instagram"><span jhiTranslate="mooingatewayApp.mooincompaniesCompany.instagram">Instagram</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="companyBankAccount.id"><span jhiTranslate="mooingatewayApp.mooincompaniesCompany.companyBankAccount">Company Bank Account</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="companyLocation.id"><span jhiTranslate="mooingatewayApp.mooincompaniesCompany.companyLocation">Company Location</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let company of companies ;trackBy: trackId">
+                    <td><a [routerLink]="['/company', company.id, 'view']">{{ company.id }}</a></td>
+                    <td>{{ company.name }}</td>
+                    <td>
+                        <a *ngIf="company.logo" (click)="openFile(company.logoContentType, company.logo)">
+                            <img [src]="'data:' + company.logoContentType + ';base64,' + company.logo" style="max-height: 30px;" alt="company image"/>
+                        </a>
+                        <span *ngIf="company.logo">{{ company.logoContentType }}, {{ byteSize(company.logo) }}</span>
+                    </td>
+                    <td>{{ company.phone1 }}</td>
+                    <td>{{ company.phone2 }}</td>
+                    <td>{{ company.fax }}</td>
+                    <td>{{ company.email1 }}</td>
+                    <td>{{ company.email2 }}</td>
+                    <td>{{ company.description }}</td>
+                    <td jhiTranslate="{{ 'mooingatewayApp.CompanyBusinessTypeEnum.' + company.businessType }}">{{ company.businessType }}</td>
+                    <td>{{ company.currencyUnit }}</td>
+                    <td>{{ company.currencyQuotient }}</td>
+                    <td>{{ company.commercialRegister }}</td>
+                    <td>{{ company.isActivated }}</td>
+                    <td>{{ company.themeColor }}</td>
+                    <td>{{ company.facebook }}</td>
+                    <td>{{ company.linkedin }}</td>
+                    <td>{{ company.twitter }}</td>
+                    <td>{{ company.instagram }}</td>
+                    <td>
+                        <div *ngIf="company.companyBankAccount">
+                            <a [routerLink]="['/company-bank-account', company.companyBankAccount?.id, 'view']" >{{ company.companyBankAccount?.id }}</a>
+                        </div>
+                    </td>
+                    <td>
+                        <div *ngIf="company.companyLocation">
+                            <a [routerLink]="['/company-location', company.companyLocation?.id, 'view']" >{{ company.companyLocation?.id }}</a>
+                        </div>
+                    </td>
+                    <td class="text-right">
+                        <div class="btn-group">
+                            <button type="submit"
+                                    [routerLink]="['/company', company.id, 'view']"
+                                    class="btn btn-info btn-sm">
+                                <fa-icon icon="eye"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                            </button>
+
+                            <button type="submit"
+                                    [routerLink]="['/company', company.id, 'edit']"
+                                    class="btn btn-primary btn-sm">
+                                <fa-icon icon="pencil-alt"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                            </button>
+
+                            <button type="submit" (click)="delete(company)"
+                                    class="btn btn-danger btn-sm">
+                                <fa-icon icon="times"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div *ngIf="companies && companies.length > 0">
+        <div class="row justify-content-center">
+            <jhi-item-count [page]="page" [total]="totalItems" [itemsPerPage]="itemsPerPage"></jhi-item-count>
+        </div>
+
+        <div class="row justify-content-center">
+            <ngb-pagination [collectionSize]="totalItems" [(page)]="ngbPaginationPage" [pageSize]="itemsPerPage" [maxSize]="5" [rotate]="true" [boundaryLinks]="true" (pageChange)="loadPage($event)"></ngb-pagination>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,38 @@
+{
+  "mooingatewayApp": {
+    "mooinbaseQuote": {
+      "home": {
+        "title": "Quotes",
+        "createLabel": "Créer un nouveau Quote",
+        "createOrEditLabel": "Créer ou éditer un Quote",
+        "notFound": "Aucun Quote trouvé"
+      },
+      "delete": {
+        "question": "Etes-vous certain de vouloir supprimer le Quote {{ id }} ?"
+      },
+      "detail": {
+        "title": "Quote"
+      },
+      "number": "Number",
+      "reference": "Reference",
+      "status": "Status",
+      "type": "Type",
+      "totalHT": "Total HT",
+      "totalTVA": "Total TVA",
+      "totaTTC": "Tota TTC",
+      "date": "Date",
+      "dueDate": "Due Date",
+      "isConverted": "Is Converted",
+      "companyID": "Company ID",
+      "quoteitem": "Quoteitem",
+      "tiers": "Tiers"
+    }
+  },
+  "mooinbaseApp": {
+    "mooinbaseQuote": {
+      "created": "Un nouveau Quote a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Quote avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Quote avec l'identifiant {{ param }} a été supprimé"
+    }
+  }
+}

@@ -1,0 +1,59 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="employeeLocation">
+            <h2><span jhiTranslate="mooingatewayApp.mooincompaniesEmployeeLocation.detail.title">Employee Location</span> {{ employeeLocation.id }}</h2>
+
+            <hr>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="mooingatewayApp.mooincompaniesEmployeeLocation.localNumber">Local Number</span></dt>
+                <dd>
+                    <span>{{ employeeLocation.localNumber }}</span>
+                </dd>
+                <dt><span jhiTranslate="mooingatewayApp.mooincompaniesEmployeeLocation.streetAddress">Street Address</span></dt>
+                <dd>
+                    <span>{{ employeeLocation.streetAddress }}</span>
+                </dd>
+                <dt><span jhiTranslate="mooingatewayApp.mooincompaniesEmployeeLocation.postalCode">Postal Code</span></dt>
+                <dd>
+                    <span>{{ employeeLocation.postalCode }}</span>
+                </dd>
+                <dt><span jhiTranslate="mooingatewayApp.mooincompaniesEmployeeLocation.city">City</span></dt>
+                <dd>
+                    <span>{{ employeeLocation.city }}</span>
+                </dd>
+                <dt><span jhiTranslate="mooingatewayApp.mooincompaniesEmployeeLocation.stateProvince">State Province</span></dt>
+                <dd>
+                    <span>{{ employeeLocation.stateProvince }}</span>
+                </dd>
+                <dt><span jhiTranslate="mooingatewayApp.mooincompaniesEmployeeLocation.countryName">Country Name</span></dt>
+                <dd>
+                    <span>{{ employeeLocation.countryName }}</span>
+                </dd>
+                <dt><span jhiTranslate="mooingatewayApp.mooincompaniesEmployeeLocation.flag">Flag</span></dt>
+                <dd>
+                    <div *ngIf="employeeLocation.flag">
+                        <a (click)="openFile(employeeLocation.flagContentType, employeeLocation.flag)">
+                            <img [src]="'data:' + employeeLocation.flagContentType + ';base64,' + employeeLocation.flag" style="max-width: 100%;" alt="employeeLocation image"/>
+                        </a>
+                        {{ employeeLocation.flagContentType }}, {{ byteSize(employeeLocation.flag) }}
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/employee-location', employeeLocation.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

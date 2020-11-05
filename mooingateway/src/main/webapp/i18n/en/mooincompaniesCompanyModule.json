@@ -1,0 +1,32 @@
+{
+  "mooingatewayApp": {
+    "mooincompaniesCompanyModule": {
+      "home": {
+        "title": "Company Modules",
+        "createLabel": "Create a new Company Module",
+        "createOrEditLabel": "Create or edit a Company Module",
+        "notFound": "No Company Modules found"
+      },
+      "delete": {
+        "question": "Are you sure you want to delete Company Module {{ id }}?"
+      },
+      "detail": {
+        "title": "Company Module"
+      },
+      "name": "Name",
+      "activatedAt": "Activated At",
+      "activatedUntil": "Activated Until",
+      "isActivated": "Is Activated",
+      "price": "Price",
+      "companyBillPaymentItem": "Company Bill Payment Item",
+      "company": "Company"
+    }
+  },
+  "mooincompaniesApp": {
+    "mooincompaniesCompanyModule": {
+      "created": "A new Company Module is created with identifier {{ param }}",
+      "updated": "A Company Module is updated with identifier {{ param }}",
+      "deleted": "A Company Module is deleted with identifier {{ param }}"
+    }
+  }
+}

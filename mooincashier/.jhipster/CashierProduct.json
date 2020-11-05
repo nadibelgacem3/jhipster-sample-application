@@ -1,0 +1,54 @@
+{
+  "name": "CashierProduct",
+  "fields": [
+    {
+      "fieldName": "productID",
+      "fieldType": "Long",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "cashierProdName",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "cashierProdQty",
+      "fieldType": "Double",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "cashierProdPurchaseUnitPrice",
+      "fieldType": "Double",
+      "fieldValidateRules": ["required", "min"],
+      "fieldValidateRulesMin": "0"
+    },
+    {
+      "fieldName": "cashierProdSaleUnitPrice",
+      "fieldType": "Double",
+      "fieldValidateRules": ["required", "min"],
+      "fieldValidateRulesMin": "0"
+    },
+    {
+      "fieldName": "cashierProdStockLimit",
+      "fieldType": "Double"
+    },
+    {
+      "fieldName": "cashierProdStockLimitAlert",
+      "fieldType": "Boolean"
+    }
+  ],
+  "relationships": [],
+  "changelogDate": "20201105132621",
+  "javadoc": "CashierProduct entity.\\n@author The Moo3in team.",
+  "entityTableName": "cashier_product",
+  "dto": "no",
+  "pagination": "pagination",
+  "service": "serviceClass",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": ["mooingateway", "mooincashier"],
+  "microserviceName": "mooincashier"
+}

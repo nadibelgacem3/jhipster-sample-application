@@ -1,0 +1,32 @@
+{
+  "mooingatewayApp": {
+    "mooinbaseInvoiceItem": {
+      "home": {
+        "title": "InvoiceItems",
+        "createLabel": "Créer un nouveau Invoice Item",
+        "createOrEditLabel": "Créer ou éditer un Invoice Item",
+        "notFound": "Aucun Invoice Item trouvé"
+      },
+      "delete": {
+        "question": "Etes-vous certain de vouloir supprimer le Invoice Item {{ id }} ?"
+      },
+      "detail": {
+        "title": "Invoice Item"
+      },
+      "quantity": "Quantity",
+      "discountRate": "Discount Rate",
+      "totalHT": "Total HT",
+      "totalTVA": "Total TVA",
+      "totaTTC": "Tota TTC",
+      "product": "Product",
+      "invoice": "Invoice"
+    }
+  },
+  "mooinbaseApp": {
+    "mooinbaseInvoiceItem": {
+      "created": "Un nouveau Invoice Item a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Invoice Item avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Invoice Item avec l'identifiant {{ param }} a été supprimé"
+    }
+  }
+}

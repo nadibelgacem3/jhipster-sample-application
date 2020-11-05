@@ -1,0 +1,124 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+            <h2 id="jhi-tiers-bank-check-heading" jhiTranslate="mooingatewayApp.mooinbaseTiersBankCheck.home.createOrEditLabel">Create or edit a Tiers Bank Check</h2>
+
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+
+                <div class="form-group" [hidden]="!editForm.get('id')!.value">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id" formControlName="id" readonly />
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="mooingatewayApp.mooinbaseTiersBankCheck.name" for="field_name">Name</label>
+                    <input type="text" class="form-control" name="name" id="field_name"
+                           formControlName="name"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="mooingatewayApp.mooinbaseTiersBankCheck.bankName" for="field_bankName">Bank Name</label>
+                    <input type="text" class="form-control" name="bankName" id="field_bankName"
+                           formControlName="bankName"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="mooingatewayApp.mooinbaseTiersBankCheck.number" for="field_number">Number</label>
+                    <input type="text" class="form-control" name="number" id="field_number"
+                           formControlName="number"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="mooingatewayApp.mooinbaseTiersBankCheck.amount" for="field_amount">Amount</label>
+                    <input type="number" class="form-control" name="amount" id="field_amount"
+                           formControlName="amount"/>
+                    <div *ngIf="editForm.get('amount')!.invalid && (editForm.get('amount')!.dirty || editForm.get('amount')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('amount')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                            [hidden]="!editForm.get('amount')?.errors?.number" jhiTranslate="entity.validation.number">
+                            This field should be a number.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="mooingatewayApp.mooinbaseTiersBankCheck.dueDate" for="field_dueDate">Due Date</label>
+                    <div class="input-group">
+                        <input id="field_dueDate" type="text" class="form-control" name="dueDate" ngbDatepicker #dueDateDp="ngbDatepicker" formControlName="dueDate"/>
+                        <span class="input-group-append">
+                            <button type="button" class="btn btn-secondary" (click)="dueDateDp.toggle()"><fa-icon icon="calendar-alt"></fa-icon></button>
+                        </span>
+                    </div>
+                    <div *ngIf="editForm.get('dueDate')!.invalid && (editForm.get('dueDate')!.dirty || editForm.get('dueDate')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('dueDate')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="mooingatewayApp.mooinbaseTiersBankCheck.bankCheckType" for="field_bankCheckType">Bank Check Type</label>
+                    <select class="form-control" name="bankCheckType" formControlName="bankCheckType" id="field_bankCheckType">
+                        <option value="CHECK">{{ 'mooingatewayApp.BankCheckType.CHECK' | translate }}</option>
+                        <option value="TRAIT">{{ 'mooingatewayApp.BankCheckType.TRAIT' | translate }}</option>
+                    </select>
+                    <div *ngIf="editForm.get('bankCheckType')!.invalid && (editForm.get('bankCheckType')!.dirty || editForm.get('bankCheckType')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('bankCheckType')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="mooingatewayApp.mooinbaseTiersBankCheck.bankCheckKind" for="field_bankCheckKind">Bank Check Kind</label>
+                    <select class="form-control" name="bankCheckKind" formControlName="bankCheckKind" id="field_bankCheckKind">
+                        <option value="RECEIVED">{{ 'mooingatewayApp.BankCheckKind.RECEIVED' | translate }}</option>
+                        <option value="SUBMITTED">{{ 'mooingatewayApp.BankCheckKind.SUBMITTED' | translate }}</option>
+                    </select>
+                    <div *ngIf="editForm.get('bankCheckKind')!.invalid && (editForm.get('bankCheckKind')!.dirty || editForm.get('bankCheckKind')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('bankCheckKind')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="mooingatewayApp.mooinbaseTiersBankCheck.swift" for="field_swift">Swift</label>
+                    <input type="text" class="form-control" name="swift" id="field_swift"
+                           formControlName="swift"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="mooingatewayApp.mooinbaseTiersBankCheck.type" for="field_type">Type</label>
+                    <input type="text" class="form-control" name="type" id="field_type"
+                           formControlName="type"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="mooingatewayApp.mooinbaseTiersBankCheck.tiers" for="field_tiers">Tiers</label>
+                    <select class="form-control" id="field_tiers" name="tiers" formControlName="tiers">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="tiersOption.id === editForm.get('tiers')!.value?.id ? editForm.get('tiers')!.value : tiersOption" *ngFor="let tiersOption of tiers; trackBy: trackById">{{ tiersOption.id }}</option>
+                    </select>
+                </div>
+            </div>
+
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary" (click)="previousState()">
+                    <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+
+                <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

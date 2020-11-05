@@ -1,0 +1,77 @@
+{
+  "name": "CashierAppro",
+  "fields": [
+    {
+      "fieldName": "number",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "status",
+      "fieldType": "CashierApproStatusEnum",
+      "fieldValues": "DRAFT,VALIDATED,UNDER_TRAIT,CANCELED"
+    },
+    {
+      "fieldName": "totalHT",
+      "fieldType": "BigDecimal",
+      "fieldValidateRules": ["required", "min"],
+      "fieldValidateRulesMin": "0"
+    },
+    {
+      "fieldName": "totalTVA",
+      "fieldType": "BigDecimal",
+      "fieldValidateRules": ["required", "min"],
+      "fieldValidateRulesMin": "0"
+    },
+    {
+      "fieldName": "totaTTC",
+      "fieldType": "BigDecimal",
+      "fieldValidateRules": ["required", "min"],
+      "fieldValidateRulesMin": "0"
+    },
+    {
+      "fieldName": "date",
+      "fieldType": "LocalDate",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "isConverted",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldName": "withTVA",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldName": "withTax",
+      "fieldType": "Boolean"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "cashierApproItem",
+      "otherEntityRelationshipName": "cashierAppro",
+      "relationshipName": "cashierApproItem"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "cashier",
+      "otherEntityRelationshipName": "cashierAppro",
+      "relationshipName": "cashier",
+      "otherEntityField": "id"
+    }
+  ],
+  "changelogDate": "20201105133221",
+  "javadoc": "Cashierappro entity.\\n@author The Moo3in team.",
+  "entityTableName": "cashier_appro",
+  "dto": "no",
+  "pagination": "pagination",
+  "service": "serviceClass",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": ["mooingateway", "mooincashier"],
+  "microserviceName": "mooincashier"
+}

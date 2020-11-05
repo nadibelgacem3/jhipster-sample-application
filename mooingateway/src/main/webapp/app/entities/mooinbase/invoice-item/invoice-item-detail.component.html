@@ -1,0 +1,58 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="invoiceItem">
+            <h2><span jhiTranslate="mooingatewayApp.mooinbaseInvoiceItem.detail.title">Invoice Item</span> {{ invoiceItem.id }}</h2>
+
+            <hr>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="mooingatewayApp.mooinbaseInvoiceItem.quantity">Quantity</span></dt>
+                <dd>
+                    <span>{{ invoiceItem.quantity }}</span>
+                </dd>
+                <dt><span jhiTranslate="mooingatewayApp.mooinbaseInvoiceItem.discountRate">Discount Rate</span></dt>
+                <dd>
+                    <span>{{ invoiceItem.discountRate }}</span>
+                </dd>
+                <dt><span jhiTranslate="mooingatewayApp.mooinbaseInvoiceItem.totalHT">Total HT</span></dt>
+                <dd>
+                    <span>{{ invoiceItem.totalHT }}</span>
+                </dd>
+                <dt><span jhiTranslate="mooingatewayApp.mooinbaseInvoiceItem.totalTVA">Total TVA</span></dt>
+                <dd>
+                    <span>{{ invoiceItem.totalTVA }}</span>
+                </dd>
+                <dt><span jhiTranslate="mooingatewayApp.mooinbaseInvoiceItem.totaTTC">Tota TTC</span></dt>
+                <dd>
+                    <span>{{ invoiceItem.totaTTC }}</span>
+                </dd>
+                <dt><span jhiTranslate="mooingatewayApp.mooinbaseInvoiceItem.product">Product</span></dt>
+                <dd>
+                    <div *ngIf="invoiceItem.product">
+                        <a [routerLink]="['/product', invoiceItem.product?.id, 'view']">{{ invoiceItem.product?.id }}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="mooingatewayApp.mooinbaseInvoiceItem.invoice">Invoice</span></dt>
+                <dd>
+                    <div *ngIf="invoiceItem.invoice">
+                        <a [routerLink]="['/invoice', invoiceItem.invoice?.id, 'view']">{{ invoiceItem.invoice?.id }}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/invoice-item', invoiceItem.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

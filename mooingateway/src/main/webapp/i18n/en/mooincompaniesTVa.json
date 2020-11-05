@@ -1,0 +1,28 @@
+{
+  "mooingatewayApp": {
+    "mooincompaniesTVa": {
+      "home": {
+        "title": "TVAS",
+        "createLabel": "Create a new TVA",
+        "createOrEditLabel": "Create or edit a TVA",
+        "notFound": "No TVAS found"
+      },
+      "delete": {
+        "question": "Are you sure you want to delete TVA {{ id }}?"
+      },
+      "detail": {
+        "title": "TVA"
+      },
+      "name": "Name",
+      "percentageValue": "Percentage Value",
+      "company": "Company"
+    }
+  },
+  "mooincompaniesApp": {
+    "mooincompaniesTVa": {
+      "created": "A new TVA is created with identifier {{ param }}",
+      "updated": "A TVA is updated with identifier {{ param }}",
+      "deleted": "A TVA is deleted with identifier {{ param }}"
+    }
+  }
+}

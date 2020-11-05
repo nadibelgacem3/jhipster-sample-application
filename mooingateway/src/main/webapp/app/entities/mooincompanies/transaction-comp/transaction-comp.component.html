@@ -1,0 +1,93 @@
+<div>
+    <h2 id="page-heading">
+        <span jhiTranslate="mooingatewayApp.mooincompaniesTransactionComp.home.title">Transaction Comps</span>
+
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-transaction-comp" [routerLink]="['/transaction-comp/new']">
+            <fa-icon icon="plus"></fa-icon>
+            <span  jhiTranslate="mooingatewayApp.mooincompaniesTransactionComp.home.createLabel">
+            Create a new Transaction Comp
+            </span>
+        </button>
+    </h2>
+
+    <jhi-alert-error></jhi-alert-error>
+
+    <jhi-alert></jhi-alert>
+
+    <div class="alert alert-warning" id="no-result" *ngIf="transactionComps?.length === 0">
+        <span jhiTranslate="mooingatewayApp.mooincompaniesTransactionComp.home.notFound">No transactionComps found</span>
+    </div>
+
+    <div class="table-responsive" id="entities" *ngIf="transactionComps && transactionComps.length > 0">
+        <table class="table table-striped" aria-describedby="page-heading">
+            <thead>
+                <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" [callback]="loadPage.bind(this)">
+                    <th scope="col"  jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="number"><span jhiTranslate="mooingatewayApp.mooincompaniesTransactionComp.number">Number</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="details"><span jhiTranslate="mooingatewayApp.mooincompaniesTransactionComp.details">Details</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="type"><span jhiTranslate="mooingatewayApp.mooincompaniesTransactionComp.type">Type</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="paymentMethod"><span jhiTranslate="mooingatewayApp.mooincompaniesTransactionComp.paymentMethod">Payment Method</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="withTVA"><span jhiTranslate="mooingatewayApp.mooincompaniesTransactionComp.withTVA">With TVA</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="totalHT"><span jhiTranslate="mooingatewayApp.mooincompaniesTransactionComp.totalHT">Total HT</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="totalTVA"><span jhiTranslate="mooingatewayApp.mooincompaniesTransactionComp.totalTVA">Total TVA</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="totaTTC"><span jhiTranslate="mooingatewayApp.mooincompaniesTransactionComp.totaTTC">Tota TTC</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="date"><span jhiTranslate="mooingatewayApp.mooincompaniesTransactionComp.date">Date</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="company.id"><span jhiTranslate="mooingatewayApp.mooincompaniesTransactionComp.company">Company</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let transactionComp of transactionComps ;trackBy: trackId">
+                    <td><a [routerLink]="['/transaction-comp', transactionComp.id, 'view']">{{ transactionComp.id }}</a></td>
+                    <td>{{ transactionComp.number }}</td>
+                    <td>{{ transactionComp.details }}</td>
+                    <td jhiTranslate="{{ 'mooingatewayApp.TransactionCompTypeEnum.' + transactionComp.type }}">{{ transactionComp.type }}</td>
+                    <td jhiTranslate="{{ 'mooingatewayApp.TransactionCompPaymentMethod.' + transactionComp.paymentMethod }}">{{ transactionComp.paymentMethod }}</td>
+                    <td>{{ transactionComp.withTVA }}</td>
+                    <td>{{ transactionComp.totalHT }}</td>
+                    <td>{{ transactionComp.totalTVA }}</td>
+                    <td>{{ transactionComp.totaTTC }}</td>
+                    <td>{{ transactionComp.date | date:'mediumDate' }}</td>
+                    <td>
+                        <div *ngIf="transactionComp.company">
+                            <a [routerLink]="['/company', transactionComp.company?.id, 'view']" >{{ transactionComp.company?.id }}</a>
+                        </div>
+                    </td>
+                    <td class="text-right">
+                        <div class="btn-group">
+                            <button type="submit"
+                                    [routerLink]="['/transaction-comp', transactionComp.id, 'view']"
+                                    class="btn btn-info btn-sm">
+                                <fa-icon icon="eye"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                            </button>
+
+                            <button type="submit"
+                                    [routerLink]="['/transaction-comp', transactionComp.id, 'edit']"
+                                    class="btn btn-primary btn-sm">
+                                <fa-icon icon="pencil-alt"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                            </button>
+
+                            <button type="submit" (click)="delete(transactionComp)"
+                                    class="btn btn-danger btn-sm">
+                                <fa-icon icon="times"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div *ngIf="transactionComps && transactionComps.length > 0">
+        <div class="row justify-content-center">
+            <jhi-item-count [page]="page" [total]="totalItems" [itemsPerPage]="itemsPerPage"></jhi-item-count>
+        </div>
+
+        <div class="row justify-content-center">
+            <ngb-pagination [collectionSize]="totalItems" [(page)]="ngbPaginationPage" [pageSize]="itemsPerPage" [maxSize]="5" [rotate]="true" [boundaryLinks]="true" (pageChange)="loadPage($event)"></ngb-pagination>
+        </div>
+    </div>
+</div>

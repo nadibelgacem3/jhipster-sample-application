@@ -1,0 +1,37 @@
+{
+  "mooingatewayApp": {
+    "mooinbaseTiers": {
+      "home": {
+        "title": "Tiers",
+        "createLabel": "Créer un nouveau Tiers",
+        "createOrEditLabel": "Créer ou éditer un Tiers",
+        "notFound": "Aucun Tiers trouvé"
+      },
+      "delete": {
+        "question": "Etes-vous certain de vouloir supprimer le Tiers {{ id }} ?"
+      },
+      "detail": {
+        "title": "Tiers"
+      },
+      "reference": "Reference",
+      "firstName": "First Name",
+      "lastName": "Last Name",
+      "phone1": "Phone 1",
+      "phone2": "Phone 2",
+      "image": "Image",
+      "email": "Email",
+      "type": "Type",
+      "isCustomer": "Is Customer",
+      "isSupplier": "Is Supplier",
+      "companyID": "Company ID",
+      "tiersLocation": "Tiers Location"
+    }
+  },
+  "mooinbaseApp": {
+    "mooinbaseTiers": {
+      "created": "Un nouveau Tiers a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Tiers avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Tiers avec l'identifiant {{ param }} a été supprimé"
+    }
+  }
+}

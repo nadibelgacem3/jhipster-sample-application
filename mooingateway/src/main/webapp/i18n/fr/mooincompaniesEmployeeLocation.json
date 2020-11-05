@@ -1,0 +1,33 @@
+{
+  "mooingatewayApp": {
+    "mooincompaniesEmployeeLocation": {
+      "home": {
+        "title": "EmployeeLocations",
+        "createLabel": "Créer un nouveau Employee Location",
+        "createOrEditLabel": "Créer ou éditer un Employee Location",
+        "notFound": "Aucun Employee Location trouvé"
+      },
+      "delete": {
+        "question": "Etes-vous certain de vouloir supprimer le Employee Location {{ id }} ?"
+      },
+      "detail": {
+        "title": "Employee Location"
+      },
+      "localNumber": "Local Number",
+      "streetAddress": "Street Address",
+      "postalCode": "Postal Code",
+      "city": "City",
+      "stateProvince": "State Province",
+      "countryName": "Country Name",
+      "flag": "Flag",
+      "employee": "Employee"
+    }
+  },
+  "mooincompaniesApp": {
+    "mooincompaniesEmployeeLocation": {
+      "created": "Un nouveau Employee Location a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Employee Location avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Employee Location avec l'identifiant {{ param }} a été supprimé"
+    }
+  }
+}

@@ -1,0 +1,76 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="bL">
+            <h2><span jhiTranslate="mooingatewayApp.mooinbaseBL.detail.title">BL</span> {{ bL.id }}</h2>
+
+            <hr>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="mooingatewayApp.mooinbaseBL.number">Number</span></dt>
+                <dd>
+                    <span>{{ bL.number }}</span>
+                </dd>
+                <dt><span jhiTranslate="mooingatewayApp.mooinbaseBL.reference">Reference</span></dt>
+                <dd>
+                    <span>{{ bL.reference }}</span>
+                </dd>
+                <dt><span jhiTranslate="mooingatewayApp.mooinbaseBL.status">Status</span></dt>
+                <dd>
+                    <span jhiTranslate="{{ 'mooingatewayApp.BLStatusEnum.' + bL.status }}">{{ bL.status }}</span>
+                </dd>
+                <dt><span jhiTranslate="mooingatewayApp.mooinbaseBL.type">Type</span></dt>
+                <dd>
+                    <span jhiTranslate="{{ 'mooingatewayApp.BLTypeEnum.' + bL.type }}">{{ bL.type }}</span>
+                </dd>
+                <dt><span jhiTranslate="mooingatewayApp.mooinbaseBL.totalHT">Total HT</span></dt>
+                <dd>
+                    <span>{{ bL.totalHT }}</span>
+                </dd>
+                <dt><span jhiTranslate="mooingatewayApp.mooinbaseBL.totalTVA">Total TVA</span></dt>
+                <dd>
+                    <span>{{ bL.totalTVA }}</span>
+                </dd>
+                <dt><span jhiTranslate="mooingatewayApp.mooinbaseBL.totaTTC">Tota TTC</span></dt>
+                <dd>
+                    <span>{{ bL.totaTTC }}</span>
+                </dd>
+                <dt><span jhiTranslate="mooingatewayApp.mooinbaseBL.date">Date</span></dt>
+                <dd>
+                    <span>{{ bL.date }}</span>
+                </dd>
+                <dt><span jhiTranslate="mooingatewayApp.mooinbaseBL.dueDate">Due Date</span></dt>
+                <dd>
+                    <span>{{ bL.dueDate }}</span>
+                </dd>
+                <dt><span jhiTranslate="mooingatewayApp.mooinbaseBL.isConverted">Is Converted</span></dt>
+                <dd>
+                    <span>{{ bL.isConverted }}</span>
+                </dd>
+                <dt><span jhiTranslate="mooingatewayApp.mooinbaseBL.companyID">Company ID</span></dt>
+                <dd>
+                    <span>{{ bL.companyID }}</span>
+                </dd>
+                <dt><span jhiTranslate="mooingatewayApp.mooinbaseBL.tiers">Tiers</span></dt>
+                <dd>
+                    <div *ngIf="bL.tiers">
+                        <a [routerLink]="['/tiers', bL.tiers?.id, 'view']">{{ bL.tiers?.id }}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/bl', bL.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

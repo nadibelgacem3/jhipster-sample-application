@@ -1,0 +1,61 @@
+{
+  "name": "Cashier",
+  "fields": [
+    {
+      "fieldName": "name",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "withTicket",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldName": "withTVA",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldName": "withTax",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldName": "withAppro",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldName": "themeColor",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "isActivated",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldName": "companyID",
+      "fieldType": "Long"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "one-to-one",
+      "otherEntityName": "cashierLocation",
+      "otherEntityRelationshipName": "cashier",
+      "relationshipName": "cashierLocation",
+      "otherEntityField": "id",
+      "ownerSide": true
+    }
+  ],
+  "changelogDate": "20201105132521",
+  "javadoc": "Cashier entity.\\n@author The Moo3in team.",
+  "entityTableName": "cashier",
+  "dto": "no",
+  "pagination": "pagination",
+  "service": "serviceClass",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": ["mooingateway", "mooincashier"],
+  "microserviceName": "mooincashier"
+}

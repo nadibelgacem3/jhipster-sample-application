@@ -1,0 +1,82 @@
+{
+  "name": "CashierCostumer",
+  "fields": [
+    {
+      "fieldName": "reference",
+      "fieldType": "String",
+      "fieldValidateRules": ["pattern"],
+      "fieldValidateRulesPattern": "^SC[0-9]{3}COM[0-9]{2}$"
+    },
+    {
+      "fieldName": "firstName",
+      "fieldType": "String",
+      "fieldValidateRules": ["required", "minlength"],
+      "fieldValidateRulesMinlength": "4"
+    },
+    {
+      "fieldName": "lastName",
+      "fieldType": "String",
+      "fieldValidateRules": ["required", "minlength"],
+      "fieldValidateRulesMinlength": "3"
+    },
+    {
+      "fieldName": "phone1",
+      "fieldType": "String",
+      "fieldValidateRules": ["minlength"],
+      "fieldValidateRulesMinlength": "8"
+    },
+    {
+      "fieldName": "phone2",
+      "fieldType": "String",
+      "fieldValidateRules": ["minlength"],
+      "fieldValidateRulesMinlength": "8"
+    },
+    {
+      "fieldName": "image",
+      "fieldType": "byte[]",
+      "fieldTypeBlobContent": "image"
+    },
+    {
+      "fieldName": "email",
+      "fieldType": "String",
+      "fieldValidateRules": ["pattern"],
+      "fieldValidateRulesPattern": "^[^@\\s]+@[^@\\s]+\\.[^@\\s]+$"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "one-to-one",
+      "otherEntityName": "cashierLocation",
+      "otherEntityRelationshipName": "cashierCostumer",
+      "relationshipName": "cashierLocation",
+      "otherEntityField": "id",
+      "ownerSide": true
+    },
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "cashierReceipt",
+      "otherEntityRelationshipName": "cashierCostumer",
+      "relationshipName": "cashierReceipt"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "cashier",
+      "otherEntityRelationshipName": "cashierCostumer",
+      "relationshipName": "cashier",
+      "otherEntityField": "id"
+    }
+  ],
+  "changelogDate": "20201105132821",
+  "javadoc": "CashierCostumer entity.\\n@author The Moo3in team.",
+  "entityTableName": "cashier_costumer",
+  "dto": "no",
+  "pagination": "pagination",
+  "service": "serviceClass",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": ["mooingateway", "mooincashier"],
+  "microserviceName": "mooincashier"
+}

@@ -1,0 +1,35 @@
+{
+  "mooingatewayApp": {
+    "mooincashierCashierCostumer": {
+      "home": {
+        "title": "CashierCostumers",
+        "createLabel": "Créer un nouveau Cashier Costumer",
+        "createOrEditLabel": "Créer ou éditer un Cashier Costumer",
+        "notFound": "Aucun Cashier Costumer trouvé"
+      },
+      "delete": {
+        "question": "Etes-vous certain de vouloir supprimer le Cashier Costumer {{ id }} ?"
+      },
+      "detail": {
+        "title": "Cashier Costumer"
+      },
+      "reference": "Reference",
+      "firstName": "First Name",
+      "lastName": "Last Name",
+      "phone1": "Phone 1",
+      "phone2": "Phone 2",
+      "image": "Image",
+      "email": "Email",
+      "cashierLocation": "Cashier Location",
+      "cashierReceipt": "Cashier Receipt",
+      "cashier": "Cashier"
+    }
+  },
+  "mooincashierApp": {
+    "mooincashierCashierCostumer": {
+      "created": "Un nouveau Cashier Costumer a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Cashier Costumer avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Cashier Costumer avec l'identifiant {{ param }} a été supprimé"
+    }
+  }
+}

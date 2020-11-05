@@ -1,0 +1,40 @@
+{
+  "mooingatewayApp": {
+    "mooincashierCashierReceipt": {
+      "home": {
+        "title": "Cashier Receipts",
+        "createLabel": "Create a new Cashier Receipt",
+        "createOrEditLabel": "Create or edit a Cashier Receipt",
+        "notFound": "No Cashier Receipts found"
+      },
+      "delete": {
+        "question": "Are you sure you want to delete Cashier Receipt {{ id }}?"
+      },
+      "detail": {
+        "title": "Cashier Receipt"
+      },
+      "number": "Number",
+      "reference": "Reference",
+      "status": "Status",
+      "totalHT": "Total HT",
+      "totalTVA": "Total TVA",
+      "totaTTC": "Tota TTC",
+      "date": "Date",
+      "dueDate": "Due Date",
+      "isConverted": "Is Converted",
+      "withTVA": "With TVA",
+      "withTax": "With Tax",
+      "cashierReceiptItem": "Cashier Receipt Item",
+      "cashierReceiptPay": "Cashier Receipt Pay",
+      "cashier": "Cashier",
+      "cashierCostumer": "Cashier Costumer"
+    }
+  },
+  "mooincashierApp": {
+    "mooincashierCashierReceipt": {
+      "created": "A new Cashier Receipt is created with identifier {{ param }}",
+      "updated": "A Cashier Receipt is updated with identifier {{ param }}",
+      "deleted": "A Cashier Receipt is deleted with identifier {{ param }}"
+    }
+  }
+}

@@ -1,0 +1,102 @@
+<div>
+    <h2 id="page-heading">
+        <span jhiTranslate="mooingatewayApp.mooinbaseTiers.home.title">Tiers</span>
+
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-tiers" [routerLink]="['/tiers/new']">
+            <fa-icon icon="plus"></fa-icon>
+            <span  jhiTranslate="mooingatewayApp.mooinbaseTiers.home.createLabel">
+            Create a new Tiers
+            </span>
+        </button>
+    </h2>
+
+    <jhi-alert-error></jhi-alert-error>
+
+    <jhi-alert></jhi-alert>
+
+    <div class="alert alert-warning" id="no-result" *ngIf="tiers?.length === 0">
+        <span jhiTranslate="mooingatewayApp.mooinbaseTiers.home.notFound">No tiers found</span>
+    </div>
+
+    <div class="table-responsive" id="entities" *ngIf="tiers && tiers.length > 0">
+        <table class="table table-striped" aria-describedby="page-heading">
+            <thead>
+                <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" [callback]="loadPage.bind(this)">
+                    <th scope="col"  jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="reference"><span jhiTranslate="mooingatewayApp.mooinbaseTiers.reference">Reference</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="firstName"><span jhiTranslate="mooingatewayApp.mooinbaseTiers.firstName">First Name</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="lastName"><span jhiTranslate="mooingatewayApp.mooinbaseTiers.lastName">Last Name</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="phone1"><span jhiTranslate="mooingatewayApp.mooinbaseTiers.phone1">Phone 1</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="phone2"><span jhiTranslate="mooingatewayApp.mooinbaseTiers.phone2">Phone 2</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="image"><span jhiTranslate="mooingatewayApp.mooinbaseTiers.image">Image</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="email"><span jhiTranslate="mooingatewayApp.mooinbaseTiers.email">Email</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="type"><span jhiTranslate="mooingatewayApp.mooinbaseTiers.type">Type</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="isCustomer"><span jhiTranslate="mooingatewayApp.mooinbaseTiers.isCustomer">Is Customer</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="isSupplier"><span jhiTranslate="mooingatewayApp.mooinbaseTiers.isSupplier">Is Supplier</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="companyID"><span jhiTranslate="mooingatewayApp.mooinbaseTiers.companyID">Company ID</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="tiersLocation.id"><span jhiTranslate="mooingatewayApp.mooinbaseTiers.tiersLocation">Tiers Location</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let tiers of tiers ;trackBy: trackId">
+                    <td><a [routerLink]="['/tiers', tiers.id, 'view']">{{ tiers.id }}</a></td>
+                    <td>{{ tiers.reference }}</td>
+                    <td>{{ tiers.firstName }}</td>
+                    <td>{{ tiers.lastName }}</td>
+                    <td>{{ tiers.phone1 }}</td>
+                    <td>{{ tiers.phone2 }}</td>
+                    <td>
+                        <a *ngIf="tiers.image" (click)="openFile(tiers.imageContentType, tiers.image)">
+                            <img [src]="'data:' + tiers.imageContentType + ';base64,' + tiers.image" style="max-height: 30px;" alt="tiers image"/>
+                        </a>
+                        <span *ngIf="tiers.image">{{ tiers.imageContentType }}, {{ byteSize(tiers.image) }}</span>
+                    </td>
+                    <td>{{ tiers.email }}</td>
+                    <td jhiTranslate="{{ 'mooingatewayApp.TiersTypeEnum.' + tiers.type }}">{{ tiers.type }}</td>
+                    <td>{{ tiers.isCustomer }}</td>
+                    <td>{{ tiers.isSupplier }}</td>
+                    <td>{{ tiers.companyID }}</td>
+                    <td>
+                        <div *ngIf="tiers.tiersLocation">
+                            <a [routerLink]="['/tiers-location', tiers.tiersLocation?.id, 'view']" >{{ tiers.tiersLocation?.id }}</a>
+                        </div>
+                    </td>
+                    <td class="text-right">
+                        <div class="btn-group">
+                            <button type="submit"
+                                    [routerLink]="['/tiers', tiers.id, 'view']"
+                                    class="btn btn-info btn-sm">
+                                <fa-icon icon="eye"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                            </button>
+
+                            <button type="submit"
+                                    [routerLink]="['/tiers', tiers.id, 'edit']"
+                                    class="btn btn-primary btn-sm">
+                                <fa-icon icon="pencil-alt"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                            </button>
+
+                            <button type="submit" (click)="delete(tiers)"
+                                    class="btn btn-danger btn-sm">
+                                <fa-icon icon="times"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div *ngIf="tiers && tiers.length > 0">
+        <div class="row justify-content-center">
+            <jhi-item-count [page]="page" [total]="totalItems" [itemsPerPage]="itemsPerPage"></jhi-item-count>
+        </div>
+
+        <div class="row justify-content-center">
+            <ngb-pagination [collectionSize]="totalItems" [(page)]="ngbPaginationPage" [pageSize]="itemsPerPage" [maxSize]="5" [rotate]="true" [boundaryLinks]="true" (pageChange)="loadPage($event)"></ngb-pagination>
+        </div>
+    </div>
+</div>

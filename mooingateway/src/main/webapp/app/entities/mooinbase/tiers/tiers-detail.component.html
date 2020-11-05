@@ -1,0 +1,81 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="tiers">
+            <h2><span jhiTranslate="mooingatewayApp.mooinbaseTiers.detail.title">Tiers</span> {{ tiers.id }}</h2>
+
+            <hr>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="mooingatewayApp.mooinbaseTiers.reference">Reference</span></dt>
+                <dd>
+                    <span>{{ tiers.reference }}</span>
+                </dd>
+                <dt><span jhiTranslate="mooingatewayApp.mooinbaseTiers.firstName">First Name</span></dt>
+                <dd>
+                    <span>{{ tiers.firstName }}</span>
+                </dd>
+                <dt><span jhiTranslate="mooingatewayApp.mooinbaseTiers.lastName">Last Name</span></dt>
+                <dd>
+                    <span>{{ tiers.lastName }}</span>
+                </dd>
+                <dt><span jhiTranslate="mooingatewayApp.mooinbaseTiers.phone1">Phone 1</span></dt>
+                <dd>
+                    <span>{{ tiers.phone1 }}</span>
+                </dd>
+                <dt><span jhiTranslate="mooingatewayApp.mooinbaseTiers.phone2">Phone 2</span></dt>
+                <dd>
+                    <span>{{ tiers.phone2 }}</span>
+                </dd>
+                <dt><span jhiTranslate="mooingatewayApp.mooinbaseTiers.image">Image</span></dt>
+                <dd>
+                    <div *ngIf="tiers.image">
+                        <a (click)="openFile(tiers.imageContentType, tiers.image)">
+                            <img [src]="'data:' + tiers.imageContentType + ';base64,' + tiers.image" style="max-width: 100%;" alt="tiers image"/>
+                        </a>
+                        {{ tiers.imageContentType }}, {{ byteSize(tiers.image) }}
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="mooingatewayApp.mooinbaseTiers.email">Email</span></dt>
+                <dd>
+                    <span>{{ tiers.email }}</span>
+                </dd>
+                <dt><span jhiTranslate="mooingatewayApp.mooinbaseTiers.type">Type</span></dt>
+                <dd>
+                    <span jhiTranslate="{{ 'mooingatewayApp.TiersTypeEnum.' + tiers.type }}">{{ tiers.type }}</span>
+                </dd>
+                <dt><span jhiTranslate="mooingatewayApp.mooinbaseTiers.isCustomer">Is Customer</span></dt>
+                <dd>
+                    <span>{{ tiers.isCustomer }}</span>
+                </dd>
+                <dt><span jhiTranslate="mooingatewayApp.mooinbaseTiers.isSupplier">Is Supplier</span></dt>
+                <dd>
+                    <span>{{ tiers.isSupplier }}</span>
+                </dd>
+                <dt><span jhiTranslate="mooingatewayApp.mooinbaseTiers.companyID">Company ID</span></dt>
+                <dd>
+                    <span>{{ tiers.companyID }}</span>
+                </dd>
+                <dt><span jhiTranslate="mooingatewayApp.mooinbaseTiers.tiersLocation">Tiers Location</span></dt>
+                <dd>
+                    <div *ngIf="tiers.tiersLocation">
+                        <a [routerLink]="['/tiers-location', tiers.tiersLocation?.id, 'view']">{{ tiers.tiersLocation?.id }}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/tiers', tiers.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

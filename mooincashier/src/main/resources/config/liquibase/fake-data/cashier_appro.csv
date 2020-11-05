@@ -1,0 +1,11 @@
+id;number;status;total_ht;total_tva;tota_ttc;date;is_converted;with_tva;with_tax
+1;Tasty Metal;VALIDATED;57405;47326;53562;2020-11-05;false;true;true
+2;Markets;VALIDATED;64542;45943;90975;2020-11-05;true;false;true
+3;e-markets;DRAFT;46606;65595;53033;2020-11-04;false;true;true
+4;real-time;DRAFT;3920;29590;87011;2020-11-04;false;true;false
+5;olive navigate Ergonomic;CANCELED;57071;4451;35001;2020-11-04;false;false;true
+6;Savings Account Multi-layered;VALIDATED;89869;2797;71991;2020-11-05;true;true;true
+7;array;VALIDATED;92948;60538;8492;2020-11-04;true;false;false
+8;neural-net violet;UNDER_TRAIT;69509;52257;54918;2020-11-05;true;true;true
+9;revolutionary;UNDER_TRAIT;50518;12285;6812;2020-11-05;true;false;true
+10;cross-platform;VALIDATED;86763;39383;20952;2020-11-04;true;true;false
